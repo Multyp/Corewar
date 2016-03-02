@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Mar  2 09:29:32 2016 Arthur ARNAUD
-** Last update Wed Mar  2 10:40:20 2016 Arthur ARNAUD
+** Last update Wed Mar  2 14:56:21 2016 Arthur ARNAUD
 */
 
 #include "decompiler.h"
@@ -23,11 +23,13 @@ int	op_sti(int fd_cor, int fd_s)
   while (i < 3)
     {
       if ((size_read = check_codage(&c, fd_s)) == -1 ||
-	  !(buf = malloc(sizeof(unsigned char) * (size_read + 1))) ||
-	  !(my_memset(&buf, 0, size_read)) ||
-	  read(fd_cor, &buf, size_read) == -1)
+	  !(buf = malloc(sizeof(unsigned char) * (size_read + 1))));
+      return (1);
+      my_memset(&buf, 0, size_read);
+      if (read(fd_cor, &buf, size_read) == -1)
 	return (1);
       buf[size_read] = 0;
+      printf("buf = %s\n", buf);
       /* nb = convert_to_nb(buf); */
       /* my_putnbr_file(nb); */
       if (i < 2 && write(fd_s, ",", 1) == -1)

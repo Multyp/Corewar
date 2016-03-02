@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Mar  2 10:28:41 2016 Arthur ARNAUD
-** Last update Wed Mar  2 10:28:48 2016 Arthur ARNAUD
+** Last update Wed Mar  2 14:57:35 2016 Arthur ARNAUD
 */
 
 #include <unistd.h>
@@ -23,13 +23,13 @@ void	my_putnbr_file(int nb, int fd)
   if (nb < 0)
     {
       nb = -(nb);
-      my_putchar('-');
+      my_putchar_file('-', fd);
     }
   while ((nb / diviseur) >= 10)
     diviseur = diviseur * 10;
   while (diviseur > 0)
     {
-      my_putchar(48 + (nb / diviseur) % 10, fd);
+      my_putchar_file(48 + (nb / diviseur) % 10, fd);
       diviseur = diviseur / 10;
     }
 }

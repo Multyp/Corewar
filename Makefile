@@ -5,16 +5,36 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Wed Mar  2 11:06:26 2016 Arthur ARNAUD
+## Last update Wed Mar  2 14:46:12 2016 Arthur ARNAUD
 ##
 
 DEBUG=			yes
 
 SRC_PREFIX=		src/decompiler/
 
-SRC_FILES=		main.c		\
-			header.c	\
-			my_putstrs.c	\
+SRC_FILES=		main.c			\
+			header.c		\
+			my_putstrs.c		\
+			fill_file.c		\
+			check_codage.c		\
+			my_putnbr_file.c	\
+			set_ftab.c		\
+			op_live.c		\
+			op_add.c		\
+			op_aff.c		\
+			op_and.c		\
+			op_fork.c		\
+			op_ld.c			\
+			op_ldi.c		\
+			op_lfork.c		\
+			op_lld.c		\
+			op_lldi.c		\
+			op_or.c			\
+			op_st.c			\
+			op_sti.c		\
+			op_sub.c		\
+			op_xor.c		\
+			op_zjmp.c		\
 			my_memset.c
 
 SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))

@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Mar  1 15:29:29 2016 Arthur ARNAUD
-** Last update Wed Mar  2 11:17:54 2016 Arthur ARNAUD
+** Last update Wed Mar  2 14:50:44 2016 Arthur ARNAUD
 */
 
 #ifndef _DECOMPILER_H_
@@ -78,7 +78,7 @@ typedef struct	s_header
   char		comment[COMMENT_LENGTH + 1];
 }		t_header;
 
-typedef char **(**ftab)(int, int);
+typedef int	(*ftab)(int, int);
 
 int	print_header(int, int);
 int	check_codage(unsigned char *, int);
@@ -86,9 +86,23 @@ void	my_putchar_file(char, int);
 void	my_putnbr_file(int, int);
 int	my_putstr_instruct(char *, int);
 int	my_putstr_file(char *, int);
-int	fill_file(int, int, ftab);
+int	fill_file(int, int, ftab *);
 int	op_live(int, int);
+int	op_ld(int, int);
+int	op_st(int, int);
+int	op_add(int, int);
+int	op_sub(int, int);
+int	op_and(int, int);
+int	op_or(int, int);
+int	op_xor(int, int);
+int	op_zjmp(int, int);
+int	op_ldi(int, int);
 int	op_sti(int, int);
+int	op_fork(int, int);
+int	op_lld(int, int);
+int	op_lldi(int, int);
+int	op_lfork(int, int);
+int	op_aff(int, int);
 ftab	*set_ftab(ftab *);
 void	my_memset(void *, char, int);
 
