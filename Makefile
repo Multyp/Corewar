@@ -5,7 +5,7 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Wed Mar  2 14:46:12 2016 Arthur ARNAUD
+## Last update Thu Mar  3 16:49:26 2016 Arthur ARNAUD
 ##
 
 DEBUG=			yes
@@ -19,6 +19,7 @@ SRC_FILES=		main.c			\
 			check_codage.c		\
 			my_putnbr_file.c	\
 			set_ftab.c		\
+			convert_to_nb.c		\
 			op_live.c		\
 			op_add.c		\
 			op_aff.c		\

@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Mar  1 15:29:29 2016 Arthur ARNAUD
-** Last update Wed Mar  2 14:50:44 2016 Arthur ARNAUD
+** Last update Thu Mar  3 17:27:16 2016 Arthur ARNAUD
 */
 
 #ifndef _DECOMPILER_H_
@@ -18,57 +18,19 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-#ifndef COMMENT_CHAR
-# define COMMENT_CHAR '#'
-#endif /* !COMMENT_CHAR */
-
-#ifndef LABEL_CHAR
-# define LABEL_CHAR ':'
-#endif /* !LABEL_CHAR */
-
-#ifndef DIRECT_CHAR
-# define DIRECT_CHAR '%'
-#endif /* !DIRECT_CHAR */
-
-#ifndef SEPARATOR_CHAR
-# define SEPARATOR_CHAR ','
-#endif /* !SEPARATOR_CHAR */
-
-#ifndef LABEL_CHARS
+# define COMMENT_CHAR "#"
+# define LABEL_CHAR ":"
+# define DIRECT_CHAR "%"
+# define SEPARATOR_CHAR ","
 # define LABEL_CHARS "abcdefghijklmnopqrstuvwxyz_012345678"
-#endif /* !LABEL_CHARS */
-
-#ifndef NAME_CMD_STRING
 # define NAME_CMD_STRING ".name"
-#endif /* !NAME_CMD_STRING */
-
-#ifndef COMMENT_CMD_STRING
 # define COMMENT_CMD_STRING ".comment"
-#endif /* !COMMENT_CMD_STRING */
-
-#ifndef REG_NUMBER
 # define REG_NUMBER 16
-#endif /* !REG_NUMBER */
-
-#ifndef REG_SIZE
 # define REG_SIZE 1
-#endif /* !REG_SIZE */
-
-#ifndef IND_SIZE
 # define IND_SIZE 2
-#endif /* !IND_SIZE */
-
-#ifndef DIR_SIZE
 # define DIR_SIZE 4
-#endif /* !DIR_SIZE */
-
-#ifndef PROG_NAME_SIZE
 # define PROG_NAME_SIZE 128
-#endif /* !PROG_NAME_SIZE */
-
-#ifndef COMMENT_LENGTH
 # define COMMENT_LENGTH 2048
-#endif /* !COMMENT_LENGTH */
 
 typedef struct	s_header
 {
@@ -80,13 +42,21 @@ typedef struct	s_header
 
 typedef int	(*ftab)(int, int);
 
-int	print_header(int, int);
-int	check_codage(unsigned char *, int);
-void	my_putchar_file(char, int);
-void	my_putnbr_file(int, int);
-int	my_putstr_instruct(char *, int);
-int	my_putstr_file(char *, int);
-int	fill_file(int, int, ftab *);
+/*
+** ==========================================
+**                    ALGO
+** ==========================================
+*/
+int		print_header(int, int);
+int		check_codage(unsigned char *, int);
+int		fill_file(int, int, ftab *);
+ftab		*set_ftab(ftab *);
+unsigned int	convert_to_nb(unsigned char *str, int size);
+/*
+** ==========================================
+**                 INSTRUCTIONS
+** ==========================================
+*/
 int	op_live(int, int);
 int	op_ld(int, int);
 int	op_st(int, int);
@@ -103,7 +73,16 @@ int	op_lld(int, int);
 int	op_lldi(int, int);
 int	op_lfork(int, int);
 int	op_aff(int, int);
-ftab	*set_ftab(ftab *);
-void	my_memset(void *, char, int);
+
+/*
+** ==========================================
+**                    TOOLS
+** ==========================================
+*/
+int	my_memset(void *, char, int);
+void	my_putchar_file(char, int);
+void	my_putnbr_file(int, int);
+int	my_putstr_instruct(char *, int);
+int	my_putstr_file(char *, int);
 
 #endif /* !_DECOMPILER_H_ */
