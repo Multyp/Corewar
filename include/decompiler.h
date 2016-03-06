@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Mar  1 15:29:29 2016 Arthur ARNAUD
-** Last update Thu Mar  3 17:27:16 2016 Arthur ARNAUD
+** Last update Sun Mar  6 16:31:17 2016 Arthur ARNAUD
 */
 
 #ifndef _DECOMPILER_H_
@@ -47,11 +47,12 @@ typedef int	(*ftab)(int, int);
 **                    ALGO
 ** ==========================================
 */
-int		print_header(int, int);
+int		print_header(int, t_header *header);
 int		check_codage(unsigned char *, int);
 int		fill_file(int, int, ftab *);
 ftab		*set_ftab(ftab *);
 unsigned int	convert_to_nb(unsigned char *str, int size);
+char		*new_name(char *);
 /*
 ** ==========================================
 **                 INSTRUCTIONS
@@ -84,5 +85,5 @@ void	my_putchar_file(char, int);
 void	my_putnbr_file(int, int);
 int	my_putstr_instruct(char *, int);
 int	my_putstr_file(char *, int);
-
+int	my_strlen(char *str);
 #endif /* !_DECOMPILER_H_ */

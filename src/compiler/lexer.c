@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 16:03:05 2016 Arthur ARNAUD
-** Last update Mon Feb 29 12:06:09 2016 Arthur ARNAUD
+** Last update Sun Mar  6 18:34:37 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -26,7 +26,7 @@ int	lexer(t_label *label, t_action *action, t_header *header, char *name)
     {
       if (check_empty_line(str))
 	{
-	  if (!(tab = str_to_word_tab(str, ' ')) ||
+	  if (!(tab = line_to_action_tab(str)) ||
 	      (pos = check_line(tab, action, label, &pos)) == -1)
 	    return (1);
 	  pos.line += 1;

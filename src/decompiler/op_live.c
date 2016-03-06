@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar  3 17:01:57 2016 Arthur ARNAUD
-** Last update Thu Mar  3 17:29:55 2016 Arthur ARNAUD
+** Last update Sat Mar  5 00:03:14 2016 Arthur ARNAUD
 */
 
 #include "decompiler.h"
@@ -14,14 +14,12 @@ int	op_live(int fd_cor, int fd_s)
 {
   unsigned char buf[5];
   int		nb;
-  int		i;
   int		size_read;
 
   size_read = 4;
   if (my_putstr_instruct("live", fd_s) ||
       write(fd_s, "%", 1) < 0)
     return (1);
-  i = -1;
   if (my_memset(&buf, 0, size_read) ||
       read(fd_cor, &buf, size_read) < 0)
     return (1);

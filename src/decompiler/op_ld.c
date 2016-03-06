@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar  3 17:39:41 2016 Arthur ARNAUD
-** Last update Thu Mar  3 17:44:11 2016 Arthur ARNAUD
+** Last update Sun Mar  6 16:06:53 2016 Arthur ARNAUD
 */
 
 #include "decompiler.h"
@@ -32,7 +32,7 @@ int	op_ld(int fd_cor, int fd_s)
       nb = convert_to_nb(buf, size_read);
       my_putnbr_file(nb, fd_s);
       if ((i < 1 && write(fd_s, ",", 1) < 0) ||
-	  i == 1 && write(fd_s, "\n", 1) < 0)
+	  (i == 1 && write(fd_s, "\n", 1) < 0))
 	return (1);
     }
   return (0);
