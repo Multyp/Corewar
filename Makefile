@@ -5,8 +5,10 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Fri Mar  4 16:52:04 2016 Arthur ARNAUD
+## Last update Wed Mar 16 16:55:01 2016 Clement Peau
 ##
+
+POC=			yes
 
 DEBUG=			yes
 
@@ -52,7 +54,11 @@ else
 	CFLAGS=		$(HEAD) -W -Wall -Wextra -Werror -ansi -pedantic
 endif
 
-CC=			gcc
+ifeq ($(POC), yes)
+	CC = clang
+else
+	CC=			gcc
+endif
 
 RM=			rm -f
 
