@@ -5,25 +5,25 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Wed Mar 16 17:15:56 2016 Clement Peau
+** Last update Wed Mar 16 19:23:05 2016 Clement Peau
 */
 
 #ifndef ASM_H_
 # define ASM_H_
 
-typedef struct	s_header
+typedef struct		s_header
 {
   int	magic;
   char	prog_name[128 + 1];
   int	prog_size;
   char	comment[2048 + 1];
-}		t_header;
+}			t_header;
 
-typedef struct	s_pos
+typedef struct		s_pos
 {
   int	prog_size;
   int	line;
-}
+}			t_pos;
 
 typedef struct		s_arg
 {

@@ -5,16 +5,16 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Wed Mar 16 16:55:01 2016 Clement Peau
+## Last update Wed Mar 16 19:21:40 2016 Clement Peau
 ##
 
 POC=			yes
 
 DEBUG=			yes
 
-SRC_PREFIX=		src/decompiler/
+SRC_PREFIX_DECOMPILER=	src/decompiler/
 
-SRC_FILES=		main.c			\
+SRC_FILES_DECOMPILER=	main.c			\
 			header.c		\
 			my_putstrs.c		\
 			fill_file.c		\
@@ -40,11 +40,25 @@ SRC_FILES=		main.c			\
 			op_sub.c		\
 			op_xor.c		\
 			op_zjmp.c		\
-			my_memset.c
+			my_memset.c		\
 
-SRC=			$(addprefix $(SRC_PREFIX),$(SRC_FILES))
+SRC_DECOMPILER=		$(addprefix $(SRC_PREFIX_DECOMPILER),$(SRC_FILES_DECOMPILER))
 
-NAME=			decompiler
+SRC_PREFIX_ASM=		src/compiler/
+
+SRC_FILES_ASM=		check_action.c		\
+			check_line.c		\
+			create_list.c		\
+			lexer.c			\
+			check_label.c		\
+			main.c			\
+			get_header.c		\
+
+SRC_ASM=		$(addprefix $(SRC_PREFIX_ASM),$(SRC_FILES_ASM))
+
+NAME_DECOMPILER=	decompiler
+
+NAME=			asm
 
 HEAD=			-Iinclude
 
@@ -57,53 +71,48 @@ endif
 ifeq ($(POC), yes)
 	CC = clang
 else
-	CC=			gcc
+	CC = gcc
 endif
+
+#ifeq ($(DEBUG), yes)
+#	@echo "  ____  _____ ____  _   _  ____   __  __  ___  ____  _____ "
+#	@echo " |  _ \| ____| __ )| | | |/ ___| |  \/  |/ _ \|  _ \| ____|"
+#	@echo " | | | |  _| |  _ \| | | | |  _  | |\/| | | | | | | |  _|  "
+#	@echo " | |_| | |___| |_) | |_| | |_| | | |  | | |_| | |_| | |___ "
+#	@echo " |____/|_____|____/ \___/ \____| |_|  |_|\___/|____/|_____|"
+#	@echo "                                                           "
+#endif
 
 RM=			rm -f
 
 LIB=			-lncurses
 
-OBJ=			$(SRC:.c=.o)
+OBJ_DECOMPILER=		$(SRC_DECOMPILER:.c=.o)
 
-$(NAME):	$(OBJ)
-ifeq ($(DEBUG), yes)
-	@echo "  ____  _____ ____  _   _  ____   __  __  ___  ____  _____ ";
-	@echo " |  _ \| ____| __ )| | | |/ ___| |  \/  |/ _ \|  _ \| ____|";
-	@echo " | | | |  _| |  _ \| | | | |  _  | |\/| | | | | | | |  _|  ";
-	@echo " | |_| | |___| |_) | |_| | |_| | | |  | | |_| | |_| | |___ ";
-	@echo " |____/|_____|____/ \___/ \____| |_|  |_|\___/|____/|_____|";
-	@echo "                                                           ";
-endif
-	@echo -n "[ "
-	@echo -n "OK"
-	@echo -n " ] "
-	@echo "Compiled game"
-	@$(CC) $(OBJ) -o $(NAME) $(LIB)
+OBJ_ASM=		$(SRC_ASM:.c=.o)
 
-%.o:	%.c
-	@echo -n "[ "
-	@echo -n "OK"
-	@echo -n " ] "
-	@echo "Compiling" $<
-	@$(CC) -o $@ -c $< $(CFLAGS)
+decompiler:		$(OBJ_DECOMPILER)
 
-all:	$(NAME)
+asm:			$(OBJ_ASM)
+			@echo -n "[ OK ] Soft Compiled"
+			@$(CC) $(OBJ_ASM) -o asm $(LIB)
+
+%.o:			%.c
+			@echo "[ OK ] Compiling" $<
+			@$(CC) -o $@ -c $< $(CFLAGS)
+
+all:			asm
 
 clean:
-	@echo -n "[ "
-	@echo -n "OK"
-	@echo -n " ] "
-	@echo "Removing OBJ files ..."
-	@$(RM) $(OBJ)
+			@echo "[ OK ] Removing OBJ files ..."
+			@$(RM) $(OBJ_DECOMPILER)
+			@$(RM) $(OBJ_ASM)
 
-fclean:	clean
-	@echo -n "[ "
-	@echo -n "OK"
-	@echo -n " ] "
-	@echo "Deleting binaries ..."
-	@$(RM) $(NAME)
+fclean:			clean
+			@echo "[ OK ] Deleting binaries ..."
+			@$(RM) $(NAME)
+			@$(RM) $(NAME_DECOMPILER)
 
-re:	fclean all
+re:			fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:			all clean fclean re

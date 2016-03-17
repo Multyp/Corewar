@@ -5,12 +5,12 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Mar  6 18:29:49 2016 Arthur ARNAUD
-** Last update Sun Mar  6 19:01:23 2016 Arthur ARNAUD
+** Last update Wed Mar 16 19:22:32 2016 Clement Peau
 */
 
 #include "asm.h"
 
-int	check_action(char *str, int line)
+int	check_action(char *str, t_action * action)
 {
   char	**tab;
   int	i;
