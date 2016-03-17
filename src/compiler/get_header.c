@@ -5,12 +5,12 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Wed Mar 16 17:17:26 2016 Clement Peau
-** Last update Wed Mar 16 17:18:13 2016 Clement Peau
+** Last update Thu Mar 17 11:27:41 2016 Clement Peau
 */
 
 #include "asm.h"
 
 int	get_header(int fd, t_header *header)
 {
-
+  return (0);
 }

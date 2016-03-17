@@ -5,7 +5,7 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Wed Mar 16 19:21:40 2016 Clement Peau
+## Last update Thu Mar 17 11:29:40 2016 Clement Peau
 ##
 
 POC=			yes
@@ -40,23 +40,23 @@ SRC_FILES_DECOMPILER=	main.c			\
 			op_sub.c		\
 			op_xor.c		\
 			op_zjmp.c		\
-			my_memset.c		\
+			my_memset.c
 
 SRC_DECOMPILER=		$(addprefix $(SRC_PREFIX_DECOMPILER),$(SRC_FILES_DECOMPILER))
 
 SRC_PREFIX_ASM=		src/compiler/
 
-SRC_FILES_ASM=		check_action.c		\
-			check_line.c		\
-			create_list.c		\
-			lexer.c			\
-			check_label.c		\
+SRC_FILES_ASM=		get_header.c		\
 			main.c			\
-			get_header.c		\
+			lexer.c			\
+		#	check_action.c		\
+		#	check_line.c		\
+		#	create_list.c		\
+
+		#	check_label.c		\
+		#	get_header.c
 
 SRC_ASM=		$(addprefix $(SRC_PREFIX_ASM),$(SRC_FILES_ASM))
-
-NAME_DECOMPILER=	decompiler
 
 NAME=			asm
 
@@ -69,39 +69,26 @@ else
 endif
 
 ifeq ($(POC), yes)
-	CC = clang
+	CC =		clang
 else
-	CC = gcc
+	CC = 		gcc
 endif
 
-#ifeq ($(DEBUG), yes)
-#	@echo "  ____  _____ ____  _   _  ____   __  __  ___  ____  _____ "
-#	@echo " |  _ \| ____| __ )| | | |/ ___| |  \/  |/ _ \|  _ \| ____|"
-#	@echo " | | | |  _| |  _ \| | | | |  _  | |\/| | | | | | | |  _|  "
-#	@echo " | |_| | |___| |_) | |_| | |_| | | |  | | |_| | |_| | |___ "
-#	@echo " |____/|_____|____/ \___/ \____| |_|  |_|\___/|____/|_____|"
-#	@echo "                                                           "
-#endif
-
 RM=			rm -f
-
-LIB=			-lncurses
 
 OBJ_DECOMPILER=		$(SRC_DECOMPILER:.c=.o)
 
 OBJ_ASM=		$(SRC_ASM:.c=.o)
 
-decompiler:		$(OBJ_DECOMPILER)
-
-asm:			$(OBJ_ASM)
-			@echo -n "[ OK ] Soft Compiled"
-			@$(CC) $(OBJ_ASM) -o asm $(LIB)
+$(NAME):		$(OBJ_ASM)
+			@echo "[ OK ] Soft Compiled"
+			@$(CC) $(OBJ_ASM) -o asm
 
 %.o:			%.c
 			@echo "[ OK ] Compiling" $<
 			@$(CC) -o $@ -c $< $(CFLAGS)
 
-all:			asm
+all:			$(NAME)
 
 clean:
 			@echo "[ OK ] Removing OBJ files ..."
@@ -111,8 +98,12 @@ clean:
 fclean:			clean
 			@echo "[ OK ] Deleting binaries ..."
 			@$(RM) $(NAME)
-			@$(RM) $(NAME_DECOMPILER)
+			@$(RM) decompiler
 
 re:			fclean all
+
+decompiler:		$(OBJ_DECOMPILER)
+			@$(CC) -o decompiler $(OBJ_DECOMPILER)
+			@echo "[ OK ] Decompiler Compiled"
 
 .PHONY:			all clean fclean re
