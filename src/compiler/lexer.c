@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 16:03:05 2016 Arthur ARNAUD
-** Last update Fri Mar 18 16:56:13 2016 Arthur ARNAUD
+** Last update Fri Mar 18 17:01:40 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -16,6 +16,7 @@ int	lexer(t_label *label, t_action *action, t_header *header, char *name)
   int		fd;
   char		**tab;
   t_pos		pos;
+  char		*str;
 
   fd = -1;
   if (((fd = open(name, O_RDONLY)) == -1))
@@ -30,7 +31,7 @@ int	lexer(t_label *label, t_action *action, t_header *header, char *name)
 	{
 	  if (!(str = check_label(str, label, pos)))
 	    return (1);
-	  if (!check_empty_line(str))
+	  if (check_empty(str))
 	    if (!(fill_check_action(str, action, pos)))
 	      return (1);
 	}
