@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 17 15:30:59 2016 Clement Peau
-** Last update Fri Mar 18 12:48:20 2016 Clement Peau
+** Last update Fri Mar 18 14:15:05 2016 Clement Peau
 */
 
 #include "asm.h"
@@ -28,5 +28,17 @@ int		add_to_back_file(t_file *file, char *str)
 
 int		add_to_back_action(t_action *action, char *str)
 {
+  t_action	*new_action;
+  t_action	*tmp_action;
 
+  tmp_action = action;
+  while (tmp_action->next != NULL)
+      tmp_action = tmp_action->next;
+  if ((new_action = malloc(sizeof(t_action))) == NULL)
+    return (1);
+  new_action->next = tmp_action->next;
+  new_action->str = str;
+  tmp_action->next = new_action;
+  printf("new->str |%s|\n", new_action->str);
+  return (0);
 }

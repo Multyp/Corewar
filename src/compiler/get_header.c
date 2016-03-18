@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Wed Mar 16 17:17:26 2016 Clement Peau
-** Last update Fri Mar 18 12:33:05 2016 Clement Peau
+** Last update Fri Mar 18 14:18:14 2016 Clement Peau
 */
 
 #include "asm.h"
@@ -55,6 +55,7 @@ t_file		*get_comment(t_header *header, t_file *file)
       }
   file->str[i - 1] = 0;
   my_strcpy(header->comment, file->str + k);
+  file = free_first(file);
   return (file);
 }
 
