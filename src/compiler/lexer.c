@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 16:03:05 2016 Arthur ARNAUD
-** Last update Fri Mar 18 16:54:41 2016 Arthur ARNAUD
+** Last update Fri Mar 18 16:56:13 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -22,7 +22,7 @@ int	lexer(t_label *label, t_action *action, t_header *header, char *name)
     return (1);
   pos.prog_size = 0;
   pos.line = 0;
-  while ((str = get_line_not_empty(fd, &pos)) != NULL)
+  while ((str = get_line_not_empty(fd, &pos.line)) != NULL)
     {
       if (get_header(str, header))
 	return (1);
