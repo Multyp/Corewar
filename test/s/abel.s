@@ -3,7 +3,9 @@
 
 
 
-	.name 					"Abel"
+	.name 					"A  b   e  l"
+
+
 	.comment 	"L'amer noire"
 sti r1, %:hi, %1
 hi: live %234

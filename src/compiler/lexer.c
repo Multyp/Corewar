@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 16:03:05 2016 Arthur ARNAUD
-** Last update Fri Mar 18 19:07:53 2016 Clement Peau
+** Last update Fri Mar 18 19:17:52 2016 Clement Peau
 */
 
 #include "asm.h"
@@ -30,13 +30,13 @@ int	lexer(t_label *label, t_action *action, t_header *header, char *name)
       if (header->full)
 	{
 	  printf("header->progname |%s|\n", header->prog_name);
-	  printf("header->comment |%s|\n", header->comment);
+	  printf("header->progname |%s|\n", header->comment);
 	  if (!(str = check_label(str, label, &pos)))
 	    return (1);
 	  if (check_empty(str))
 	    if (!(fill_check_action(str, action, &pos)))
 	      return (1);
-	}
+	  }
       else
 	if (get_header(str, header))
 	  return (1);
