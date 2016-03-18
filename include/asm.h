@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Fri Mar 18 16:41:40 2016 Clement Peau
+** Last update Fri Mar 18 16:58:48 2016 Clement Peau
 */
 
 #ifndef ASM_H_
@@ -23,6 +23,7 @@ typedef struct		s_header
   char	prog_name[128 + 1];
   int	prog_size;
   char	comment[2048 + 1];
+  int	full;
 }			t_header;
 
 typedef struct		s_pos
