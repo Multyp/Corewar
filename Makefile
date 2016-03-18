@@ -5,10 +5,10 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Fri Mar 18 17:28:02 2016 Arthur ARNAUD
+## Last update Fri Mar 18 17:32:54 2016 Clement Peau
 ##
 
-POC=			no
+POC=			yes
 
 DEBUG=			yes
 

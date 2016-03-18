@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 17 12:40:01 2016 Clement Peau
-** Last update Fri Mar 18 16:56:45 2016 Clement Peau
+** Last update Fri Mar 18 17:33:37 2016 Clement Peau
 */
 
 #include "asm.h"
@@ -17,13 +17,13 @@ char		*get_line_not_empty(int fd, int *line)
   if ((str = get_next_line(fd)) == NULL ||
       (str = epur_str(str)) == NULL)
     return (NULL);
-  *line++;
+  (*line)++;
   while (str != NULL && check_empty(str) == 0)
     {
       if ((str = get_next_line(fd)) == NULL ||
  	  (str = epur_str(str)) == NULL)
 	return (NULL);
-      *line++;
+      (*line)++;
     }
   return (str);
 }
