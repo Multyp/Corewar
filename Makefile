@@ -5,25 +5,19 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Thu Mar 17 11:29:40 2016 Clement Peau
+## Last update Fri Mar 18 12:34:31 2016 Clement Peau
 ##
 
 POC=			yes
 
 DEBUG=			yes
 
-SRC_PREFIX_DECOMPILER=	src/decompiler/
-
 SRC_FILES_DECOMPILER=	main.c			\
 			header.c		\
-			my_putstrs.c		\
 			fill_file.c		\
 			check_codage.c		\
-			my_putnbr_file.c	\
 			set_ftab.c		\
-			convert_to_nb.c		\
 			new_name.c		\
-			my_strlen.c		\
 			op_live.c		\
 			op_add.c		\
 			op_aff.c		\
@@ -40,23 +34,38 @@ SRC_FILES_DECOMPILER=	main.c			\
 			op_sub.c		\
 			op_xor.c		\
 			op_zjmp.c		\
-			my_memset.c
 
-SRC_DECOMPILER=		$(addprefix $(SRC_PREFIX_DECOMPILER),$(SRC_FILES_DECOMPILER))
+SRC_DECOMPILER=		$(addprefix src/decompiler/,$(SRC_FILES_DECOMPILER))
 
-SRC_PREFIX_ASM=		src/compiler/
-
-SRC_FILES_ASM=		get_header.c		\
-			main.c			\
+SRC_FILES_ASM=		add_to_list.c		\
+			create_list.c		\
+			fill_action.c		\
+			get_header.c		\
 			lexer.c			\
+			main.c			\
 		#	check_action.c		\
 		#	check_line.c		\
-		#	create_list.c		\
-
 		#	check_label.c		\
 		#	get_header.c
 
-SRC_ASM=		$(addprefix $(SRC_PREFIX_ASM),$(SRC_FILES_ASM))
+SRC_ASM=		$(addprefix src/compiler/,$(SRC_FILES_ASM))
+
+SRC_FILES_LIB=		check_empty.c		\
+			convert_to_nb.c		\
+			epur.c			\
+			free_first.c		\
+			get_next_line.c		\
+			my_putnbr_file.c	\
+			my_putstrs.c		\
+			my_memset.c		\
+			my_strcpy.c		\
+			my_strlen.c		\
+			my_strncmp.c		\
+			show_list.c		\
+
+SRC_LIB=		$(addprefix src/lib/,$(SRC_FILES_LIB))
+
+OBJ_LIB=		$(SRC_LIB:.c=.o)
 
 NAME=			asm
 
@@ -80,9 +89,9 @@ OBJ_DECOMPILER=		$(SRC_DECOMPILER:.c=.o)
 
 OBJ_ASM=		$(SRC_ASM:.c=.o)
 
-$(NAME):		$(OBJ_ASM)
+$(NAME):		$(OBJ_ASM) $(OBJ_LIB)
 			@echo "[ OK ] Soft Compiled"
-			@$(CC) $(OBJ_ASM) -o asm
+			@$(CC) $(OBJ_ASM) $(OBJ_LIB) -o asm
 
 %.o:			%.c
 			@echo "[ OK ] Compiling" $<
@@ -94,6 +103,7 @@ clean:
 			@echo "[ OK ] Removing OBJ files ..."
 			@$(RM) $(OBJ_DECOMPILER)
 			@$(RM) $(OBJ_ASM)
+			@$(RM) $(OBJ_LIB)
 
 fclean:			clean
 			@echo "[ OK ] Deleting binaries ..."
@@ -102,8 +112,8 @@ fclean:			clean
 
 re:			fclean all
 
-decompiler:		$(OBJ_DECOMPILER)
-			@$(CC) -o decompiler $(OBJ_DECOMPILER)
+decompiler:		$(OBJ_DECOMPILER) $(OBJ_LIB)
+			@$(CC) -o decompiler $(OBJ_DECOMPILER) $(OBJ_LIB)
 			@echo "[ OK ] Decompiler Compiled"
 
 .PHONY:			all clean fclean re

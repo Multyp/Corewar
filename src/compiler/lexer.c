@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 16:03:05 2016 Arthur ARNAUD
-** Last update Thu Mar 17 11:28:10 2016 Clement Peau
+** Last update Fri Mar 18 12:11:29 2016 Clement Peau
 */
 
 #include "asm.h"
@@ -13,12 +13,15 @@
 
 int	lexer(t_label *label, t_action *action, t_header *header, char *name)
 {
-  int	fd;
-  char	**tab;
-  t_pos	pos;
+  int		fd;
+  char		**tab;
+  t_pos		pos;
+  t_file	*file;
 
-  if ((fd = open(name, O_RDONLY) == -1 ||
-       !get_header(fd, header)))
+  fd = -1;
+  if ((fd = open(name, O_RDONLY)) == -1 ||
+      ((file = get_header(fd, header)) == NULL) ||
+      (fill_action(action, file) == 1))
     return (1);
   pos.prog_size = 0;
   pos.line = 0;
@@ -32,4 +35,5 @@ int	lexer(t_label *label, t_action *action, t_header *header, char *name)
   /* 	} */
   /*     pos.line += 1; */
   /*   } */
+  return (0);
 }
