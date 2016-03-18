@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 16:03:05 2016 Arthur ARNAUD
-** Last update Fri Mar 18 13:21:01 2016 Clement Peau
+** Last update Fri Mar 18 16:54:41 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -16,24 +16,25 @@ int	lexer(t_label *label, t_action *action, t_header *header, char *name)
   int		fd;
   char		**tab;
   t_pos		pos;
-  t_file	*file;
 
   fd = -1;
-  if (((fd = open(name, O_RDONLY)) == -1) ||
-      ((file = get_header(fd, header)) == NULL) ||
-      (fill_action(action, file) == 1))
+  if (((fd = open(name, O_RDONLY)) == -1))
     return (1);
   pos.prog_size = 0;
   pos.line = 0;
-  /* while ((str = get_next_line(fd))) */
-  /*   { */
-  /*     if (!check_empty_line(str)) */
-  /* 	{ */
-  /* 	  if (!(tab = line_to_action_tab(str)) || */
-  /* 	      (pos = check_line(tab, action, label, &pos)) == -1) */
-  /* 	    return (1); */
-  /* 	} */
-  /*     pos.line += 1; */
-  /*   } */
+  while ((str = get_line_not_empty(fd, &pos)) != NULL)
+    {
+      if (get_header(str, header))
+	return (1);
+      if (header->full)
+	{
+	  if (!(str = check_label(str, label, pos)))
+	    return (1);
+	  if (!check_empty_line(str))
+	    if (!(fill_check_action(str, action, pos)))
+	      return (1);
+	}
+      pos.line += 1;
+    }
   return (0);
 }
