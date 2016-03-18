@@ -5,73 +5,68 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Wed Mar 16 17:17:26 2016 Clement Peau
-** Last update Fri Mar 18 14:18:14 2016 Clement Peau
+** Last update Fri Mar 18 16:55:00 2016 Clement Peau
 */
 
 #include "asm.h"
 
-t_file		*get_name(t_header *header, t_file *list)
+int		get_name(t_header *header, char *str)
 {
   int	i;
   int	k;
 
   k = 0;
-  if (my_strncmp(list->str, ".name", 5) == 0)
-    return (NULL);
+  if (my_strncmp(str, ".name ", 6) == 0)
+    return (1);
   i = 0;
-  while (list->str[i++] != '"')
-    if (list->str[i] == 0)
-      return (NULL);
+  while (str[i++] != '"')
+    if (str[i] == 0)
+      return (1);
   k = i;
-  while (list->str[i++] != '"')
-    if (list->str[i] == 0)
-      return (NULL);
-  list->str[i - 1] = 0;
-  my_strcpy(header->prog_name, list->str + k);
-  list = free_first(list);
-  return (list);
+  while (str[i++] != '"')
+    if (str[i] == 0)
+      return (1);
+  str[i - 1] = 0;
+  my_strcpy(header->prog_name, str + k);
+  return (0);
 }
 
-t_file		*get_comment(t_header *header, t_file *file)
+int		get_comment(t_header *header, char *str)
 {
   int		i;
   int		k;
 
-  if (my_strncmp(file->str, ".comment ", 9) == 0)
-    return (file);
+  if (my_strncmp(str, ".comment ", 9) == 0)
+    return (0);
   i = 0;
-  while (file->str[i++] != '"')
-    if (file->str[i] == 0)
+  while (str[i++] != '"')
+    if (str[i] == 0)
       {
 	write(2, "Wrong comment format\n", 21);
-	return (NULL);
+	return (1);
       }
   k = i;
-  while (file->str[i++] != '"')
-    if (file->str[i] == 0)
+  while (str[i++] != '"')
+    if (str[i] == 0)
       {
 	write(2, "Wrong comment format\n", 21);
-	return (NULL);
+	return (1);
       }
-  file->str[i - 1] = 0;
-  my_strcpy(header->comment, file->str + k);
-  file = free_first(file);
-  return (file);
+  str[i - 1] = 0;
+  my_strcpy(header->comment, str + k);
+  return (0);
 }
 
-t_file		*get_header(int fd, t_header *header)
+int		get_header(t_header *header, char *str)
 {
-  char		*str;
-  t_file	*file;
-
-  if ((str = get_line_not_empty(fd)) != NULL)
-    file = create_file_list(str);
-  while ((str = get_line_not_empty(fd)))
-      add_to_back_file(file, str);
-  my_memset(header, 0, sizeof(t_header));
-  file = get_name(header, file);
+  if (header->full == 1)
+    return (0);
+  if (get_name(header, str) == 1)
+    return (1);
   printf("header->progname = |%s|\n", header->prog_name);
-  file = get_comment(header, file);
+  if (get_comment(header, str) == 1)
+    return (1);
   printf("header->comment = |%s|\n", header->comment);
-  return (file);
+  header->full = 1;
+  return (0);
 }
