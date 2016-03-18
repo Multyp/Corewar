@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Wed Mar 16 17:17:26 2016 Clement Peau
-** Last update Fri Mar 18 16:55:00 2016 Clement Peau
+** Last update Fri Mar 18 17:08:47 2016 Clement Peau
 */
 
 #include "asm.h"
@@ -57,7 +57,7 @@ int		get_comment(t_header *header, char *str)
   return (0);
 }
 
-int		get_header(t_header *header, char *str)
+int		get_header(char *str, t_header *header)
 {
   if (header->full == 1)
     return (0);

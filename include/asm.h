@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Fri Mar 18 16:58:48 2016 Clement Peau
+** Last update Fri Mar 18 17:12:46 2016 Clement Peau
 */
 
 #ifndef ASM_H_
@@ -76,9 +76,10 @@ t_file		*create_file_list();
 ** ================================
 */
 char	**str_to_word_tab(char *, char);
-char	**check_label(char *, t_label *, int);
+char	**check_label(char *, t_label *, t_pos *);
 int	add_to_back(t_file *, char *);
-int	get_header(t_header *, char *);
+int	fill_check_action(char *, t_action *, t_pos *);
+int	get_header(char *, t_header *);
 int	lexer(t_label *, t_action *, t_header *, char *);
 
 /*
@@ -87,7 +88,7 @@ int	lexer(t_label *, t_action *, t_header *, char *);
 ** ================================
 */
 char	*epur_str(char *);
-char	*get_line_not_empty(int);
+char	*get_line_not_empty(int, int *);
 char	*get_next_line(int);
 int	check_empty(char *);
 int	my_memset(void *, char , int);
