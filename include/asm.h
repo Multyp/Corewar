@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Fri Mar 18 17:12:46 2016 Clement Peau
+** Last update Fri Mar 18 17:24:42 2016 Arthur ARNAUD
 */
 
 #ifndef ASM_H_
@@ -76,7 +76,10 @@ t_file		*create_file_list();
 ** ================================
 */
 char	**str_to_word_tab(char *, char);
-char	**check_label(char *, t_label *, t_pos *);
+char	*check_label(char *, t_label *, t_pos *);
+char	*add_to_label(char *, int, t_label *, int);
+int	is_valid_label(char *, int);
+int	is_char_valid(char, char *);
 int	add_to_back(t_file *, char *);
 int	fill_check_action(char *, t_action *, t_pos *);
 int	get_header(char *, t_header *);

@@ -5,8 +5,10 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 17 13:50:59 2016 Arthur ARNAUD
-** Last update Fri Mar 18 15:29:13 2016 Arthur ARNAUD
+** Last update Fri Mar 18 17:20:56 2016 Arthur ARNAUD
 */
+
+#include "asm.h"
 
 char	*add_to_label(char *str, int pos, t_label *label, int i)
 {

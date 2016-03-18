@@ -5,22 +5,23 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Mon Feb 29 12:45:46 2016 Arthur ARNAUD
-** Last update Fri Mar 18 16:41:31 2016 Arthur ARNAUD
+** Last update Fri Mar 18 17:30:49 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
 
-int	check_label(char *str, t_label *label, t_pos *pos)
+char	*check_label(char *str, t_label *label, t_pos *pos)
 {
   int	i;
   int	len;
 
   i = -1;
-  if (!(str = epure_str(str)))
+  if (!(str = epur_str(str)))
     return (NULL);
+  len = my_strlen(str);
   while (str[++i] != 0 && str[i] != ' ');
-  if (i <= my_strlen  && str[i - 1] == ':' && is_valid_label(str, i - 1))
-    if (!(str = add_to_label(str, pos->adress, label. i - 1)))
+  if (i <= len && str[i - 1] == ':' && is_valid_label(str, i - 1))
+    if (!(str = add_to_label(str, pos->prog_size, label, i - 1)))
       return (NULL);
   return (str);
 }

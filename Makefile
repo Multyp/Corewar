@@ -5,10 +5,10 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Fri Mar 18 17:13:09 2016 Clement Peau
+## Last update Fri Mar 18 17:28:02 2016 Arthur ARNAUD
 ##
 
-POC=			yes
+POC=			no
 
 DEBUG=			yes
 
@@ -38,6 +38,7 @@ SRC_FILES_DECOMPILER=	main.c			\
 SRC_DECOMPILER=		$(addprefix src/decompiler/,$(SRC_FILES_DECOMPILER))
 
 SRC_FILES_ASM=		add_to_list.c		\
+			add_label.c		\
 			check_label.c		\
 			create_list.c		\
 			fill_check_action.c	\
@@ -60,6 +61,7 @@ SRC_FILES_LIB=		check_empty.c		\
 			my_putstrs.c		\
 			my_memset.c		\
 			my_strcpy.c		\
+			my_strdup.c		\
 			my_strlen.c		\
 			my_strncmp.c		\
 			show_list.c		\
