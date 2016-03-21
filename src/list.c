@@ -3,7 +3,7 @@
 t_vm		*init_vm(t_vm *vm)
 {
   vm->dump = -1;
-  vm->file_opt = true;
+  init_bool(vm);
   vm->progs_nb = 0;
   vm->progs = NULL;
   vm->champs = NULL;

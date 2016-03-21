@@ -9,9 +9,11 @@ int	check_file(t_vm *vm, char *file_name, char *param)
   printf("%s\n", file_name);
   if ((fd = open(file_name, O_RDONLY)) == -1)
     return (my_error(OPEN_FAILED(file_name)));
-  else if (vm->file_opt == true &&
+  else if (vm->file_opts[2] == true &&
 	   add_elem(vm->progs, file_name) == NULL)
     return (my_error("Could not create a new elem"));
+  vm->file_opts[2] = false;
+  vm->progs_nb++;
   return (1);
 }
 
@@ -43,11 +45,18 @@ int	my_dump_memory(t_vm *vm, char *param, char *next_param)
 
 int	my_load_address(t_vm *vm, char *param, char *next_param)
 {
-  printf("Fonction load address\n");
   (void)vm;
   (void)param;
   (void)next_param;
-  return (1);
+
+  printf("Fonction load address\n");
+  if (vm->progs_nb == 0 &&
+      (vm->progs = add_elem(prog, NULL)) == NULL)
+    return (2);
+  while (vm->progs->next != NULL)
+    vm->progs = vm->progs->next;
+  vm->progs->address = my_getnbr(next_param);
+  return (2);
 }
 
 int	my_get_prognumber(t_vm *vm, char *param, char *next_param)
@@ -56,5 +65,11 @@ int	my_get_prognumber(t_vm *vm, char *param, char *next_param)
   (void)vm;
   (void)param;
   (void)next_param;
+
+
+  if (vm->progs_nb == 0 &&
+      (vm->progs = add_elem(prog, NULL)) == NULL)
+    return (2);
+  
   return (1);
 }

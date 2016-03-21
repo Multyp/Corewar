@@ -36,7 +36,7 @@ typedef struct		s_champ
 typedef struct		s_vm
 {
   int			dump;
-  bool			file_opt;
+  bool			file_opts[3];
   int			progs_nb;
   t_prog		*progs;
   t_champ		*champs;
