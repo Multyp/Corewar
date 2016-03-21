@@ -31,12 +31,17 @@ int	main(int ac, char **av, char **env)
   (void)env;
   t_vm	vm;
 
-  init_vm(&vm);
-  check_options(av, &vm, ac);
-  my_afflist(&vm);
-  printf("\n\n");
-  del_prog(&vm, 0);
-  my_afflist(&vm);
+  /* init_vm(&vm); */
+  vm.champs = add_champ_to_list(vm.champs, av[1]);
+  printf("%d\n", vm.champs->magic);
+  printf("%s\n", vm.champs->name);
+  printf("%d\n", vm.champs->size);
+  printf("%s\n", vm.champs->comment);
+  /* check_options(av, &vm, ac); */
+  /* my_afflist(&vm); */
+  /* printf("\n\n"); */
+  /* del_prog(&vm, 0); */
+  /* my_afflist(&vm); */
 
   return (0);
 }

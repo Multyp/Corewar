@@ -15,6 +15,8 @@
 # define USED_PROGNUMBER(x) "Error: Prog number "#x" already used"
 # define PLAYER_ALIVE(player_name) "Player "#player_name" is alive"
 # define PLAYER_WIN(winner_name) "Player "#winner_name" wins"
+# define NAME_BLOC 129
+# define COMMENT_BLOC 2049
 
 typedef struct		s_prog
 {
@@ -27,10 +29,10 @@ typedef struct		s_prog
 typedef struct		s_champ
 {
   int			magic;
-  char			name[128];
+  char			name[NAME_BLOC];
   int			size;
-  char			comment[2048];
-  struct s_champ	*next;
+  char			comment[COMMENT_BLOC];
+  /* struct s_champ	*next; */
 }			t_champ;
 
 typedef struct		s_vm
@@ -56,6 +58,7 @@ void	init_bool(t_vm *);
 ** *****************
 */
 t_vm	*add_prog(t_vm *, char *);
+t_champ	*add_champ_to_list(t_champ *, char *);
 void	del_prog(t_vm *, int);
 
 /*
@@ -67,6 +70,7 @@ void	del_prog(t_vm *, int);
 ** Parsing
 */
 int	check_options(char **, t_vm *, int);
+int	convert_to_little_endian(int);
 char	*get_binary(char *);
 /*
 ** Commands

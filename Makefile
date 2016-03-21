@@ -15,6 +15,8 @@ SRC	=	main_vm_corewar.c	\
 		options.c		\
 		list.c			\
 		my_getnbr.c		\
+		cvrt_to_little_endian.c	\
+		list_champs_tool.c	\
 		options_cmds.c
 
 BASICS  =	my_memset.c		\
