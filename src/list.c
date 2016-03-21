@@ -23,12 +23,14 @@ t_prog		*create_prog(char *name)
   return (new_elem);
 }
 
-t_prog		*add_elem(t_prog *prog, char *name)
+t_vm		*add_prog(t_vm *vm, char *name)
 {
-  while (prog != NULL && prog->next != NULL)
-    prog = prog->next;
-  if (prog == NULL)
-    return (create_prog(name));
-  prog->next = create_prog(name);
-  return (prog);
+  while (vm->progs != NULL && vm->progs->next != NULL)
+    vm->progs = vm->progs->next;
+  if (vm->progs == NULL)
+    vm->progs = create_prog(name);
+  else
+    vm->progs->next = create_prog(name);
+  vm->progs_nb++;
+  return (vm);
 }

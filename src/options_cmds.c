@@ -1,19 +1,30 @@
 #include "vm_corewar.h"
 
-int	check_file(t_vm *vm, char *file_name, char *param)
+int		check_file(t_vm *vm, char *file_name, char *param)
 {
-  int	fd;
+  int		fd;
+  t_prog	*tmp;
 
-  (void)vm;
   (void)param;
-  printf("%s\n", file_name);
+  tmp = vm->progs;
   if ((fd = open(file_name, O_RDONLY)) == -1)
     return (my_error(OPEN_FAILED(file_name)));
-  else if (vm->file_opts[2] == true &&
-	   add_elem(vm->progs, file_name) == NULL)
+  else if (vm->file_opts[2] == false && vm->file_opts[1] == false &&
+	   vm->file_opts[0] == false &&
+	   add_prog(vm, file_name) == NULL)
     return (my_error("Could not create a new elem"));
-  vm->file_opts[2] = false;
+  else if (vm->file_opts[1] == true || vm->file_opts[0] == true)
+    {
+      while (tmp->next != NULL)
+	tmp = tmp->next;
+      tmp->prog_name = my_strdup(file_name);
+      vm->file_opts[0] = false;
+      vm->file_opts[1] = false;
+      return (1);
+    }
+  vm->file_opts[2] = true;
   vm->progs_nb++;
+  close(fd);
   return (1);
 }
 
@@ -43,32 +54,42 @@ int	my_dump_memory(t_vm *vm, char *param, char *next_param)
   return (1);
 }
 
-int	my_load_address(t_vm *vm, char *param, char *next_param)
+int		my_load_address(t_vm *vm, char *param, char *next_param)
 {
+  t_prog	*tmp;
+
   (void)vm;
   (void)param;
   (void)next_param;
-
   printf("Fonction load address\n");
-  if (vm->progs_nb == 0 &&
-      (vm->progs = add_elem(vm->progs, NULL)) == NULL)
+  if (vm->file_opts[1] == false && vm->file_opts[2] == false &&
+      vm->file_opts[0] == false &&
+      add_prog(vm, NULL) == NULL)
     return (2);
-  while (vm->progs->next != NULL)
-    vm->progs = vm->progs->next;
-  vm->progs->address = my_getnbr(next_param);
+  tmp = vm->progs;
+  vm->file_opts[0] = true;
+  while (tmp->next != NULL)
+    tmp = tmp->next;
+  tmp->address = my_getnbr(next_param);
   return (2);
 }
 
-int	my_get_prognumber(t_vm *vm, char *param, char *next_param)
+int		my_get_prognumber(t_vm *vm, char *param, char *next_param)
 {
+  t_prog	*tmp;
+
   printf("Fonction next prognumber\n");
   (void)vm;
   (void)param;
   (void)next_param;
-
-  if (vm->progs_nb == 0 &&
-      (vm->progs = add_elem(vm->progs, NULL)) == NULL)
+  if (vm->file_opts[0] == false && vm->file_opts[1] == false &&
+      vm->file_opts[2] == false &&
+      add_prog(vm, NULL) == NULL)
     return (2);
-  vm->progs->prog_number = my_getnbr(next_param);
+  tmp = vm->progs;
+  vm->file_opts[1] = true;
+  while (tmp->next != NULL)
+    tmp = tmp->next;
+  tmp->prog_number = my_getnbr(next_param);
   return (2);
 }

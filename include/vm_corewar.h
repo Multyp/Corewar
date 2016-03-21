@@ -55,7 +55,7 @@ void	init_bool(t_vm *);
 ** * LIST MANAGING *
 ** *****************
 */
-t_prog	*add_elem(t_prog *, char *);
+t_vm	*add_prog(t_vm *, char *);
 
 /*
 ** ***********

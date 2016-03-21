@@ -18,6 +18,12 @@ int	main(int ac, char **av, char **env)
 
   init_vm(&vm);
   check_options(av, &vm, ac);
-  printf("%d\t%u\n", vm.progs->prog_number, vm.progs->address);
+  while (vm.progs != NULL)
+    {
+      printf("prog_number = %d\n", vm.progs->prog_number);
+      printf("address = %d\n", vm.progs->address);
+      printf("prog_name = %s\n", vm.progs->prog_name);
+      vm.progs = vm.progs->next;
+    }
   return (0);
 }
