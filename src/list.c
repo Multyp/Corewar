@@ -3,7 +3,8 @@
 t_vm		*init_vm(t_vm *vm)
 {
   vm->dump = -1;
-  init_bool(vm);
+  vm->file_opts[0] = false;
+  vm->file_opts[1] = false;
   vm->progs_nb = 0;
   vm->progs = NULL;
   vm->champs = NULL;
@@ -25,12 +26,39 @@ t_prog		*create_prog(char *name)
 
 t_vm		*add_prog(t_vm *vm, char *name)
 {
+  t_prog	*tmp;
+
+  tmp = vm->progs;
   while (vm->progs != NULL && vm->progs->next != NULL)
     vm->progs = vm->progs->next;
   if (vm->progs == NULL)
     vm->progs = create_prog(name);
   else
-    vm->progs->next = create_prog(name);
+    {
+      vm->progs->next = create_prog(name);
+      vm->progs = tmp;
+    }
   vm->progs_nb++;
   return (vm);
+}
+
+void		del_prog(t_vm *vm, int pos)
+{
+  if (pos == 0 && vm->progs != NULL)
+    {
+      free (vm->progs->prog_name);
+      free (vm->progs);
+      vm->progs = vm->progs->next;
+      return ;
+    }
+  while (pos > 1)
+    {
+      if (vm->progs == NULL)
+	return ;
+      vm->progs = vm->progs->next;
+      pos--;
+    }
+  free (vm->progs->next->prog_name);
+  free (vm->progs->next);
+  vm->progs->next = vm->progs->next->next;
 }

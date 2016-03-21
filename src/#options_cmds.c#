@@ -21,6 +21,7 @@ int		check_file(t_vm *vm, char *file_name, char *param)
       vm->file_opts[1] = false;
       return (1);
     }
+  vm->progs_nb++;
   close(fd);
   return (1);
 }
@@ -68,6 +69,7 @@ int		my_load_address(t_vm *vm, char *param, char *next_param)
   while (tmp->next != NULL)
     tmp = tmp->next;
   tmp->address = my_getnbr(next_param);
+  printf("sortie fonction load\n");
   return (2);
 }
 
