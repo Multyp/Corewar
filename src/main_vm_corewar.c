@@ -18,5 +18,6 @@ int	main(int ac, char **av, char **env)
 
   init_vm(&vm);
   check_options(av, &vm, ac);
+  printf("%d\t%u\n", vm.progs->prog_number, vm.progs->address);
   return (0);
 }

@@ -8,7 +8,7 @@
 ** Last update Wed Feb 24 02:55:22 2016 khsime_m
 */
 
-#include "tetris.h"
+#include "vm_corewar.h"
 
 int	my_getneg(char *str, int i, int nb)
 {

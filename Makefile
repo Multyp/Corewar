@@ -14,6 +14,7 @@ CC	= gcc
 SRC	=	main_vm_corewar.c	\
 		options.c		\
 		list.c			\
+		my_getnbr.c		\
 		options_cmds.c
 
 BASICS  =	my_memset.c		\

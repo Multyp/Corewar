@@ -51,7 +51,7 @@ int	my_load_address(t_vm *vm, char *param, char *next_param)
 
   printf("Fonction load address\n");
   if (vm->progs_nb == 0 &&
-      (vm->progs = add_elem(prog, NULL)) == NULL)
+      (vm->progs = add_elem(vm->progs, NULL)) == NULL)
     return (2);
   while (vm->progs->next != NULL)
     vm->progs = vm->progs->next;
@@ -66,10 +66,9 @@ int	my_get_prognumber(t_vm *vm, char *param, char *next_param)
   (void)param;
   (void)next_param;
 
-
   if (vm->progs_nb == 0 &&
-      (vm->progs = add_elem(prog, NULL)) == NULL)
+      (vm->progs = add_elem(vm->progs, NULL)) == NULL)
     return (2);
-  
-  return (1);
+  vm->progs->prog_number = my_getnbr(next_param);
+  return (2);
 }

@@ -45,7 +45,7 @@ void	free_options(char **opts)
   free (opts);
 }
 
-t_vm	*init_bool(t_vm *vm)
+void	init_bool(t_vm *vm)
 {
   vm->file_opts[0] = false;
   vm->file_opts[1] = false;

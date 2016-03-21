@@ -48,6 +48,7 @@ typedef struct		s_vm
 ** ********
 */
 t_vm	*init_vm(t_vm *);
+void	init_bool(t_vm *);
 
 /*
 ** *****************
