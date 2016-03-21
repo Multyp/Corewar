@@ -12,8 +12,8 @@ RM	= rm -f
 CC	= gcc
 
 SRC	=	main_vm_corewar.c	\
-		bool_options.c		\
 		options.c		\
+		list.c			\
 		options_cmds.c
 
 BASICS  =	my_memset.c		\

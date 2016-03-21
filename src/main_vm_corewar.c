@@ -1,5 +1,14 @@
 #include "vm_corewar.h"
 
+char		*get_binary(char *binary)
+{
+  static char   *stock_binary = NULL;
+
+  if (stock_binary == NULL)
+    stock_binary = binary;
+  return (stock_binary);
+}
+
 int	main(int ac, char **av, char **env)
 {
   (void)ac;
@@ -7,6 +16,7 @@ int	main(int ac, char **av, char **env)
   (void)env;
   t_vm	vm;
 
+  init_vm(&vm);
   check_options(av, &vm, ac);
   return (0);
 }

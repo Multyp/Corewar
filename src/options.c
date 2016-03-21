@@ -23,17 +23,16 @@ char	**get_opts()
   return (d_opts);
 }
 
-int	fct_call(int opt, t_vm *vm, char *next_param)
+int	fct_call(int opt, t_vm *vm, char *param, char *next_param)
 {
-  int	(*ptr[4])(t_vm *, char *);
+  int	(*ptr[5])(t_vm *, char *, char *);
 
-  if (opt > 1 && check_bool_opts(vm))
-    printf("crée maillong prog\n");
   ptr[0] = &show_help;
   ptr[1] = &my_dump_memory;
   ptr[2] = &my_get_prognumber;
   ptr[3] = &my_load_address;
-  return (ptr[opt](vm, next_param));
+  ptr[4] = &check_file;
+  return (ptr[opt](vm, param, next_param));
 }
 
 void	free_options(char **opts)
@@ -54,16 +53,13 @@ int	check_options(char **av, t_vm *vm, int ac)
 
   opts = get_opts();
   get_binary(av[0]);
-  init_bool_opts(vm);
   i = 1;
   while (opts && i < ac)
     {
       j = 0;
       while (j != 4 && my_strcmp(av[i], opts[j]) != 0)
 	j++;
-      if (j == 4)
-	return (my_error("check_file_prog"));
-      i += fct_call(j, vm, av[i + 1]);
+      i += fct_call(j, vm, av[i], av[i + 1]);
     }
   free_options(opts);
   return (0);

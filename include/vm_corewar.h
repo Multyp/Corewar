@@ -3,6 +3,9 @@
 
 # include <stdio.h>
 # include <stdbool.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 # include "libmy.h"
 
 # define MALLOC_FAILED "Error: Malloc Failed"
@@ -33,11 +36,25 @@ typedef struct		s_champ
 typedef struct		s_vm
 {
   int			dump;
-  bool			prog_opts[3];
+  bool			file_opt;
   int			progs_nb;
   t_prog		*progs;
   t_champ		*champs;
 }			t_vm;
+
+/*
+** ********
+** * INIT *
+** ********
+*/
+t_vm	*init_vm(t_vm *);
+
+/*
+** *****************
+** * LIST MANAGING *
+** *****************
+*/
+t_prog	*add_elem(t_prog *, char *);
 
 /*
 ** ***********
@@ -49,14 +66,13 @@ typedef struct		s_vm
 */
 int	check_options(char **, t_vm *, int);
 char	*get_binary(char *);
-void	init_bool_opts(t_vm *);
-int	check_bool_opts(t_vm *);
 /*
 ** Commands
 */
-int	show_help(t_vm *, char *);
-int	my_dump_memory(t_vm *, char *);
-int	my_load_address(t_vm *, char *);
-int	my_get_prognumber(t_vm *, char *);
+int	show_help(t_vm *, char *, char *);
+int	my_dump_memory(t_vm *, char *, char *);
+int	my_load_address(t_vm *, char *, char *);
+int	my_get_prognumber(t_vm *, char *, char *);
+int	check_file(t_vm *, char *, char *);
 
 # endif /* _VM_COREWAR_H__ */
