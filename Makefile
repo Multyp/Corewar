@@ -5,7 +5,7 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Mon Mar 21 19:14:55 2016 Poc
+## Last update Mon Mar 21 22:08:36 2016 Poc
 ##
 
 POC=			yes
@@ -41,12 +41,11 @@ SRC_FILES_ASM=		add_to_list.c		\
 			add_label.c		\
 			check_label.c		\
 			create_list.c		\
-			fill_check_action.c	\
 			get_header.c		\
 			lexer.c			\
 			main.c			\
 			format_instruction.c	\
-		#	check_action.c		\
+			check_action.c		\
 		#	check_line.c		\
 		#	get_header.c
 
@@ -56,11 +55,13 @@ SRC_FILES_LIB=		check_empty.c		\
 			convert_to_nb.c		\
 			epur.c			\
 			free_first.c		\
+			free_tab.c		\
 			get_next_line.c		\
 			my_putnbr_file.c	\
 			my_putstrs.c		\
 			my_memset.c		\
 			my_showtab.c		\
+			my_strcmp.c		\
 			my_strcpy.c		\
 			my_strdup.c		\
 			my_strlen.c		\

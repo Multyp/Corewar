@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Fri Mar 18 17:22:19 2016 Poc
-** Last update Mon Mar 21 19:17:50 2016 Poc
+** Last update Mon Mar 21 21:13:04 2016 Poc
 */
 
 #include "asm.h"
@@ -16,6 +16,7 @@ char	**cut_instruction(char *str)
 
   instruction = my_wordtab(str, 32);
   showtab(instruction);
+  return (instruction);
 }
 
 char	*format_instruction(char *str)

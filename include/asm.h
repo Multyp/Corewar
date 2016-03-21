@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Mon Mar 21 19:09:04 2016 Poc
+** Last update Mon Mar 21 22:46:40 2016 Poc
 */
 
 #ifndef ASM_H_
@@ -57,7 +57,7 @@ typedef struct		s_action
 {
   int			coding_byte;
   char			*identifier;
-  char			*str;
+  char			*instruction;
   t_arg			*args;
   struct s_action	*next;
 }			t_action;
@@ -68,40 +68,42 @@ typedef struct		s_action
 ** ================================
 */
 t_label		*create_label_list();
-t_action	*create_action_list();
+t_action       	*create_action_list();
 t_file		*create_file_list();
 /*
 ** ================================
 **              LEXER
 ** ================================
 */
-char	*add_to_label(char *, int, t_label *, int);
-char	*check_label(char *, t_label *, t_pos *);
-char	*format_string(char *);
-char	**cut_instruction(char *);
-char	**str_to_word_tab(char *, char);
-int	is_valid_label(char *, int);
-int	is_char_valid(char, char *);
-int	add_to_back(t_file *, char *);
-int	fill_check_action(char *, t_action *, t_pos *);
-int	get_header(char *, t_header *);
-int	lexer(t_label *, t_action *, t_header *, char *);
-
+char		*add_to_label(char *, int, t_label *, int);
+char		*check_label(char *, t_label *, t_pos *);
+char		*format_instruction(char *);
+char		**cut_instruction(char *);
+char		**str_to_word_tab(char *, char);
+int		add_action(t_action *, t_action *);
+int		is_valid_label(char *, int);
+int		is_char_valid(char, char *);
+int		add_to_back(t_file *, char *);
+int		check_action(char *, t_action *, t_pos *);
+int		get_header(char *, t_header *);
+int		lexer(t_label *, t_action *, t_header *, char *);
 /*
 ** ================================
 **              LIB
 ** ================================
 */
-char	*epur_str(char *);
-char	*get_line_not_empty(int, int *);
-char	*get_next_line(int);
-char	*my_strdup(char *);
-int	check_empty(char *);
-int	my_memset(void *, char , int);
-int	my_putstr(char *);
-int	my_strlen(char *);
-int	my_strcpy(char *, char *);
-int	my_strncmp(char *, char *, int);
-void	*free_first(t_file *);
+char		**my_wordtab(char *, char);
+char		*epur_str(char *);
+char		*get_line_not_empty(int, int *);
+char		*get_next_line(int);
+char		*my_strdup(char *);
+int		check_empty(char *);
+int		my_memset(void *, char , int);
+int		my_putstr(char *);
+int		my_strlen(char *);
+int		my_strcpy(char *, char *);
+int		my_strncmp(char *, char *, int);
+void		*free_first(t_file *);
+void		showtab(char **);
 
 #endif /* !ASM_H_*/

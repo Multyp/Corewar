@@ -1,4 +1,4 @@
-	.name "Tyron"
+	.name "Tyron" ## bite
 				 .comment "Just a basic pompes, traction"
 	sti r1,   %7  			  	,   %1 # bite
 			 live %123

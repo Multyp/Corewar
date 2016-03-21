@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:59:33 2016 Arthur ARNAUD
-** Last update Fri Mar 18 12:09:07 2016 Clement Peau
+** Last update Mon Mar 21 20:49:45 2016 Poc
 */
 
 #include "asm.h"
@@ -40,7 +40,7 @@ t_action	*create_action_list()
   if (!(action = malloc(sizeof(t_action))))
     return (NULL);
   action->next = NULL;
-  action->str = NULL;
+  action->identifier = NULL;
   action->identifier = NULL;
   action->args = NULL;
   return (action);
