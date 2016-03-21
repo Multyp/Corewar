@@ -12,6 +12,7 @@ RM	= rm -f
 CC	= gcc
 
 SRC	=	main_vm_corewar.c	\
+		bool_options.c		\
 		options.c		\
 		options_cmds.c
 

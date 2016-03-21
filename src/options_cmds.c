@@ -37,15 +37,16 @@ int	my_dump_memory(t_vm *vm, char *param)
 int	my_load_address(t_vm *vm, char *param)
 {
   printf("Fonction load address\n");
+  vm->prog_opts[1] = true;
   (void)vm;
   (void)param;
   return (1);
 }
 
-
-int	my_next_prognumber(t_vm *vm, char *param)
+int	my_get_prognumber(t_vm *vm, char *param)
 {
   printf("Fonction next prognumber\n");
+  vm->prog_opts[0] = true;
   (void)vm;
   (void)param;
   return (1);

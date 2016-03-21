@@ -27,9 +27,11 @@ int	fct_call(int opt, t_vm *vm, char *next_param)
 {
   int	(*ptr[4])(t_vm *, char *);
 
+  if (opt > 1 && check_bool_opts(vm))
+    printf("crée maillong prog\n");
   ptr[0] = &show_help;
   ptr[1] = &my_dump_memory;
-  ptr[2] = &my_next_prognumber;
+  ptr[2] = &my_get_prognumber;
   ptr[3] = &my_load_address;
   return (ptr[opt](vm, next_param));
 }
@@ -52,6 +54,7 @@ int	check_options(char **av, t_vm *vm, int ac)
 
   opts = get_opts();
   get_binary(av[0]);
+  init_bool_opts(vm);
   i = 1;
   while (opts && i < ac)
     {
