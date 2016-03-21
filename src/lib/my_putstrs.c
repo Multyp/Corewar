@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Mar  2 06:05:38 2016 Arthur ARNAUD
-** Last update Thu Mar 17 19:24:48 2016 Clement Peau
+** Last update Mon Mar 21 16:34:46 2016 Poc
 */
 
 #include "decompiler.h"
@@ -30,7 +30,6 @@ int	my_putstr_file(char *str, int fd_s)
   int	i;
 
   i = -1;
-  printf("name = %s\n", str);
   while (str[++i] != 0)
     if (write(fd_s, &str[i], 1) == -1)
       return (1);

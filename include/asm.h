@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Fri Mar 18 17:24:42 2016 Arthur ARNAUD
+** Last update Mon Mar 21 19:09:04 2016 Poc
 */
 
 #ifndef ASM_H_
@@ -75,9 +75,11 @@ t_file		*create_file_list();
 **              LEXER
 ** ================================
 */
-char	**str_to_word_tab(char *, char);
-char	*check_label(char *, t_label *, t_pos *);
 char	*add_to_label(char *, int, t_label *, int);
+char	*check_label(char *, t_label *, t_pos *);
+char	*format_string(char *);
+char	**cut_instruction(char *);
+char	**str_to_word_tab(char *, char);
 int	is_valid_label(char *, int);
 int	is_char_valid(char, char *);
 int	add_to_back(t_file *, char *);
@@ -93,6 +95,7 @@ int	lexer(t_label *, t_action *, t_header *, char *);
 char	*epur_str(char *);
 char	*get_line_not_empty(int, int *);
 char	*get_next_line(int);
+char	*my_strdup(char *);
 int	check_empty(char *);
 int	my_memset(void *, char , int);
 int	my_putstr(char *);
