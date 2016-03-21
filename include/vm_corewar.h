@@ -32,7 +32,7 @@ typedef struct		s_champ
   char			name[NAME_BLOC];
   int			size;
   char			comment[COMMENT_BLOC];
-  /* struct s_champ	*next; */
+  struct s_champ	*next;
 }			t_champ;
 
 typedef struct		s_vm

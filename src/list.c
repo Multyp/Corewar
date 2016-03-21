@@ -49,6 +49,7 @@ void		del_prog(t_vm *vm, int pos)
       free (vm->progs->prog_name);
       free (vm->progs);
       vm->progs = vm->progs->next;
+      vm->progs_nb--;
       return ;
     }
   while (pos > 1)
@@ -61,4 +62,5 @@ void		del_prog(t_vm *vm, int pos)
   free (vm->progs->next->prog_name);
   free (vm->progs->next);
   vm->progs->next = vm->progs->next->next;
+  vm->progs_nb--;
 }
