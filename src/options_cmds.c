@@ -51,6 +51,7 @@ int	my_dump_memory(t_vm *vm, char *param, char *next_param)
   (void)vm;
   (void)param;
   (void)next_param;
+  vm->dump = my_getnbr(next_param);
   return (1);
 }
 

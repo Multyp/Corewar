@@ -9,6 +9,17 @@ char		*get_binary(char *binary)
   return (stock_binary);
 }
 
+void	my_afflist(t_vm *vm)
+{
+  while (vm->progs != NULL)
+    {
+      printf("prog_number = %d\n", vm->progs->prog_number);
+      printf("address = %d\n", vm->progs->address);
+      printf("prog_name = %s\n", vm->progs->prog_name);
+      vm->progs = vm->progs->next;
+    }
+}
+
 int	main(int ac, char **av, char **env)
 {
   (void)ac;
@@ -18,12 +29,6 @@ int	main(int ac, char **av, char **env)
 
   init_vm(&vm);
   check_options(av, &vm, ac);
-  while (vm.progs != NULL)
-    {
-      printf("prog_number = %d\n", vm.progs->prog_number);
-      printf("address = %d\n", vm.progs->address);
-      printf("prog_name = %s\n", vm.progs->prog_name);
-      vm.progs = vm.progs->next;
-    }
+  my_afflist(&vm);
   return (0);
 }
