@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Wed Mar 16 17:17:26 2016 Clement Peau
-** Last update Mon Mar 21 16:35:22 2016 Poc
+** Last update Tue Mar 22 16:56:14 2016 Poc
 */
 
 #include "asm.h"
@@ -16,7 +16,7 @@ int		get_name(t_header *header, char *str)
   int	k;
 
   k = 0;
-  if (my_strncmp(str, ".name ", 6) == 0)
+  if (my_strncmp(str, NAME_CMD_STRING, my_strlen(NAME_CMD_STRING)) == 0)
     {
       return (1);
     }
@@ -38,7 +38,7 @@ int		get_comment(t_header *header, char *str)
   int		i;
   int		k;
 
-  if (my_strncmp(str, ".comment", 8) == 0)
+  if (my_strncmp(str, COMMENT_CMD_STRING, my_strlen(COMMENT_CMD_STRING)) == 0)
     {
       printf("my_strncmp\n");
       return (0);

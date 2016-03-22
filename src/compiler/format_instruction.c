@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Fri Mar 18 17:22:19 2016 Poc
-** Last update Tue Mar 22 15:34:26 2016 Poc
+** Last update Tue Mar 22 16:47:22 2016 Poc
 */
 
 #include "asm.h"
@@ -37,15 +37,15 @@ char	*format_instruction(char *str)
   k = 0;
   if ((new_str = malloc((my_strlen(str) + 1) * sizeof(char))) == NULL)
     return (NULL);
-  while (str[i] != 0 && str[i] != 32 && str[i] != '#')
+  while (str[i] != 0 && str[i] != 32 && str[i] != COMMENT_CHAR)
     new_str[k++] = str[i++];
   new_str[k++] = 32;
   i++;
-  while(str[i] != 0 && str[i] != 35)
+  while(str[i] != 0 && str[i] != COMMENT_CHAR)
     {
       while (str[i] != 0 && str[i] == 32)
 	i++;
-      if (str[i] == 35)
+      if (str[i] == COMMENT_CHAR)
 	return (exiting_format(str, new_str, k));
       new_str[k++] = str[i++];
     }
