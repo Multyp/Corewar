@@ -22,11 +22,12 @@ void		check_champs_error(t_vm *vm)
       	{
       	  printf("error found\n");
 	  printf("i = %d\n", i);
+	  tmp = tmp->next;
       	  del_prog(vm, i);
       	  del_champ(vm, i);
       	}
-      printf("toto\n");
-      tmp = tmp->next;
+      else
+	tmp = tmp->next;
       i++;
     }
   printf("nombre de champs : %d\n", i);

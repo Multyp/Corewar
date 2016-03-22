@@ -13,10 +13,10 @@ int		file_champion(t_champ *champ, char *file_path)
     return (my_error(OPEN_FAILED(fle_path)));
   if (read(fd, champ, (int)sizeof(t_champ)) < (int)sizeof(t_champ))
     {
-      my_memset((char *)champ->name, 0, 10);
+      champ->name[0] = 0;
       champ->magic = -1;
       champ->size = -1;
-      my_memset((char *)champ->comment, 0, 10);
+      champ->comment[0] = 0;
       return (0);
     };
   champ->magic = convert_to_little_endian(champ->magic);
