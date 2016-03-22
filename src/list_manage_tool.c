@@ -1,16 +1,5 @@
 #include "vm_corewar.h"
 
-t_vm		*init_vm(t_vm *vm)
-{
-  vm->dump = -1;
-  vm->file_opts[0] = false;
-  vm->file_opts[1] = false;
-  vm->progs_nb = 0;
-  vm->progs = NULL;
-  vm->champs = NULL;
-  return (vm);
-}
-
 t_prog		*create_prog(char *name)
 {
   t_prog	*new_elem;
@@ -19,7 +8,7 @@ t_prog		*create_prog(char *name)
     return (my_perror(MALLOC_FAILED));
   new_elem->prog_number = 0;
   new_elem->address = 0;
-  new_elem->prog_name = my_strdup(name);
+  new_elem->prog_name = (name == NULL) ? NULL : my_strdup(name);
   new_elem->next = NULL;
   return (new_elem);
 }
@@ -67,4 +56,34 @@ void		del_prog(t_vm *vm, int pos)
   free (vm->progs->next);
   tmp->next = vm->progs->next->next;
   vm->progs_nb--;
+}
+
+int		check_list_for_prognb(t_vm *vm, int nb)
+{
+  t_prog	*tmp;
+  
+  tmp = vm->progs;
+  while (vm->progs != NULL)
+    {
+      if (vm->progs->prog_number == nb)
+	return (my_error("Prog_number already used"));
+      vm->progs = vm->progs->next;
+    }
+  vm->progs = tmp;
+  return (0);
+}
+
+int		check_list_for_address(t_vm *vm, unsigned int nb)
+{
+  t_prog	*tmp;
+  
+  tmp = vm->progs;
+  while (vm->progs != NULL)
+    {
+      if (vm->progs->address == nb)
+	return (my_error("Address already used"));
+      vm->progs = vm->progs->next;
+    }
+  vm->progs = tmp;
+  return (0);
 }

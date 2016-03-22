@@ -49,43 +49,45 @@ int	my_dump_memory(t_vm *vm, char *param, char *next_param)
   (void)param;
   (void)next_param;
   vm->dump = my_getnbr(next_param);
-  return (1);
+  return (2);
 }
 
 int		my_load_address(t_vm *vm, char *param, char *next_param)
 {
   t_prog	*tmp;
-
-  (void)vm;
+  int		nb;
+  
   (void)param;
-  (void)next_param;
   printf("Fonction load address\n");
-  if (vm->file_opts[1] == false && vm->file_opts[0] == false &&
-      add_prog(vm, NULL) == NULL)
+  nb = my_getnbr(next_param);
+  if (check_list_for_address(vm, nb) == 1 ||
+      (vm->file_opts[1] == false && vm->file_opts[0] == false &&
+       add_prog(vm, NULL) == NULL))
     return (2);
   tmp = vm->progs;
   vm->file_opts[0] = true;
   while (tmp->next != NULL)
     tmp = tmp->next;
-  tmp->address = my_getnbr(next_param);
+  tmp->address = nb;
   return (2);
 }
 
 int		my_get_prognumber(t_vm *vm, char *param, char *next_param)
 {
   t_prog	*tmp;
+  int		nb;
 
   printf("Fonction next prognumber\n");
-  (void)vm;
   (void)param;
-  (void)next_param;
-  if (vm->file_opts[0] == false && vm->file_opts[1] == false &&
-      add_prog(vm, NULL) == NULL)
+  nb = my_getnbr(next_param);
+  if (check_list_for_prognb(vm, nb) == 1 ||
+      (vm->file_opts[0] == false && vm->file_opts[1] == false &&
+       add_prog(vm, NULL) == NULL))
     return (2);
   tmp = vm->progs;
   vm->file_opts[1] = true;
   while (tmp->next != NULL)
     tmp = tmp->next;
-  tmp->prog_number = my_getnbr(next_param);
+  tmp->prog_number = nb;
   return (2);
 }

@@ -10,6 +10,17 @@
 
 #include "vm_corewar.h"
 
+t_vm	*init_vm(t_vm *vm)
+{
+  vm->dump = -1;
+  vm->file_opts[0] = false;
+  vm->file_opts[1] = false;
+  vm->progs_nb = 0;
+  vm->progs = NULL;
+  vm->champs = NULL;
+  return (vm);
+}
+
 char	**get_opts()
 {
   char	**d_opts;
@@ -43,13 +54,6 @@ void	free_options(char **opts)
   while (i != 4)
     free (opts[i++]);
   free (opts);
-}
-
-void	init_bool(t_vm *vm)
-{
-  vm->file_opts[0] = false;
-  vm->file_opts[1] = false;
-  vm->file_opts[2] = false;
 }
 
 int	check_options(char **av, t_vm *vm, int ac)

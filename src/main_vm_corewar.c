@@ -12,13 +12,18 @@ char		*get_binary(char *binary)
 void		my_afflist(t_vm *vm)
 {
   t_prog	*tmp;
+  int		c;
 
   tmp = vm->progs;
+  printf("\ndump = %d\n", vm->dump);
+  printf("[%d Prog(s):]\n", vm->progs_nb);
+  c = 0;
   while (vm->progs != NULL)
     {
-      printf("prog_number = %d\n", vm->progs->prog_number);
-      printf("address = %d\n", vm->progs->address);
-      printf("prog_name = %s\n", vm->progs->prog_name);
+      printf("\n[Prog n°%d :]\n", c++);
+      printf("-->prog_number = %d\n", vm->progs->prog_number);
+      printf("-->address = %d\n", vm->progs->address);
+      printf("-->prog_name = %s\n", vm->progs->prog_name);
       vm->progs = vm->progs->next;
     }
   vm->progs = tmp;
@@ -51,7 +56,7 @@ int	main(int ac, char **av, char **env)
   check_options(av, &vm, ac);
   add_champions(&vm);
   check_champs_error(&vm);
-  /* my_afflist(&vm); */
   my_affchamps(&vm);
+  my_afflist(&vm);
   return (0);
 }

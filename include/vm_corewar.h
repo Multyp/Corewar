@@ -50,7 +50,6 @@ typedef struct		s_vm
 ** ********
 */
 t_vm	*init_vm(t_vm *);
-void	init_bool(t_vm *);
 
 /*
 ** *****************
@@ -63,18 +62,23 @@ void	check_champs_error(t_vm *);
 void	del_prog(t_vm *, int);
 void	del_champ(t_vm *, int);
 t_champ	*add_champ_to_list(t_champ *, char *);
+/*
+** Checks for options
+*/
+int	check_list_for_address(t_vm *, unsigned int);
+int	check_list_for_prognb(t_vm *, int);
 
 /*
 ** ***********
 ** * OPTIONS *
 ** ***********
-**
+*/
+/*
 ** Parsing
 */
 int	check_options(char **, t_vm *, int);
 int	convert_to_little_endian(int);
 char	*get_binary(char *);
-
 /*
 ** Commands
 */
