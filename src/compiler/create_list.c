@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:59:33 2016 Arthur ARNAUD
-** Last update Mon Mar 21 20:49:45 2016 Poc
+** Last update Tue Mar 22 14:43:27 2016 Poc
 */
 
 #include "asm.h"
@@ -27,7 +27,7 @@ t_label		*create_label_list()
 
   if (!(label = malloc(sizeof(t_label))))
     return (NULL);
-  label->next = label;
+  label->next = NULL;
   label->name = NULL;
   label->pos = 0;
   return (label);
