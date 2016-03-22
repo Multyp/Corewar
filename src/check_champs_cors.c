@@ -16,19 +16,15 @@ void		check_champs_error(t_vm *vm)
 
   i = 0;
   tmp = vm->champs;
-  while (tmp)
+  while (i < vm->progs_nb)
     {
       if (check_prog_blocs(tmp->name, tmp->size, tmp->magic) == -1)
       	{
-      	  printf("error found\n");
-	  printf("i = %d\n", i);
-	  tmp = tmp->next;
       	  del_prog(vm, i);
       	  del_champ(vm, i);
       	}
-      else
-	tmp = tmp->next;
       i++;
+      if (i < vm->progs_nb)
+	tmp = tmp->next;
     }
-  printf("nombre de champs : %d\n", i);
 }

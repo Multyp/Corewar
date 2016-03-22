@@ -89,17 +89,25 @@ void		*add_champions(t_vm *vm)
 void		del_champ(t_vm *vm, int i)
 {
   t_champ	*tmp;
+  t_champ	*tmp2;
 
-  tmp = vm->champs;
+  if ((tmp = vm->champs) == NULL)
+    return ;
   if (i == 0)
     {
-      vm->champs = vm->champs->next;
-      free(tmp);
+      tmp = tmp->next;
+      free(vm->champs);
+      vm->champs = tmp;
       return ;
     }
   while (i-- > 1)
-    tmp = tmp->next;
-  tmp->next = tmp->next->next;
-  free(tmp->next);
-  return ;
+    {
+      if (vm->champs == NULL)
+	return ;
+      vm->champs = vm->champs->next;
+    }
+  if ((tmp2 = vm->champs->next) != NULL)
+    vm->champs->next = vm->champs->next->next;
+  free(tmp2);
+  vm->champs = tmp;
 }
