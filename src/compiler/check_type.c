@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Tue Mar 22 17:19:48 2016 Poc
-** Last update Tue Mar 22 19:05:16 2016 Poc
+** Last update Tue Mar 22 21:38:10 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -36,7 +36,7 @@ int	check_registery(char *str)
 	}
       i++;
     }
-  if (atoi(str + 1) > REG_NUMBER)
+  if (my_getnbr(str + 1) > REG_NUMBER)
     {
       return (1);
       printf("wrong_reg_nbr\n");
@@ -44,7 +44,7 @@ int	check_registery(char *str)
   return (0);
 }
 
-int	check_type(char *str, t_pos *pos)
+char	check_type(char *str, t_pos *pos)
 {
   printf("CHECK_TYPE -> str = %s\n", str);
   if (str[0] == 'r')

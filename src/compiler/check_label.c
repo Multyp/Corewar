@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Mon Feb 29 12:45:46 2016 Arthur ARNAUD
-** Last update Tue Mar 22 16:56:08 2016 Arthur ARNAUD
+** Last update Tue Mar 22 21:19:15 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -17,7 +17,6 @@ char		*check_label(char *str, t_label *label, t_pos *pos)
   t_label	*new_label;
 
   i = -1;
-  printf("\n--------RECUP_LABEL--------\n", str);
   if (!(str = epur_str(str)) ||
       !(new_label = create_label_list()))
     return (NULL);
@@ -28,7 +27,6 @@ char		*check_label(char *str, t_label *label, t_pos *pos)
 	!(str = epur_str(str)) ||
 	(add_label(label, new_label)))
       return (NULL);
-  printf("str_sans_label = |%s|\n---------------------------\n", str);
   return (str);
 }
 
