@@ -5,7 +5,7 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Mon Mar 21 22:08:36 2016 Poc
+## Last update Tue Mar 22 04:53:16 2016 Arthur ARNAUD
 ##
 
 POC=			yes
@@ -46,8 +46,7 @@ SRC_FILES_ASM=		add_to_list.c		\
 			main.c			\
 			format_instruction.c	\
 			check_action.c		\
-		#	check_line.c		\
-		#	get_header.c
+			set_ftab.c
 
 SRC_ASM=		$(addprefix src/compiler/,$(SRC_FILES_ASM))
 
@@ -67,7 +66,7 @@ SRC_FILES_LIB=		check_empty.c		\
 			my_strlen.c		\
 			my_strncmp.c		\
 			show_list.c		\
-			str_wordtab.c		\
+			str_to_word_tab.c	\
 
 SRC_LIB=		$(addprefix src/lib/,$(SRC_FILES_LIB))
 

@@ -5,24 +5,30 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Mon Feb 29 12:45:46 2016 Arthur ARNAUD
-** Last update Fri Mar 18 17:30:49 2016 Arthur ARNAUD
+** Last update Tue Mar 22 05:23:02 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
 
-char	*check_label(char *str, t_label *label, t_pos *pos)
+char		*check_label(char *str, t_label *label, t_pos *pos)
 {
-  int	i;
-  int	len;
+  int		i;
+  int		len;
+  t_label	*new_label;
 
   i = -1;
-  if (!(str = epur_str(str)))
+  printf("\n--------RECUP_LABEL--------\n", str);
+  if (!(str = epur_str(str)) ||
+      !(new_label = create_label_list()))
     return (NULL);
   len = my_strlen(str);
   while (str[++i] != 0 && str[i] != ' ');
   if (i <= len && str[i - 1] == ':' && is_valid_label(str, i - 1))
-    if (!(str = add_to_label(str, pos->prog_size, label, i - 1)))
+    if (!(str = add_to_label(str, pos->prog_size, label, i)) ||
+	!(str = epur_str(str)))
       return (NULL);
+  // ajout de maillon vide <3
+  printf("str_sans_label = |%s|\n---------------------------\n", str);
   return (str);
 }
 

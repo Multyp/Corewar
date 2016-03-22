@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Mon Mar 21 22:46:40 2016 Poc
+** Last update Tue Mar 22 05:02:29 2016 Arthur ARNAUD
 */
 
 #ifndef ASM_H_
@@ -62,6 +62,8 @@ typedef struct		s_action
   struct s_action	*next;
 }			t_action;
 
+typedef int	(*t_ftab)(t_action *, char **tab, t_pos *);
+
 /*
 ** ================================
 **              INIT
@@ -70,6 +72,7 @@ typedef struct		s_action
 t_label		*create_label_list();
 t_action       	*create_action_list();
 t_file		*create_file_list();
+t_ftab		*set_ftab(t_ftab *);
 /*
 ** ================================
 **              LEXER
@@ -79,20 +82,19 @@ char		*add_to_label(char *, int, t_label *, int);
 char		*check_label(char *, t_label *, t_pos *);
 char		*format_instruction(char *);
 char		**cut_instruction(char *);
-char		**str_to_word_tab(char *, char);
 int		add_action(t_action *, t_action *);
 int		is_valid_label(char *, int);
 int		is_char_valid(char, char *);
 int		add_to_back(t_file *, char *);
-int		check_action(char *, t_action *, t_pos *);
+int		check_action(char *, t_action *, t_pos *, t_ftab *);
 int		get_header(char *, t_header *);
-int		lexer(t_label *, t_action *, t_header *, char *);
+int		lexer(t_label *, t_action *, t_header *, int);
 /*
 ** ================================
 **              LIB
 ** ================================
 */
-char		**my_wordtab(char *, char);
+char		**str_to_word_tab(char *,  char);
 char		*epur_str(char *);
 char		*get_line_not_empty(int, int *);
 char		*get_next_line(int);

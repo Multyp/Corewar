@@ -1,1 +1,22 @@
 Faire attention aux epur str sur le .comment
+Au final j'ai pas gave avance parcontre j'ai remplacer ton str_to_word_tab j'ai checke les return de fonction que t'avais zappe et mes label sont bon ... Enfin!
+
+Il me reste juste un cas particulier que tu peux voir dans le debug et du coup comme je comprend pas trop comment tu geres tes listes chainee j'aimerai bien
+que tu fasse un truc pour add un maillon a la label_list j'ai deja prepare un new_lael dans check_label.c->check_label et du coup de faire en sorte que le pointeur sur le maillon sois sur le maillon ou je dois ecrire quqnd je pasee dans mes fonctions
+
+PS: j'ai laisser un comment pour t'indiquer ou :)
+
+Ducoup y'a moyen que je me leve pas super tot donc si tu finis avant essaie de faire une fonction qui me retourne le type de l'arg qu'on lui envoi
+
+ca donne:
+
+ENVOYE                       RECU
+
+  r1           ->             1;
+  %blabla      ->             2;
+  42           ->	      3;
+
+si le premier charactere de la chaine n'appartient pas a "r%1234567890" faut
+return -1
+
+j'espere que c'est a peu pres clair sur ce je push et je go dodo #6H ^^

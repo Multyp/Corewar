@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Mar  6 18:29:49 2016 Arthur ARNAUD
-** Last update Mon Mar 21 22:46:09 2016 Poc
+** Last update Tue Mar 22 05:02:43 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -16,7 +16,7 @@ int		check_name(char *str, t_action *action)
   int		i;
 
   i = 0;
-  if ((tab = my_wordtab
+  if ((tab = str_to_word_tab
 	("live ld st add sub and or xor zjmp ldi sti fork lld lldi lfork aff"
 	 , ' ')) == NULL)
     return (-1);
@@ -36,18 +36,20 @@ int		check_name(char *str, t_action *action)
   return (-1);
 }
 
-int		check_action(char *str, t_action *action, t_pos *pos)
+int		check_action(char *str, t_action *action,
+			     t_pos *pos, t_ftab *ftab)
 {
   int		i;
   char		**tab;
   t_action	*new_action;
   int		ret;
 
-  if ((new_action = create_action_list()) == NULL)
-    return (1);
-  str = format_instruction(str);
-  tab = cut_instruction(str);
-  if ((ret = check_name(tab[0], new_action)) == -1) // check if the name matche an instruction //and add it in action->instruction;
+  if (!check_empty(str))
+    return (0);
+  if (!(new_action = create_action_list()) ||
+      !(str = format_instruction(str)) ||
+      !(tab = cut_instruction(str)) ||
+      (ret = check_name(tab[0], new_action)) == -1)
     return (1);
   /* if (ftab[ret](t_action *, tab[1], pos)) */
   /*   return (1); */
