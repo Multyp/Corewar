@@ -89,4 +89,11 @@ int	my_load_address(t_vm *, char *, char *);
 int	my_get_prognumber(t_vm *, char *, char *);
 int	check_file(t_vm *, char *, char *);
 
+/*
+** *********
+** * Frees *
+** *********
+*/
+void	my_freeprog(t_prog *);
+
 # endif /* _VM_COREWAR_H__ */

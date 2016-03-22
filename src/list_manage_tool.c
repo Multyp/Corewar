@@ -35,26 +35,23 @@ void		del_prog(t_vm *vm, int pos)
 {
   t_prog	*tmp;
 
-  tmp = vm->progs;
+  if ((tmp = vm->progs) == NULL)
+    return ;
   if (pos == 0)
     {
       tmp = tmp->next;
-      if (vm->progs->prog_name != NULL)
-	free (vm->progs->prog_name);
-      free (vm->progs);
+      my_freeprog(vm->progs);
       vm->progs = tmp;
+      vm->progs_nb--;
       return ;
     }
-  while (pos > 1)
+  while (pos-- > 1)
     {
       if (vm->progs == NULL)
 	return ;
       vm->progs = vm->progs->next;
-      pos--;
     }
-  if (vm->progs->next->prog_name != NULL)
-    free (vm->progs->next->prog_name);
-  free (vm->progs->next);
+  my_freeprog(vm->progs->next);
   vm->progs->next = vm->progs->next->next;
   vm->progs = tmp;
   vm->progs_nb--;

@@ -18,6 +18,7 @@ SRC	=	main_vm_corewar.c	\
 		cvrt_to_little_endian.c	\
 		check_champs_cors.c	\
 		list_champs_tool.c	\
+		free.c			\
 		options_cmds.c
 
 BASICS  =	my_memset.c		\
