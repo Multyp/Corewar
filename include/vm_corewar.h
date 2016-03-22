@@ -61,7 +61,8 @@ void	*add_champions(t_vm *);
 void	check_champs_error(t_vm *);
 void	del_prog(t_vm *, int);
 void	del_champ(t_vm *, int);
-t_champ	*add_champ_to_list(t_champ *, char *);
+t_vm	*add_champ_to_list(t_vm *, char *);
+
 /*
 ** Checks for options
 */

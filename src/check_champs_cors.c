@@ -18,12 +18,19 @@ void		check_champs_error(t_vm *vm)
   tmp = vm->champs;
   while (tmp)
     {
+      tmp = tmp->next;
+      printf("i = %d\n", ++i);
+    }
+  exit (0);
+  while (tmp)
+    {
       if (check_prog_blocs(tmp->name, tmp->size, tmp->magic) == -1)
-	{
-	  printf("error found\n");
-	  del_prog(vm, i);
-	  del_champ(vm, i);
-	}
+      	{
+      	  printf("error found\n");
+      	  del_prog(vm, i);
+      	  del_champ(vm, i);
+      	}
+      printf("toto\n");
       tmp = tmp->next;
       i++;
     }

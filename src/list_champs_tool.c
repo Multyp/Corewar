@@ -12,7 +12,13 @@ int		file_champion(t_champ *champ, char *file_path)
   if ((fd = open(file_path, O_RDONLY)) == -1)
     return (-1);
   if (read(fd, champ, (int)sizeof(t_champ)) < (int)sizeof(t_champ))
-    return (-1);
+    {
+      my_memset((char *)champ->name, 0, 10);
+      champ->magic = -1;
+      champ->size = -1;
+      my_memset((char *)champ->comment, 0, 10);
+      return (0);
+    };
   champ->magic = convert_to_little_endian(champ->magic);
   champ->size = convert_to_little_endian(champ->size);
   return (0);
@@ -22,17 +28,26 @@ int		file_champion(t_champ *champ, char *file_path)
 **   add_champt_to_list prend en paramètre un champion (vide et non malloc)
 **   le path du champion, et le rempli.
 */
-t_champ		*add_champ_to_list(t_champ *champ, char *file_path)
+t_vm		*add_champ_to_list(t_vm *vm, char *file_path)
 {
-  while (champ != NULL)
-    champ = champ->next;
-  if ((champ = malloc(sizeof(t_champ))) == NULL)
-    return (NULL);
-  if (file_champion(champ, file_path) == -1)
-    return (NULL);
-  champ->next = NULL;
+  t_champ	*tmp_champ;
+  int		i = 0;
+
+  tmp_champ = vm->champs;
+  while (vm->champs != NULL)
+    {
+      printf("name = %s\n", vm->champs->name);
+      vm->champs = vm->champs->next;
+      printf("i = %d\n", ++i);
+    }
+  if ((vm->champs = malloc(sizeof(t_champ))) == NULL)
+    return (my_perror(MALLOC_FAILED));
+  if (file_champion(vm->champs, file_path) == -1)
+    return ((free(vm->champs)), (vm->champs = NULL), NULL);
+  vm->champs->next = NULL;
+  vm->champs = tmp_champ;
   printf("[OK]\n");
-  return (champ);
+  return (vm);
 }
 
 /*
@@ -51,13 +66,12 @@ void		*add_champions(t_vm *vm)
     {
       if (vm->champs == NULL)
 	{
-	  if ((vm->champs =
-	       add_champ_to_list(vm->champs, tmp_progs->prog_name)) == NULL)
+	  printf("first\n");
+	  if ((vm = add_champ_to_list(vm, tmp_progs->prog_name)) == NULL)
 	    return (NULL);
 	}
       else
-	if ((vm->champs->next =
-	     add_champ_to_list(vm->champs, tmp_progs->prog_name)) == NULL)
+	if ((vm = add_champ_to_list(vm, tmp_progs->prog_name)) == NULL)
 	  return (NULL);
       tmp_progs = tmp_progs->next;
       i++;
