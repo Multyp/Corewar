@@ -67,7 +67,10 @@ int		check_list_for_prognb(t_vm *vm, int nb)
   while (vm->progs != NULL)
     {
       if (vm->progs->prog_number == nb)
-	return (my_error("Prog_number already used"));
+	{
+	  vm->progs = tmp;
+	  return (1/* my_error("Prog_number already used") */);
+	}
       vm->progs = vm->progs->next;
     }
   vm->progs = tmp;

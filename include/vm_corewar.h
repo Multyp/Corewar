@@ -88,6 +88,10 @@ int	my_dump_memory(t_vm *, char *, char *);
 int	my_load_address(t_vm *, char *, char *);
 int	my_get_prognumber(t_vm *, char *, char *);
 int	check_file(t_vm *, char *, char *);
+/*
+** Init default values
+*/
+void	init_defaultvalues(t_vm *);
 
 /*
 ** *********

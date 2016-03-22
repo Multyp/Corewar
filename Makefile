@@ -13,6 +13,7 @@ CC	= gcc
 
 SRC	=	main_vm_corewar.c	\
 		options.c		\
+		default_opts.c		\
 		list_manage_tool.c	\
 		my_getnbr.c		\
 		cvrt_to_little_endian.c	\

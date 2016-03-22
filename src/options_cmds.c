@@ -44,7 +44,6 @@ int	show_help(t_vm *vm, char *param, char *next_param)
 
 int	my_dump_memory(t_vm *vm, char *param, char *next_param)
 {
-  printf("Fonction dump memory\n");
   (void)vm;
   (void)param;
   (void)next_param;
@@ -58,7 +57,6 @@ int		my_load_address(t_vm *vm, char *param, char *next_param)
   int		nb;
   
   (void)param;
-  printf("Fonction load address\n");
   nb = my_getnbr(next_param);
   if (check_list_for_address(vm, nb) == 1 ||
       (vm->file_opts[1] == false && vm->file_opts[0] == false &&
@@ -77,7 +75,6 @@ int		my_get_prognumber(t_vm *vm, char *param, char *next_param)
   t_prog	*tmp;
   int		nb;
 
-  printf("Fonction next prognumber\n");
   (void)param;
   nb = my_getnbr(next_param);
   if (check_list_for_prognb(vm, nb) == 1 ||
