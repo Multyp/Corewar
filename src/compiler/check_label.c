@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Mon Feb 29 12:45:46 2016 Arthur ARNAUD
-** Last update Tue Mar 22 05:23:02 2016 Arthur ARNAUD
+** Last update Tue Mar 22 13:36:14 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -22,7 +22,7 @@ char		*check_label(char *str, t_label *label, t_pos *pos)
       !(new_label = create_label_list()))
     return (NULL);
   len = my_strlen(str);
-  while (str[++i] != 0 && str[i] != ' ');
+  while (str[++i] != 0 && str[i] != ' ' && str[i] != '\n' && str[i] != '\t');
   if (i <= len && str[i - 1] == ':' && is_valid_label(str, i - 1))
     if (!(str = add_to_label(str, pos->prog_size, label, i)) ||
 	!(str = epur_str(str)))
