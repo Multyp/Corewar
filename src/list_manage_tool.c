@@ -52,7 +52,8 @@ void		del_prog(t_vm *vm, int pos)
       vm->progs = vm->progs->next;
     }
   my_freeprog(vm->progs->next);
-  vm->progs->next = vm->progs->next->next;
+  if (vm->progs->next != NULL)
+    vm->progs->next = vm->progs->next->next;
   vm->progs = tmp;
   vm->progs_nb--;
 }
