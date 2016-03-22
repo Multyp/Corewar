@@ -56,7 +56,9 @@ int	main(int ac, char **av, char **env)
   check_options(av, &vm, ac);
   my_afflist(&vm);
   add_champions(&vm);
-  /* check_champs_error(&vm); */
+  check_champs_error(&vm);
+  printf("\n\nCHECK ERROR\n");
+  my_afflist(&vm);
   my_affchamps(&vm);
   return (0);
 }
