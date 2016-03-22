@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Mon Feb 29 12:45:46 2016 Arthur ARNAUD
-** Last update Tue Mar 22 13:36:14 2016 Arthur ARNAUD
+** Last update Tue Mar 22 14:54:20 2016 Poc
 */
 
 #include "asm.h"
@@ -24,10 +24,10 @@ char		*check_label(char *str, t_label *label, t_pos *pos)
   len = my_strlen(str);
   while (str[++i] != 0 && str[i] != ' ' && str[i] != '\n' && str[i] != '\t');
   if (i <= len && str[i - 1] == ':' && is_valid_label(str, i - 1))
-    if (!(str = add_to_label(str, pos->prog_size, label, i)) ||
-	!(str = epur_str(str)))
+    if (!(str = add_to_label(str, pos->prog_size, new_label, i)) ||
+	!(str = epur_str(str)) ||
+	(add_label(label, new_label)))
       return (NULL);
-  // ajout de maillon vide <3
   printf("str_sans_label = |%s|\n---------------------------\n", str);
   return (str);
 }

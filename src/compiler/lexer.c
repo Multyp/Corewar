@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 16:03:05 2016 Arthur ARNAUD
-** Last update Tue Mar 22 05:36:22 2016 Arthur ARNAUD
+** Last update Tue Mar 22 14:49:19 2016 Poc
 */
 
 #include "asm.h"
@@ -14,7 +14,16 @@ void	test_action(t_action *action)
 {
   while (action != NULL)
     {
-      printf("test = %s\n", action->identifier);
+      printf("action = %s\n", action->identifier);
+      action = action->next;
+    }
+}
+
+void	test_label(t_label *action)
+{
+  while (action != NULL)
+    {
+      printf("label = %s\n", action->name);
       action = action->next;
     }
 }
@@ -46,6 +55,7 @@ int	lexer(t_label *label, t_action *action, t_header *header, int fd)
       pos.line += 1;
     }
   test_action(action);
+  test_label(label);
   printf("header->progname |%s|\n", header->prog_name);
   printf("header->comment |%s|\n", header->comment);
   return (0);

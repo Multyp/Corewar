@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 17 15:30:59 2016 Clement Peau
-** Last update Tue Mar 22 14:45:01 2016 Poc
+** Last update Tue Mar 22 14:53:30 2016 Poc
 */
 
 #include "asm.h"
@@ -45,5 +45,6 @@ int		add_label(t_label *label, t_label *new_label)
   while (tmp_label->next)
     tmp_label = tmp_label->next;
   tmp_label->next = new_label;
+  new_label->next = NULL;
   return (0);
 }
