@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Tue Mar 22 16:36:51 2016 Arthur ARNAUD
+** Last update Tue Mar 22 16:57:39 2016 Arthur ARNAUD
 */
 
 #ifndef ASM_H_
@@ -17,9 +17,9 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-# define COMMENT_CHAR "#"
-# define LABEL_CHAR ":"
-# define DIRECT_CHAR "%"
+# define COMMENT_CHAR '#'
+# define LABEL_CHAR ':'
+# define DIRECT_CHAR '%'
 # define LABEL_CHARS "abcdefghijklmnopqrstuvwxyz_012345678"
 # define NAME_CMD_STRING ".name"
 # define COMMENT_CMD_STRING ".comment"
@@ -33,9 +33,9 @@
 typedef struct		s_header
 {
   int	magic;
-  char	prog_name[128 + 1];
+  char	prog_name[PROG_NAME_SIZE + 1];
   int	prog_size;
-  char	comment[2048 + 1];
+  char	comment[COMMENT_LENGTH + 1];
   int	full;
 }			t_header;
 
