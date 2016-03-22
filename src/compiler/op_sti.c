@@ -1,27 +1,27 @@
 /*
-** op_live.c for op_live in /CPE_2015_corewar/src/compiler
+** op_sti.c for op_sti in /CPE_2015_corewar/src/compiler
 **
 ** Made by Arthur ARNAUD
 ** Login   <arnaud_e@epitech.net>
 **
-** Started on  Tue Mar 22 14:58:29 2016 Arthur ARNAUD
-** Last update Tue Mar 22 17:44:12 2016 Arthur ARNAUD
+** Started on  Tue Mar 22 17:32:48 2016 Arthur ARNAUD
+** Last update Tue Mar 22 17:43:39 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
 
-int	op_live(t_action *action, char *str, t_pos *pos)
+int	op_sti(t_action *action, char *str, t_pos *pos)
 {
   int	i;
   int	type;
   char	**tab;
   char	**list_arg;
 
-  action->identifier = 0x01;
+  action->identifier = 0x0B;
   i = -1;
   if (!(action->args = malloc(sizeof(t_arg) * 2)) ||
       !(tab = str_to_word_tab(str, ',')) ||
-      !(list_arg = str_to_word_tab("1", ' ')))
+      !(list_arg = str_to_word_tab("1 123 123", ' ')))
     return (1);
   action->args[1] = NULL;
   while (tab[++i])
@@ -34,4 +34,5 @@ int	op_live(t_action *action, char *str, t_pos *pos)
     }
   if (i < 1) // nb arg de l'instruct
     return (1);
+  return (0);
 }
