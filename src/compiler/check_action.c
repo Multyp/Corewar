@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Mar  6 18:29:49 2016 Arthur ARNAUD
-** Last update Tue Mar 22 05:02:43 2016 Arthur ARNAUD
+** Last update Tue Mar 22 14:04:43 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -41,6 +41,7 @@ int		check_action(char *str, t_action *action,
 {
   int		i;
   char		**tab;
+  char		**args;
   t_action	*new_action;
   int		ret;
 
