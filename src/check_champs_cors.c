@@ -1,3 +1,13 @@
+/*
+** check_champs_cors.c for check_champs in /home/da-fon_s/rendu/corewar
+**
+** Made by Da Fonseca Samuel
+** Login   <da-fon_s@epitech.net>
+**
+** Started on  Tue Mar 22 15:55:37 2016 Da Fonseca Samuel
+** Last update Tue Mar 22 15:55:38 2016 Da Fonseca Samuel
+*/
+
 #include "vm_corewar.h"
 
 int		check_prog_blocs(char *name, int size, int magic)

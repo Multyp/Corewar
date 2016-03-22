@@ -1,3 +1,13 @@
+/*
+** list_manage_tool.c for list_progs in /home/da-fon_s/rendu/corewar
+**
+** Made by Da Fonseca Samuel
+** Login   <da-fon_s@epitech.net>
+**
+** Started on  Tue Mar 22 15:55:59 2016 Da Fonseca Samuel
+** Last update Tue Mar 22 15:55:59 2016 Da Fonseca Samuel
+*/
+
 #include "vm_corewar.h"
 
 t_prog		*create_prog(char *name)
@@ -35,7 +45,7 @@ void		del_prog(t_vm *vm, int pos)
 {
   t_prog	*tmp;
   t_prog	*tmp2;
-  
+
   if ((tmp = vm->progs) == NULL)
     return ;
   if (pos == 0)
@@ -62,7 +72,7 @@ void		del_prog(t_vm *vm, int pos)
 int		check_list_for_prognb(t_vm *vm, int nb)
 {
   t_prog	*tmp;
-  
+
   tmp = vm->progs;
   while (vm->progs != NULL)
     {
@@ -80,7 +90,7 @@ int		check_list_for_prognb(t_vm *vm, int nb)
 int		check_list_for_address(t_vm *vm, unsigned int nb)
 {
   t_prog	*tmp;
-  
+
   tmp = vm->progs;
   while (vm->progs != NULL)
     {

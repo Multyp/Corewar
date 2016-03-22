@@ -1,3 +1,13 @@
+/*
+** main_vm_corewar.c for main in /home/da-fon_s/rendu/corewar
+**
+** Made by Da Fonseca Samuel
+** Login   <da-fon_s@epitech.net>
+**
+** Started on  Tue Mar 22 15:42:32 2016 Da Fonseca Samuel
+** Last update Tue Mar 22 15:43:18 2016 Da Fonseca Samuel
+*/
+
 #include "vm_corewar.h"
 
 char		*get_binary(char *binary)
@@ -47,11 +57,10 @@ void		my_affchamps(t_vm *vm)
 
 int	main(int ac, char **av, char **env)
 {
-  (void)ac;
-  (void)av;
-  (void)env;
   t_vm	vm;
 
+  if (*env == NULL)
+    return (1);
   init_vm(&vm);
   check_options(av, &vm, ac);
   init_defaultvalues(&vm);
