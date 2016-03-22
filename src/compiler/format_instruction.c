@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Fri Mar 18 17:22:19 2016 Poc
-** Last update Tue Mar 22 05:03:03 2016 Arthur ARNAUD
+** Last update Tue Mar 22 15:34:26 2016 Poc
 */
 
 #include "asm.h"
@@ -18,6 +18,13 @@ char	**cut_instruction(char *str)
     return (NULL);
   showtab(instruction);
   return (instruction);
+}
+
+char	*exiting_format(char *str, char *new_str, int k)
+{
+  free(str);
+  new_str[k] = 0;
+  return (new_str);
 }
 
 char	*format_instruction(char *str)
@@ -34,15 +41,13 @@ char	*format_instruction(char *str)
     new_str[k++] = str[i++];
   new_str[k++] = 32;
   i++;
-  while(str[i] && str[i] != '#')
+  while(str[i] != 0 && str[i] != 35)
     {
       while (str[i] != 0 && str[i] == 32)
 	i++;
+      if (str[i] == 35)
+	return (exiting_format(str, new_str, k));
       new_str[k++] = str[i++];
     }
-  new_str[(new_str[k - 1] == '#' ? k - 1 : k)] = 0;
-  printf("Basic chain |%s|\n", str);
-  printf("Formated_string = |%s|\n", new_str);
-  free(str);
-  return (new_str);
+  return (exiting_format(str, new_str, k));
 }
