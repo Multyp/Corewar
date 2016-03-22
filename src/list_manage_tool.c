@@ -42,7 +42,7 @@ void		del_prog(t_vm *vm, int pos)
       if (vm->progs->prog_name != NULL)
 	free (vm->progs->prog_name);
       free (vm->progs);
-      vmp->progs = tmp;
+      vm->progs = tmp;
       return ;
     }
   while (pos > 1)
