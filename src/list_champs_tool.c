@@ -10,7 +10,7 @@ int		file_champion(t_champ *champ, char *file_path)
   int		fd;
 
   if ((fd = open(file_path, O_RDONLY)) == -1)
-    return (-1);
+    return (my_error(OPEN_FAILED(fle_path)));
   if (read(fd, champ, (int)sizeof(t_champ)) < (int)sizeof(t_champ))
     {
       my_memset((char *)champ->name, 0, 10);
@@ -24,6 +24,21 @@ int		file_champion(t_champ *champ, char *file_path)
   return (0);
 }
 
+t_champ		*create_champ(char *file_path)
+{
+  t_champ	*new_champ;
+
+  if ((new_champ = malloc(sizeof(t_champ))) == NULL)
+    return (my_perror(MALLOC_FAILED));
+  if (file_champion(new_champ, file_path) == 1)
+    {
+      free (new_champ);
+      return (NULL);
+    }
+  new_champ->next = NULL;
+  return (new_champ);
+}
+
 /*
 **   add_champt_to_list prend en paramètre un champion (vide et non malloc)
 **   le path du champion, et le rempli.
@@ -31,22 +46,17 @@ int		file_champion(t_champ *champ, char *file_path)
 t_vm		*add_champ_to_list(t_vm *vm, char *file_path)
 {
   t_champ	*tmp_champ;
-  int		i = 0;
 
   tmp_champ = vm->champs;
-  while (vm->champs != NULL)
+  while (vm->champs != NULL && vm->champs->next != NULL)
+    vm->champs = vm->champs->next;
+  if (vm->champs == NULL)
+    vm->champs = create_champ(file_path);
+  else
     {
-      printf("name = %s\n", vm->champs->name);
-      vm->champs = vm->champs->next;
-      printf("i = %d\n", ++i);
+      vm->champs->next = create_champ(file_path);
+      vm->champs = tmp_champ;
     }
-  if ((vm->champs = malloc(sizeof(t_champ))) == NULL)
-    return (my_perror(MALLOC_FAILED));
-  if (file_champion(vm->champs, file_path) == -1)
-    return ((free(vm->champs)), (vm->champs = NULL), NULL);
-  vm->champs->next = NULL;
-  vm->champs = tmp_champ;
-  printf("[OK]\n");
   return (vm);
 }
 
@@ -64,19 +74,11 @@ void		*add_champions(t_vm *vm)
   i = 0;
   while (tmp_progs)
     {
-      if (vm->champs == NULL)
-	{
-	  printf("first\n");
-	  if ((vm = add_champ_to_list(vm, tmp_progs->prog_name)) == NULL)
-	    return (NULL);
-	}
-      else
-	if ((vm = add_champ_to_list(vm, tmp_progs->prog_name)) == NULL)
-	  return (NULL);
+      if (add_champ_to_list(vm, tmp_progs->prog_name) == NULL)
+	return (NULL);
       tmp_progs = tmp_progs->next;
       i++;
     }
-  printf("nombre de progs = %d\n", i);
   return (vm);
 }
 
