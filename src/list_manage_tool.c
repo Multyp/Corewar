@@ -34,7 +34,8 @@ t_vm		*add_prog(t_vm *vm, char *name)
 void		del_prog(t_vm *vm, int pos)
 {
   t_prog	*tmp;
-
+  t_prog	*tmp2;
+  
   if ((tmp = vm->progs) == NULL)
     return ;
   if (pos == 0)
@@ -51,9 +52,9 @@ void		del_prog(t_vm *vm, int pos)
 	return ;
       vm->progs = vm->progs->next;
     }
-  my_freeprog(vm->progs->next);
-  if (vm->progs->next != NULL)
+  if ((tmp2 = vm->progs->next) != NULL)
     vm->progs->next = vm->progs->next->next;
+  my_freeprog(tmp2);
   vm->progs = tmp;
   vm->progs_nb--;
 }
