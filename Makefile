@@ -5,7 +5,7 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Tue Mar 22 04:53:16 2016 Arthur ARNAUD
+## Last update Tue Mar 22 19:36:51 2016 Poc
 ##
 
 POC=			yes
@@ -40,9 +40,11 @@ SRC_DECOMPILER=		$(addprefix src/decompiler/,$(SRC_FILES_DECOMPILER))
 SRC_FILES_ASM=		add_to_list.c		\
 			add_label.c		\
 			check_label.c		\
+			check_type.c		\
 			create_list.c		\
 			get_header.c		\
 			lexer.c			\
+			op_live.c		\
 			main.c			\
 			format_instruction.c	\
 			check_action.c		\

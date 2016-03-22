@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Mar 22 14:58:29 2016 Arthur ARNAUD
-** Last update Tue Mar 22 17:44:12 2016 Arthur ARNAUD
+** Last update Tue Mar 22 17:47:59 2016 Poc
 */
 
 #include "asm.h"
@@ -27,10 +27,10 @@ int	op_live(t_action *action, char *str, t_pos *pos)
   while (tab[++i])
     {
       // nb arg de l'instruct - 1
-      if (i > 0 || (type = check_type(tab[i], pos)) == -1 ||
-	  check_args(tab[i], list_args[i], pos))
-	return (1);
-      fill_action(tab[i], action, i);
+      if (i > 0 || (type = check_type(tab[i], pos)) == -1 )
+	  /* check_args(tab[i], list_args[i], pos)) */
+	  return (1);
+      /* fill_action(tab[i], action, i); */
     }
   if (i < 1) // nb arg de l'instruct
     return (1);

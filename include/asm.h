@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Tue Mar 22 16:57:39 2016 Arthur ARNAUD
+** Last update Tue Mar 22 19:37:33 2016 Poc
 */
 
 #ifndef ASM_H_
@@ -72,7 +72,7 @@ typedef struct		s_action
   int			coding_byte;
   char			identifier;
   char			*instruction;
-  t_arg			*args;
+  t_arg			**args;
   struct s_action	*next;
 }			t_action;
 
@@ -121,5 +121,11 @@ int		my_strcpy(char *, char *);
 int		my_strncmp(char *, char *, int);
 void		*free_first(t_file *);
 void		showtab(char **);
-
+/*
+** ================================
+**        FUNCTION_POINTER
+** ================================
+*/
+int	op_live(t_action *, char *, t_pos *);
+int	op_sti(t_action *, char *, t_pos *);
 #endif /* !ASM_H_*/

@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Mar 22 02:20:07 2016 Arthur ARNAUD
-** Last update Tue Mar 22 03:26:55 2016 Arthur ARNAUD
+** Last update Tue Mar 22 19:36:27 2016 Poc
 */
 
 #include "asm.h"
@@ -30,6 +30,22 @@ t_ftab	*set_ftab(t_ftab *ftab)
   /* ftab[13] = op_lldi; */
   /* ftab[14] = op_lfork; */
   /* ftab[15] = op_aff; */
+  ftab[0] = op_live;
+  ftab[1] = NULL;
+  ftab[2] = NULL;
+  ftab[3] = NULL;
+  ftab[4] = NULL;
+  ftab[5] = NULL;
+  ftab[6] = NULL;
+  ftab[7] = NULL;
+  ftab[8] = NULL;
+  ftab[9] = NULL;
+  ftab[10] = NULL;
+  ftab[11] = NULL;
+  ftab[12] = NULL;
+  ftab[13] = NULL;
+  ftab[14] = NULL;
+  ftab[15] = NULL;
   ftab[16] = NULL;
   return (ftab);
 }

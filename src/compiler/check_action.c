@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Mar  6 18:29:49 2016 Arthur ARNAUD
-** Last update Tue Mar 22 15:35:45 2016 Arthur ARNAUD
+** Last update Tue Mar 22 18:16:27 2016 Poc
 */
 
 #include "asm.h"
@@ -52,8 +52,9 @@ int		check_action(char *str, t_action *action,
       !(tab = cut_instruction(str)) ||
       (ret = check_name(tab[0], new_action)) == -1)
     return (1);
-  /* if (ftab[ret](t_action *, tab[1], pos)) */
-  /*   return (1); */
+  if (ftab[ret] != NULL)
+    if (ftab[ret](action, tab[1], pos))
+      return (1);
   add_action(action, new_action);
   return (0);
 }

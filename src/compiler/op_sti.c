@@ -1,3 +1,4 @@
+
 /*
 ** op_sti.c for op_sti in /CPE_2015_corewar/src/compiler
 **
@@ -5,7 +6,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Mar 22 17:32:48 2016 Arthur ARNAUD
-** Last update Tue Mar 22 17:43:39 2016 Arthur ARNAUD
+** Last update Tue Mar 22 18:23:07 2016 Poc
 */
 
 #include "asm.h"
@@ -27,10 +28,10 @@ int	op_sti(t_action *action, char *str, t_pos *pos)
   while (tab[++i])
     {
       // nb arg de l'instruct - 1
-      if (i > 0 || (type = check_type(tab[i], pos)) == -1 ||
-	  check_args(tab[i], list_args[i], pos))
-	return (1);
-      fill_action(tab[i], action, i);
+      if (i > 0 || (type = check_type(tab[i], pos)) == -1)
+	  /* check_args(tab[i], list_arg[i], pos)) */
+	  return (1);
+      /* fill_action(tab[i], action, i); */
     }
   if (i < 1) // nb arg de l'instruct
     return (1);

@@ -1,8 +1,6 @@
 	.name "Tyron" ## bite
-				 .comment "Just a basic pompes, traction"
-	sti	 r1,   %7  			  	,   %1 # bite
-			 live %123
-		live:	    ld %0  	  ,   r3
+	.comment "Just a basic pompes, traction"
+	live %123
+	sti r1,%7,%1 # bite
+	live ld %0,r3
 	zjmp %655 24
-lil:
-lul:	zjmp %655 24
