@@ -17,7 +17,7 @@ t_prog		*create_prog(char *name)
 
   if ((new_elem = malloc(sizeof(t_prog))) == NULL)
     return (my_perror(MALLOC_FAILED));
-  new_elem->prog_number = -1;
+  new_elem->prog_number = 0;
   new_elem->address = 0;
   new_elem->prog_name = my_strdup(name);
   new_elem->next = NULL;
@@ -44,11 +44,14 @@ t_vm		*add_prog(t_vm *vm, char *name)
 
 void		del_prog(t_vm *vm, int pos)
 {
+  t_prog	*tmp;
+
   if (pos == 0 && vm->progs != NULL)
     {
+      tmp = vm->progs->next;
       free (vm->progs->prog_name);
       free (vm->progs);
-      vm->progs = vm->progs->next;
+      vm->progs = tmp;
       vm->progs_nb--;
       return ;
     }
@@ -56,11 +59,12 @@ void		del_prog(t_vm *vm, int pos)
     {
       if (vm->progs == NULL)
 	return ;
+      tmp = vm->progs;
       vm->progs = vm->progs->next;
       pos--;
     }
   free (vm->progs->next->prog_name);
   free (vm->progs->next);
-  vm->progs->next = vm->progs->next->next;
+  tmp->next = vm->progs->next->next;
   vm->progs_nb--;
 }

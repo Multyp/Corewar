@@ -10,7 +10,7 @@ int		check_file(t_vm *vm, char *file_name, char *param)
   if ((fd = open(file_name, O_RDONLY)) == -1)
     return (my_error(OPEN_FAILED(file_name)));
   else if (vm->file_opts[1] == false && vm->file_opts[0] == false &&
-	   add_prog(vm, file_name) == NULL)
+	   (vm = add_prog(vm, file_name)) == NULL)
     return (my_error("Could not create a new elem"));
   else if (vm->file_opts[1] == true || vm->file_opts[0] == true)
     {

@@ -24,6 +24,22 @@ void		my_afflist(t_vm *vm)
   vm->progs = tmp;
 }
 
+void		my_affchamps(t_vm *vm)
+{
+  t_champ	*tmp;
+
+  tmp = vm->champs;
+  while (tmp != NULL)
+    {
+      printf("\n[Champion :]\n");
+      printf("------>magic : %d\n", tmp->magic);
+      printf("------>name : %s\n", tmp->name);
+      printf("------>size : %d\n", tmp->size);
+      printf("------>comment : %s\n", tmp->comment);
+      tmp = tmp->next;
+    }
+}
+
 int	main(int ac, char **av, char **env)
 {
   (void)ac;
@@ -31,17 +47,10 @@ int	main(int ac, char **av, char **env)
   (void)env;
   t_vm	vm;
 
-  /* init_vm(&vm); */
-  vm.champs = add_champ_to_list(vm.champs, av[1]);
-  printf("%d\n", vm.champs->magic);
-  printf("%s\n", vm.champs->name);
-  printf("%d\n", vm.champs->size);
-  printf("%s\n", vm.champs->comment);
-  /* check_options(av, &vm, ac); */
+  init_vm(&vm);
+  check_options(av, &vm, ac);
+  add_champions(&vm);
   /* my_afflist(&vm); */
-  /* printf("\n\n"); */
-  /* del_prog(&vm, 0); */
-  /* my_afflist(&vm); */
-
+  my_affchamps(&vm);
   return (0);
 }
