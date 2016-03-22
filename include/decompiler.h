@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Mar  1 15:29:29 2016 Arthur ARNAUD
-** Last update Sun Mar  6 16:31:17 2016 Arthur ARNAUD
+** Last update Tue Mar 22 16:34:49 2016 Arthur ARNAUD
 */
 
 #ifndef _DECOMPILER_H_
@@ -21,7 +21,6 @@
 # define COMMENT_CHAR "#"
 # define LABEL_CHAR ":"
 # define DIRECT_CHAR "%"
-# define SEPARATOR_CHAR ","
 # define LABEL_CHARS "abcdefghijklmnopqrstuvwxyz_012345678"
 # define NAME_CMD_STRING ".name"
 # define COMMENT_CMD_STRING ".comment"

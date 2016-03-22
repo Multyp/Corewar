@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Tue Mar 22 05:02:29 2016 Arthur ARNAUD
+** Last update Tue Mar 22 16:36:51 2016 Arthur ARNAUD
 */
 
 #ifndef ASM_H_
@@ -16,6 +16,19 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdio.h>
+
+# define COMMENT_CHAR "#"
+# define LABEL_CHAR ":"
+# define DIRECT_CHAR "%"
+# define LABEL_CHARS "abcdefghijklmnopqrstuvwxyz_012345678"
+# define NAME_CMD_STRING ".name"
+# define COMMENT_CMD_STRING ".comment"
+# define REG_NUMBER 16
+# define REG_SIZE 1
+# define IND_SIZE 2
+# define DIR_SIZE 4
+# define PROG_NAME_SIZE 128
+# define COMMENT_LENGTH 2048
 
 typedef struct		s_header
 {
@@ -36,6 +49,7 @@ typedef struct		s_arg
 {
   char			type;
   char			*link_name;
+  int			pos_link;
   int			value;
   struct s_arg		*next;
 }			t_arg;
@@ -56,7 +70,7 @@ typedef struct		s_file
 typedef struct		s_action
 {
   int			coding_byte;
-  char			*identifier;
+  char			identifier;
   char			*instruction;
   t_arg			*args;
   struct s_action	*next;
