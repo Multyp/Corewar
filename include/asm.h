@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Tue Mar 22 19:37:33 2016 Poc
+** Last update Wed Mar 23 00:31:07 2016 Poc
 */
 
 #ifndef ASM_H_
@@ -51,7 +51,6 @@ typedef struct		s_arg
   char			*link_name;
   int			pos_link;
   int			value;
-  struct s_arg		*next;
 }			t_arg;
 
 typedef struct		s_label
@@ -76,7 +75,7 @@ typedef struct		s_action
   struct s_action	*next;
 }			t_action;
 
-typedef int	(*t_ftab)(t_action *, char **tab, t_pos *);
+typedef int	(*t_ftab)(t_action *, char *, t_pos *);
 
 /*
 ** ================================
@@ -96,13 +95,19 @@ char		*add_to_label(char *, int, t_label *, int);
 char		*check_label(char *, t_label *, t_pos *);
 char		*format_instruction(char *);
 char		**cut_instruction(char *);
+char		check_type(char *, t_pos *);
+int		check_args(char, char *, t_pos *);
+int		fill_arg(char, char *, t_arg *, t_pos *);
 int		add_action(t_action *, t_action *);
+int		add_label(t_label *, t_label *);
+int		icubed(char *, char );
 int		is_valid_label(char *, int);
 int		is_char_valid(char, char *);
 int		add_to_back(t_file *, char *);
 int		check_action(char *, t_action *, t_pos *, t_ftab *);
 int		get_header(char *, t_header *);
 int		lexer(t_label *, t_action *, t_header *, int);
+void		add_prog_size(char, t_pos *);
 /*
 ** ================================
 **              LIB
@@ -114,12 +119,15 @@ char		*get_line_not_empty(int, int *);
 char		*get_next_line(int);
 char		*my_strdup(char *);
 int		check_empty(char *);
+int		my_getnbr(char *);
 int		my_memset(void *, char , int);
 int		my_putstr(char *);
 int		my_strlen(char *);
 int		my_strcpy(char *, char *);
+int		my_strcmp(char *, char *);
 int		my_strncmp(char *, char *, int);
 void		*free_first(t_file *);
+void		free_tab(char **);
 void		showtab(char **);
 /*
 ** ================================

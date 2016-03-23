@@ -1,6 +1,4 @@
-atoi -> check_type.c > l27
-
 TACHES TITANESQUES A FAIRE POUR POC
 
 ->Faire attention aux epur str sur le .comment
-->Regler le NULL au debut
+->Erreur dans check type dans le cas live %:43e

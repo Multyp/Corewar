@@ -5,7 +5,7 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Tue Mar 22 19:44:07 2016 Poc
+## Last update Wed Mar 23 00:29:41 2016 Poc
 ##
 
 POC=			yes
@@ -39,9 +39,12 @@ SRC_DECOMPILER=		$(addprefix src/decompiler/,$(SRC_FILES_DECOMPILER))
 
 SRC_FILES_ASM=		add_to_list.c		\
 			add_label.c		\
+			add_prog_size.c		\
+			check_args.c		\
 			check_label.c		\
 			check_type.c		\
 			create_list.c		\
+			fill_arg.c		\
 			get_header.c		\
 			is_char.c		\
 			lexer.c			\
@@ -59,6 +62,7 @@ SRC_FILES_LIB=		check_empty.c		\
 			free_first.c		\
 			free_tab.c		\
 			get_next_line.c		\
+			my_getnbr.c		\
 			my_putnbr_file.c	\
 			my_putstrs.c		\
 			my_memset.c		\
