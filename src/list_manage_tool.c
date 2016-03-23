@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:55:59 2016 Da Fonseca Samuel
-** Last update Tue Mar 22 15:55:59 2016 Da Fonseca Samuel
+** Last update Wed Mar 23 03:31:17 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -16,8 +16,8 @@ t_prog		*create_prog(char *name)
 
   if ((new_elem = malloc(sizeof(t_prog))) == NULL)
     return (my_perror(MALLOC_FAILED));
-  new_elem->prog_number = 0;
-  new_elem->address = 0;
+  new_elem->prog_number = -1;
+  new_elem->address = -1;
   new_elem->prog_name = (name == NULL) ? NULL : my_strdup(name);
   new_elem->next = NULL;
   return (new_elem);
@@ -79,7 +79,7 @@ int		check_list_for_prognb(t_vm *vm, int nb)
       if (vm->progs->prog_number == nb)
 	{
 	  vm->progs = tmp;
-	  return (1/* my_error("Prog_number already used") */);
+	  return (1);
 	}
       vm->progs = vm->progs->next;
     }
@@ -87,7 +87,7 @@ int		check_list_for_prognb(t_vm *vm, int nb)
   return (0);
 }
 
-int		check_list_for_address(t_vm *vm, unsigned int nb)
+int		check_list_for_address(t_vm *vm, int nb)
 {
   t_prog	*tmp;
 
@@ -95,7 +95,7 @@ int		check_list_for_address(t_vm *vm, unsigned int nb)
   while (vm->progs != NULL)
     {
       if (vm->progs->address == nb)
-	return (my_error("Address already used"));
+	return (1);
       vm->progs = vm->progs->next;
     }
   vm->progs = tmp;

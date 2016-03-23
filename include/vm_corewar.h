@@ -8,6 +8,9 @@
 # include <fcntl.h>
 # include "libmy.h"
 
+/*
+** Errors
+*/
 # define MALLOC_FAILED "Error: Malloc Failed"
 # define INVALID_OPTION "Error: Invalid option, try to use --help"
 # define OPEN_FAILED(file_name) "Error: Could not open file "#file_name
@@ -15,13 +18,16 @@
 # define USED_PROGNUMBER(x) "Error: Prog number "#x" already used"
 # define PLAYER_ALIVE(player_name) "Player "#player_name" is alive"
 # define PLAYER_WIN(winner_name) "Player "#winner_name" wins"
+
+
 # define NAME_BLOC 129
 # define COMMENT_BLOC 2049
+# define MEM_SIZE (6 * 1024)
 
 typedef struct		s_prog
 {
   int			prog_number;
-  unsigned int		address;
+  int			address;
   char			*prog_name;
   struct s_prog		*next;
 }			t_prog;
@@ -66,7 +72,7 @@ t_vm	*add_champ_to_list(t_vm *, char *);
 /*
 ** Checks for options
 */
-int	check_list_for_address(t_vm *, unsigned int);
+int	check_list_for_address(t_vm *, int);
 int	check_list_for_prognb(t_vm *, int);
 
 /*
@@ -80,6 +86,7 @@ int	check_list_for_prognb(t_vm *, int);
 int	check_options(char **, t_vm *, int);
 int	convert_to_little_endian(int);
 char	*get_binary(char *);
+
 /*
 ** Commands
 */
@@ -88,10 +95,12 @@ int	my_dump_memory(t_vm *, char *, char *);
 int	my_load_address(t_vm *, char *, char *);
 int	my_get_prognumber(t_vm *, char *, char *);
 int	check_file(t_vm *, char *, char *);
+
 /*
 ** Init default values
 */
 void	init_defaultvalues(t_vm *);
+void	init_progaddress(t_vm *);
 
 /*
 ** *********
