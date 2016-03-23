@@ -5,7 +5,7 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Tue Mar 22 19:36:51 2016 Poc
+## Last update Tue Mar 22 19:44:07 2016 Poc
 ##
 
 POC=			yes
@@ -43,6 +43,7 @@ SRC_FILES_ASM=		add_to_list.c		\
 			check_type.c		\
 			create_list.c		\
 			get_header.c		\
+			is_char.c		\
 			lexer.c			\
 			op_live.c		\
 			main.c			\
