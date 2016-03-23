@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Mar 22 14:58:29 2016 Arthur ARNAUD
-** Last update Wed Mar 23 01:49:17 2016 Arthur ARNAUD
+** Last update Wed Mar 23 02:01:45 2016 Poc
 ** Last update Tue Mar 22 21:23:47 2016 Arthur ARNAUD
 */
 
@@ -21,22 +21,24 @@ int	op_live(t_action *action, char *str, t_pos *pos)
   pos->prog_size += 1;
   action->identifier = 0x01;
   i = -1;
-  if (!(action->args = malloc(sizeof(t_arg) * 2)) ||
+  if (!(action->args = malloc(sizeof(t_arg *) * 3)) ||
       !(tab = str_to_word_tab(str, ',')) ||
       !(list_arg = str_to_word_tab("2", ' ')))
     return (1);
-  action->args[1].type = 0;
+  action->args[0] = malloc(sizeof(t_arg));
+  action->args[1] = NULL;
   while (tab[++i])
     {
+      printf("i = %d\n", i);
       if (i > 0 || (type = check_type(tab[i], pos)) == -1 ||
 	  check_args(type, list_arg[i], pos) ||
-	  fill_arg(type, tab[i], &action->args[i], pos))
+	  fill_arg(type, tab[i], action->args[i], pos))
 	return (1);
       add_prog_size(type, pos);
-      printf("action->args[1].type = %c\n", action->args[1].type);
-      printf("action->args[1].link_name = %s\n", action->args[1].link_name);
-      printf("action->args[1].pos_link = %d\n", action->args[1].pos_link);
-      printf("action->args[1].value = %d\n", action->args[1].value);
+      printf("action->args[1]->type = %c\n", action->args[0]->type);
+      printf("action->args[1]->link_name = %s\n", action->args[0]->link_name);
+      printf("action->args[1]->pos_link = %d\n", action->args[0]->pos_link);
+      printf("action->args[1]->value = %d\n", action->args[0]->value);
       printf("action->identifier = %c\n", action->identifier);
       printf("action->instruction = %s\n", action->instruction);
     }
