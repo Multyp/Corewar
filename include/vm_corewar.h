@@ -20,9 +20,39 @@
 # define PLAYER_WIN(winner_name) "Player "#winner_name" wins"
 
 
-# define NAME_BLOC 129
-# define COMMENT_BLOC 2049
+# define NAME_SIZE 128
+# define COMMENT_SIZE 2048
 # define MEM_SIZE (6 * 1024)
+# define MAX_ARGS_NUMBER 6
+
+/*
+** regs
+*/
+#define REG_NUMBER      16              /* r1 <--> rx */
+
+/*
+**
+*/
+#define T_REG           1       /* registre */
+#define T_DIR           2       /* directe  (ld  #1,r1  met 1 dans r1) */
+#define T_IND           4       /* indirecte toujours relatif
+                                   ( ld 1,r1 met ce qu'il y a l'adress (1+pc)
+                                   dans r1 (4 octecs )) */
+#define T_LAB           8       /* LABEL */
+
+/*
+** size
+*/
+#define IND_SIZE        2               /* en octet */
+#define REG_SIZE        4               /* en octet */
+#define DIR_SIZE        REG_SIZE        /* en octet */
+
+/*
+** live
+*/
+#define CYCLE_TO_DIE    1536    /* nombre de cycle pour etre d\'eclarer mort */
+#define CYCLE_DELTA     5
+#define NBR_LIVE        40
 
 typedef struct		s_prog
 {
@@ -35,14 +65,15 @@ typedef struct		s_prog
 typedef struct		s_champ
 {
   int			magic;
-  char			name[NAME_BLOC];
+  char			name[NAME_SIZE + 1];
   int			size;
-  char			comment[COMMENT_BLOC];
+  char			comment[COMMENT_SIZE + 1];
   struct s_champ	*next;
 }			t_champ;
 
 typedef struct		s_vm
 {
+  char			arena[MEM_SIZE + 1];
   int			dump;
   bool			file_opts[2];
   int			progs_nb;

@@ -5,13 +5,14 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 19 23:02:29 2016 marwane khsime
-** Last update Sat Mar 19 23:02:30 2016 marwane khsime
+** Last update Wed Mar 23 06:56:08 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
 
 t_vm	*init_vm(t_vm *vm)
 {
+  my_memset(vm->arena, 0, MEM_SIZE + 1);
   vm->dump = -1;
   vm->file_opts[0] = false;
   vm->file_opts[1] = false;

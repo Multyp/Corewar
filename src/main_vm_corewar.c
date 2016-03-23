@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:42:32 2016 Da Fonseca Samuel
-** Last update Wed Mar 23 06:19:53 2016 Da Fonseca Samuel
+** Last update Wed Mar 23 06:56:23 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -66,7 +66,6 @@ int	main(int ac, char **av, char **env)
   add_champions(&vm);
   check_champs_error(&vm);
   init_defaultvalues(&vm);
-  my_afflist(&vm);
   init_progaddress(&vm);
   my_afflist(&vm);
 
