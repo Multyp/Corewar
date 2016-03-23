@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Tue Mar 22 17:19:48 2016 Poc
-** Last update Tue Mar 22 19:05:16 2016 Poc
+** Last update Tue Mar 22 19:47:39 2016 Poc
 */
 
 #include "asm.h"
@@ -18,8 +18,14 @@ int	check_percent(char *str)
   if (str[1] == ':')
     while (str[i])
       {
+	if (icubed(LABEL_CHARS, str[i]) == 1)
+	  {
+	    printf("icubed failed\n");
+	    return (1);
+	  }
 	i++;
       }
+  return (0);
 }
 
 int	check_registery(char *str)
@@ -54,7 +60,7 @@ int	check_type(char *str, t_pos *pos)
 	return (1);
       }
   if (str[0] == '%')
-    check_percent(str);
+    if (check_percent(str))
     printf("wrong\n");
   return (-1);
 }
