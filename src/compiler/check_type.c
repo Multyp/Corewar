@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Tue Mar 22 17:19:48 2016 Poc
-** Last update Wed Mar 23 01:12:40 2016 Poc
+** Last update Wed Mar 23 01:37:14 2016 Poc
 */
 
 #include "asm.h"
@@ -59,6 +59,20 @@ int	check_registery(char *str)
   return (0);
 }
 
+int	is_it_an_int(char *str)
+{
+  int	i;
+
+  i = 0;
+  while (str[i])
+    {
+      if (str[i] > '9' || str[i] < '0')
+	return (1);
+      i++;
+    }
+  return (0);
+}
+
 char	check_type(char *str, t_pos *pos)
 {
   printf("CHECK_TYPE -> str = %s\n", str);
@@ -70,8 +84,13 @@ char	check_type(char *str, t_pos *pos)
 	  return (1);
     }
   else if (str[0] == '%')
-    if (check_percent(str + 1) == 0)
+    {
+      if (check_percent(str + 1) == 0)
       return (2);
+    }
+  else
+    if (!is_it_an_int(str))
+      return (3);
   printf("je return -1\n");
   return (-1);
 }
