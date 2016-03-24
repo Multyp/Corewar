@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 04:06:39 2016 Arthur ARNAUD
-** Last update Thu Mar 24 04:07:27 2016 Arthur ARNAUD
+** Last update Thu Mar 24 14:34:13 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -22,7 +22,7 @@ int	op_ldi(t_action *action, char *str, t_pos *pos)
       !(i = -1) || !(action->identifier = 0x0A) ||
       !(action->args = malloc(sizeof(t_arg *) * 4)) ||
       !(tab = str_to_word_tab(str, ',')) ||
-      !(list_arg = str_to_word_tab("123 123 1", ' ')) ||
+      !(list_arg = str_to_word_tab("123 12 1", ' ')) ||
       init_args(action, 3))
     return (1);
   while (tab[++i])
