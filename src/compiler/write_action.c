@@ -5,19 +5,19 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 16:25:34 2016 Poc
-** Last update Thu Mar 24 17:44:31 2016 Poc
+** Last update Thu Mar 24 17:48:26 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
 
 int	write_args(t_arg *arg, int fd)
 {
-  if (arg->type == 1)
-    write_registers();
-  else if (arg->type == 2)
-    write_direct();
-  else if (arg->type == 3)
-    write_indirects();
+  /* if (arg->type == 1) */
+  /*   write_registers(); */
+  /* else if (arg->type == 2) */
+  /*   write_direct(); */
+  /* else if (arg->type == 3) */
+  /*   write_indirects(); */
     return (0);
 }
 
