@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Mar 22 20:00:24 2016 Arthur ARNAUD
-** Last update Thu Mar 24 17:41:43 2016 Poc
+** Last update Thu Mar 24 22:22:34 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -16,7 +16,9 @@ int	check_args(char type, char *str, t_pos *pos)
 
   i = -1;
   while (str[++i])
-    if (str[i] == type)
-      return (1);
-  return (print_error("Syntax error\n", pos->line, 0));
+    {
+      if (str[i] == type + 48)
+	return (0);
+    }
+  return (print_error("Syntax error\n", pos->line, 1));
 }

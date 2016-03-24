@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 03:55:10 2016 Arthur ARNAUD
-** Last update Thu Mar 24 14:16:44 2016 Arthur ARNAUD
+** Last update Thu Mar 24 23:19:12 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -18,6 +18,7 @@ int	op_ld(t_action *action, char *str, t_pos *pos)
   char	**tab;
   char	**list_arg;
 
+  printf("lol\n");
   if ((c = 0) || !(pos->prog_size += 2) ||
       !(i = -1) || !(action->identifier = 0x02) ||
       !(action->args = malloc(sizeof(t_arg *) * 3)) ||
@@ -34,6 +35,7 @@ int	op_ld(t_action *action, char *str, t_pos *pos)
       add_prog_size(type, pos);
       c += (type << (6 - (i * 2)));
     }
+  printf("identifier = %d\n", action->identifier);
   action->coding_byte = c;
   return ((i < 2) ? 1 : 0);
 }
