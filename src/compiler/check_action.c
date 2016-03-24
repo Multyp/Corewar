@@ -5,12 +5,12 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Mar  6 18:29:49 2016 Arthur ARNAUD
-** Last update Thu Mar 24 02:35:17 2016 Poc
+** Last update Thu Mar 24 15:49:29 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
 
-int		check_name(char *str, t_action *action)
+int		check_name(char *str, t_action *action, t_pos *pos)
 {
   char		**tab;
   int		i;
@@ -19,7 +19,7 @@ int		check_name(char *str, t_action *action)
   if ((tab = str_to_word_tab
 	("live ld st add sub and or xor zjmp ldi sti fork lld lldi lfork aff"
 	 , ' ')) == NULL)
-    return (-1);
+    return (write(2, "Can't perform malloc\n", 21), -1);
   while (tab[i])
     {
       if (my_strcmp(tab[i], str) == 0)
@@ -32,7 +32,7 @@ int		check_name(char *str, t_action *action)
       i++;
     }
   free_tab(tab);
-  return (-1);
+  return (error("Syntax error\n", pos->line, -1));
 }
 
 int		check_action(char *str, t_action *action,
@@ -47,7 +47,7 @@ int		check_action(char *str, t_action *action,
   if (!(new_action = create_action_list()) ||
       !(str = format_instruction(str)) ||
       !(tab = cut_instruction(str)) ||
-      (ret = check_name(tab[0], new_action)) == -1)
+      (ret = check_name(tab[0], new_action, pos)) == -1)
     return (1);
   if (ftab[ret] != NULL)
     if (ftab[ret](new_action, tab[1], pos))

@@ -1,11 +1,11 @@
 /*
-** op_fork.c for op_fork in /CPE_2015_corewar/src/compiler/op
+1;4205;0c** op_fork.c for op_fork in /CPE_2015_corewar/src/compiler/op
 **
 ** Made by Arthur ARNAUD
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 01:18:25 2016 Arthur ARNAUD
-** Last update Thu Mar 24 01:18:50 2016 Arthur ARNAUD
+** Last update Thu Mar 24 17:23:17 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -39,5 +39,6 @@ int	op_fork(t_action *action, char *str, t_pos *pos)
       printf("action->identifier = %d\n", action->identifier);
       printf("action->instruction = %s\n", action->instruction);
     }
+  action->coding_byte = 0;
   return ((i < 1) ? 1 : 0);
 }

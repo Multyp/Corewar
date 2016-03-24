@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 01:20:39 2016 Arthur ARNAUD
-** Last update Thu Mar 24 01:21:40 2016 Arthur ARNAUD
+** Last update Thu Mar 24 17:23:48 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -39,5 +39,6 @@ int	op_lfork(t_action *action, char *str, t_pos *pos)
       printf("action->identifier = %d\n", action->identifier);
       printf("action->instruction = %s\n", action->instruction);
     }
+  action->coding_byte = 0;
   return ((i < 1) ? 1 : 0);
 }
