@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 13:01:09 2016 Poc
-** Last update Thu Mar 24 15:03:24 2016 Poc
+** Last update Thu Mar 24 23:52:57 2016 Poc
 */
 
 #include "asm.h"
@@ -34,11 +34,14 @@ int	write_header(t_header *header, char *name)
 {
   int	fd;
 
-  name = get_right_name(name);
+  if ((name = get_right_name(name)) == NULL)
+    return (1);
   header->prog_size = change_endian(header->prog_size);
   if ((fd = open(name, O_CREAT | O_TRUNC | O_WRONLY, 0644)) == -1 ||
       (write(fd, header, sizeof(t_header) - 4) == -1))
-    return (1);
-  close (fd);
+    {
+      printf("je casse ici\n");
+      return (1);
+    }
   return (fd);
 }

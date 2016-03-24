@@ -5,7 +5,7 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Thu Mar 24 17:39:16 2016 Poc
+## Last update Thu Mar 24 22:07:03 2016 Poc
 ##
 
 POC=			yes
@@ -57,6 +57,7 @@ SRC_FILES_ASM=		add_to_list.c		\
 			set_ftab.c		\
 			write_action.c		\
 			write_header.c		\
+			write_types.c		\
 			op/op_live.c		\
 			op/op_ld.c		\
 			op/op_st.c		\
