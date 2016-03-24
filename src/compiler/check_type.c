@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Tue Mar 22 17:19:48 2016 Poc
-** Last update Wed Mar 23 01:37:14 2016 Poc
+** Last update Thu Mar 24 00:51:01 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -75,7 +75,6 @@ int	is_it_an_int(char *str)
 
 char	check_type(char *str, t_pos *pos)
 {
-  printf("CHECK_TYPE -> str = %s\n", str);
   if (str[0] == 'r')
     {
       if (check_registery(str) == 0)
@@ -91,6 +90,5 @@ char	check_type(char *str, t_pos *pos)
   else
     if (!is_it_an_int(str))
       return (3);
-  printf("je return -1\n");
   return (-1);
 }

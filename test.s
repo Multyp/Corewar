@@ -1,7 +1,7 @@
 	.name "Tyron" ## bite
-	.comment "Just a basic pompes, traction"
+1	.comment "Just a basic pompes, traction" ;4205;0c
 	live %123
-bite:	live %1337
-	live r17
-	live %:r34
+bite:	zjmp %:lol
+	fork %:bite
+	lfork %:r34
 	live r0

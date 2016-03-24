@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Wed Mar 23 01:57:03 2016 Poc
+** Last update Thu Mar 24 01:29:33 2016 Arthur ARNAUD
 */
 
 #ifndef ASM_H_
@@ -100,7 +100,8 @@ int		check_args(char, char *, t_pos *);
 int		fill_arg(char, char *, t_arg *, t_pos *);
 int		add_action(t_action *, t_action *);
 int		add_label(t_label *, t_label *);
-int		icubed(char *, char );
+int		icubed(char *, char);
+int		init_args(t_action *, int);
 int		is_valid_label(char *, int);
 int		is_char_valid(char, char *);
 int		add_to_back(t_file *, char *);
@@ -135,5 +136,8 @@ void		showtab(char **);
 ** ================================
 */
 int	op_live(t_action *, char *, t_pos *);
+int	op_zjmp(t_action *, char *, t_pos *);
+int	op_fork(t_action *, char *, t_pos *);
+int	op_lfork(t_action *, char *, t_pos *);
 int	op_sti(t_action *, char *, t_pos *);
 #endif /* !ASM_H_*/

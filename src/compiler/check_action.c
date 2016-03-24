@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Mar  6 18:29:49 2016 Arthur ARNAUD
-** Last update Tue Mar 22 19:46:25 2016 Arthur ARNAUD
+** Last update Thu Mar 24 01:36:19 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -24,9 +24,8 @@ int		check_name(char *str, t_action *action)
     {
       if (my_strcmp(tab[i], str) == 0)
 	{
-	  printf("strcmp match -> tab[i] |%s| et str |%s|\n", tab[i], str);
+	  printf("str = %s\n", str);
 	  action->instruction = str;
-	  printf("action->insctruction -> %s\n", action->instruction);
 	  free_tab(tab);
 	  return (i);
 	}

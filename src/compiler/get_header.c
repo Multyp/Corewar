@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Wed Mar 16 17:17:26 2016 Clement Peau
-** Last update Tue Mar 22 16:56:14 2016 Poc
+** Last update Thu Mar 24 00:53:35 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -39,10 +39,7 @@ int		get_comment(t_header *header, char *str)
   int		k;
 
   if (my_strncmp(str, COMMENT_CMD_STRING, my_strlen(COMMENT_CMD_STRING)) == 0)
-    {
-      printf("my_strncmp\n");
-      return (0);
-    }
+    return (0);
   i = 0;
   while (str[i++] != '"')
     if (str[i] == 0)

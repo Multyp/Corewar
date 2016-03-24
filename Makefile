@@ -5,7 +5,7 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Wed Mar 23 00:29:41 2016 Poc
+## Last update Thu Mar 24 02:07:35 2016 Arthur ARNAUD
 ##
 
 POC=			yes
@@ -48,11 +48,16 @@ SRC_FILES_ASM=		add_to_list.c		\
 			get_header.c		\
 			is_char.c		\
 			lexer.c			\
-			op_live.c		\
 			main.c			\
 			format_instruction.c	\
 			check_action.c		\
-			set_ftab.c
+			init_args.c		\
+			set_ftab.c		\
+			op/op_live.c		\
+			op/op_fork.c		\
+			op/op_lfork.c		\
+			op/op_sti.c		\
+			op/op_zjmp.c
 
 SRC_ASM=		$(addprefix src/compiler/,$(SRC_FILES_ASM))
 

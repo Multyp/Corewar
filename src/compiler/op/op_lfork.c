@@ -1,17 +1,16 @@
 /*
-** op_live.c for op_live in /CPE_2015_corewar/src/compiler
+** op_lfork.c for op_lfork in /CPE_2015_corewar/src/compiler/op
 **
 ** Made by Arthur ARNAUD
 ** Login   <arnaud_e@epitech.net>
 **
-** Started on  Tue Mar 22 14:58:29 2016 Arthur ARNAUD
-** Last update Thu Mar 24 00:54:52 2016 Arthur ARNAUD
-** Last update Tue Mar 22 21:23:47 2016 Arthur ARNAUD
+** Started on  Thu Mar 24 01:20:39 2016 Arthur ARNAUD
+** Last update Thu Mar 24 01:21:40 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
 
-int	op_live(t_action *action, char *str, t_pos *pos)
+int	op_lfork(t_action *action, char *str, t_pos *pos)
 {
   int	i;
   char	type;
@@ -19,7 +18,7 @@ int	op_live(t_action *action, char *str, t_pos *pos)
   char	**list_arg;
 
   pos->prog_size += 1;
-  action->identifier = 0x01;
+  action->identifier = 0x0F;
   i = -1;
   if (!(action->args = malloc(sizeof(t_arg *) * 2)) ||
       !(tab = str_to_word_tab(str, ',')) ||
