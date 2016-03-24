@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Mar  6 18:29:49 2016 Arthur ARNAUD
-** Last update Thu Mar 24 15:49:29 2016 Arthur ARNAUD
+** Last update Thu Mar 24 17:28:51 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -32,7 +32,7 @@ int		check_name(char *str, t_action *action, t_pos *pos)
       i++;
     }
   free_tab(tab);
-  return (error("Syntax error\n", pos->line, -1));
+  return (print_error("Syntax error\n", pos->line, -1));
 }
 
 int		check_action(char *str, t_action *action,
