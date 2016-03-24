@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 17 15:30:59 2016 Clement Peau
-** Last update Tue Mar 22 17:15:43 2016 Poc
+** Last update Thu Mar 24 02:20:07 2016 Poc
 */
 
 #include "asm.h"
@@ -32,6 +32,7 @@ int		add_action(t_action *action, t_action *new_action)
 
   if (action->instruction == NULL)
     {
+      printf("im NULL\n");
       action->next = NULL;
       action->coding_byte = new_action->coding_byte;
       action->instruction = new_action->instruction;
@@ -44,6 +45,7 @@ int		add_action(t_action *action, t_action *new_action)
   while (tmp_list->next)
     tmp_list = tmp_list->next;
   tmp_list->next = new_action;
+  new_action->next = NULL;
   return (0);
 }
 

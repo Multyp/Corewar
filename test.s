@@ -4,4 +4,3 @@
 bite:	zjmp %:lol
 	fork %:bite
 	lfork %:r34
-	live r0

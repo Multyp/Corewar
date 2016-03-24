@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 16:03:05 2016 Arthur ARNAUD
-** Last update Tue Mar 22 15:36:21 2016 Arthur ARNAUD
+** Last update Thu Mar 24 02:37:21 2016 Poc
 */
 
 #include "asm.h"
@@ -15,6 +15,8 @@ void	test_action(t_action *action)
   while (action != NULL)
     {
       printf("action = %s\n", action->instruction);
+      printf("identifer-> %d\n", action->identifier);
+      printf("\n");
       action = action->next;
     }
 }
@@ -47,7 +49,10 @@ int	lexer(t_label *label, t_action *action, t_header *header, int fd)
 	{
 	  if (!(str = check_label(str, label, &pos)) ||
 	      (check_action(str, action, &pos, ftab)))
-	    return (1);
+	    {
+	      printf("je viens de pter\n");
+	      return (1);
+	    }
 	}
       else
 	if (get_header(str, header))
