@@ -5,7 +5,7 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Thu Mar 24 04:18:18 2016 Arthur ARNAUD
+## Last update Thu Mar 24 13:26:21 2016 Poc
 ##
 
 POC=			yes
@@ -52,7 +52,9 @@ SRC_FILES_ASM=		add_to_list.c		\
 			format_instruction.c	\
 			check_action.c		\
 			init_args.c		\
+			parser.c		\
 			set_ftab.c		\
+			write_header.c		\
 			op/op_live.c		\
 			op/op_ld.c		\
 			op/op_st.c		\
@@ -83,6 +85,7 @@ SRC_FILES_LIB=		check_empty.c		\
 			my_putstrs.c		\
 			my_memset.c		\
 			my_showtab.c		\
+			my_strcat.c		\
 			my_strcmp.c		\
 			my_strcpy.c		\
 			my_strdup.c		\
