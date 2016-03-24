@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Tue Mar  1 15:48:51 2016 Clement Peau
-** Last update Thu Mar 17 12:09:22 2016 Clement Peau
+** Last update Thu Mar 24 14:17:10 2016 Poc
 */
 
 #include "asm.h"
@@ -45,15 +45,12 @@ char		*get_next_line(const int fd)
       if (buff[i] == '\n' || buff[i] == 0)
 	{
 	  buff[i] = 0;
-	  free(str);
-	  return (buff);
+	  return (free(str), buff);
 	}
       buff = my_realloc(buff);
       i++;
     }
-  free(str);
   if (buff[0] == 0)
-    return (NULL);
-  else
-    return (buff);
+    return (free(str), NULL);
+  return (free(str), buff);
 }

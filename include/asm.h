@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Thu Mar 24 04:14:33 2016 Arthur ARNAUD
+** Last update Thu Mar 24 16:51:01 2016 Poc
 */
 
 #ifndef ASM_H_
@@ -119,6 +119,7 @@ char		*epur_str(char *);
 char		*get_line_not_empty(int, int *);
 char		*get_next_line(int);
 char		*my_strdup(char *);
+int		change_endian(int);
 int		check_empty(char *);
 int		my_getnbr(char *);
 int		my_memset(void *, char , int);
@@ -127,9 +128,17 @@ int		my_strlen(char *);
 int		my_strcpy(char *, char *);
 int		my_strcmp(char *, char *);
 int		my_strncmp(char *, char *, int);
+void		my_strcat(char *, char *);
 void		*free_first(t_file *);
 void		free_tab(char **);
 void		showtab(char **);
+/*
+** ================================
+**             PARSER
+** ================================
+*/
+int		parser(t_label *, t_action *, t_header *, char *);
+int		write_header(t_header *, char *);
 /*
 ** ================================
 **        FUNCTION_POINTER

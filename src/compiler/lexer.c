@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 16:03:05 2016 Arthur ARNAUD
-** Last update Thu Mar 24 13:08:49 2016 Poc
+** Last update Thu Mar 24 14:32:52 2016 Poc
 */
 
 #include "asm.h"
@@ -63,6 +63,7 @@ int	lexer(t_label *label, t_action *action, t_header *header, int fd)
   test_label(label);
   printf("header->progname |%s|\n", header->prog_name);
   printf("header->comment |%s|\n", header->comment);
-
+  printf("%d\n", pos.prog_size);
+  header->prog_size = pos.prog_size;
   return (0);
 }

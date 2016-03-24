@@ -5,7 +5,7 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Thu Mar 24 13:26:21 2016 Poc
+## Last update Thu Mar 24 17:39:16 2016 Poc
 ##
 
 POC=			yes
@@ -52,8 +52,10 @@ SRC_FILES_ASM=		add_to_list.c		\
 			format_instruction.c	\
 			check_action.c		\
 			init_args.c		\
+			print_error.c		\
 			parser.c		\
 			set_ftab.c		\
+			write_action.c		\
 			write_header.c		\
 			op/op_live.c		\
 			op/op_ld.c		\
@@ -74,7 +76,8 @@ SRC_FILES_ASM=		add_to_list.c		\
 
 SRC_ASM=		$(addprefix src/compiler/,$(SRC_FILES_ASM))
 
-SRC_FILES_LIB=		check_empty.c		\
+SRC_FILES_LIB=		change_endian.c		\
+			check_empty.c		\
 			convert_to_nb.c		\
 			epur.c			\
 			free_first.c		\
@@ -83,6 +86,7 @@ SRC_FILES_LIB=		check_empty.c		\
 			my_getnbr.c		\
 			my_putnbr_file.c	\
 			my_putstrs.c		\
+			my_putnbr.c		\
 			my_memset.c		\
 			my_showtab.c		\
 			my_strcat.c		\
