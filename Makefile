@@ -5,7 +5,7 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Thu Mar 24 02:07:35 2016 Arthur ARNAUD
+## Last update Thu Mar 24 04:18:18 2016 Arthur ARNAUD
 ##
 
 POC=			yes
@@ -54,10 +54,21 @@ SRC_FILES_ASM=		add_to_list.c		\
 			init_args.c		\
 			set_ftab.c		\
 			op/op_live.c		\
-			op/op_fork.c		\
-			op/op_lfork.c		\
+			op/op_ld.c		\
+			op/op_st.c		\
+			op/op_add.c		\
+			op/op_sub.c		\
+			op/op_and.c		\
+			op/op_or.c		\
+			op/op_xor.c		\
+			op/op_zjmp.c		\
+			op/op_ldi.c		\
 			op/op_sti.c		\
-			op/op_zjmp.c
+			op/op_fork.c		\
+			op/op_lld.c		\
+			op/op_lldi.c		\
+			op/op_lfork.c		\
+			op/op_aff.c
 
 SRC_ASM=		$(addprefix src/compiler/,$(SRC_FILES_ASM))
 

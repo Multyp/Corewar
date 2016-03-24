@@ -1,16 +1,16 @@
 /*
-** op_sti.c for op_sti in /CPE_2015_corewar/src/compiler
+** op_sub.c for op_sub in /CPE_2015_corewar/src/compiler/op
 **
 ** Made by Arthur ARNAUD
 ** Login   <arnaud_e@epitech.net>
 **
-** Started on  Wed Mar 23 00:26:41 2016 Arthur ARNAUD
-** Last update Thu Mar 24 03:54:14 2016 Arthur ARNAUD
+** Started on  Thu Mar 24 04:01:21 2016 Arthur ARNAUD
+** Last update Thu Mar 24 04:01:46 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
 
-int	op_sti(t_action *action, char *str, t_pos *pos)
+int	op_sub(t_action *action, char *str, t_pos *pos)
 {
   int	i;
   char	c;
@@ -19,10 +19,10 @@ int	op_sti(t_action *action, char *str, t_pos *pos)
   char	**list_arg;
 
   if ((c = 0) || !(pos->prog_size += 2) ||
-      !(i = -1) || !(action->identifier = 0x0B) ||
+      !(i = -1) || !(action->identifier = 0x05) ||
       !(action->args = malloc(sizeof(t_arg *) * 4)) ||
       !(tab = str_to_word_tab(str, ',')) ||
-      !(list_arg = str_to_word_tab("1 123 123", ' ')) ||
+      !(list_arg = str_to_word_tab("1 1 1", ' ')) ||
       init_args(action, 3))
     return (1);
   while (tab[++i])

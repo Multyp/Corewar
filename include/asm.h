@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Thu Mar 24 01:29:33 2016 Arthur ARNAUD
+** Last update Thu Mar 24 04:14:33 2016 Arthur ARNAUD
 */
 
 #ifndef ASM_H_
@@ -136,8 +136,20 @@ void		showtab(char **);
 ** ================================
 */
 int	op_live(t_action *, char *, t_pos *);
+int	op_ld(t_action *, char *, t_pos *);
+int	op_st(t_action *, char *, t_pos *);
+int	op_add(t_action *, char *, t_pos *);
+int	op_sub(t_action *, char *, t_pos *);
+int	op_and(t_action *, char *, t_pos *);
+int	op_or(t_action *, char *, t_pos *);
+int	op_xor(t_action *, char *, t_pos *);
 int	op_zjmp(t_action *, char *, t_pos *);
-int	op_fork(t_action *, char *, t_pos *);
-int	op_lfork(t_action *, char *, t_pos *);
+int	op_ldi(t_action *, char *, t_pos *);
 int	op_sti(t_action *, char *, t_pos *);
+int	op_fork(t_action *, char *, t_pos *);
+int	op_lld(t_action *, char *, t_pos *);
+int	op_lldi(t_action *, char *, t_pos *);
+int	op_lfork(t_action *, char *, t_pos *);
+int	op_aff(t_action *, char *, t_pos *);
+
 #endif /* !ASM_H_*/

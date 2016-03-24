@@ -2,5 +2,6 @@ TACHES TITANESQUES A FAIRE POUR POC
 
 ->Faire attention aux epur str sur le .comment
 
-J'ai fini les fonction live,fork,lfork et zjmp aui ont la meme forme wt du coup il semblerait qu'il y ai un probleme au niveau de l'ajout de maillon a la list
-action le acion->insctruction n'est pas modifie ...
+J'ai fait toutes les fonctions il faudra checker un part un si les arg que chaque instruction peut prendre est ok mais sinon en sois ca c'est fini :)
+
+Ducoup tu peux commencer la partie lecture de la liste chainee action et ecriture dans le fichier .cor
