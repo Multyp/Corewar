@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 17:50:43 2016 Poc
-** Last update Fri Mar 25 17:55:47 2016 Poc
+** Last update Fri Mar 25 18:29:06 2016 Poc
 */
 
 #include "asm.h"
@@ -14,20 +14,24 @@ int	find_label_short(t_label *label, char *name, int pos)
 {
   int	i;
 
-  if (label->name || name)
+  test_label(label);
+  if (label->name == NULL || name == NULL)
     {
       printf("FIND_LABEL_SHORT---Returning at TOP...\n");
       return (-1);
     }
-  printf("FIND_LABEL_SHORT---label->name %s\n", label->name);
-  printf("FIND_LABEL_SHORT---name %s\n", name);
   while (label && my_strcmp(label->name, name) != 0)
     {
+      printf("FIND_LABEL_SHORT---name %s\n", name);
+      printf("FIND_LABEL_SHORT---label->name %s\n", label->name);
       label = label->next;
     }
-  printf("FIND_LABEL_SHORT---label->name %s\n", label->name);
-  printf("FIND_LABEL_SHORT---find_label->pos %d && label->pos%d\n", pos, label->pos);
-  if (pos >= label->pos)
+  if (label)
+    {
+      printf("FIND_LABEL_SHORT---label->name %s\n", label->name);
+      printf("FIND_LABEL_SHORT---find_label->pos %d && label->pos%d\n", pos, label->pos);
+    }
+  if (label && pos >= label->pos)
     {
       i = 0xFFFF;
       return (i - pos);
