@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Thu Mar 24 22:17:28 2016 Arthur ARNAUD
+** Last update Fri Mar 25 12:54:46 2016 Poc
 */
 
 #ifndef ASM_H_
@@ -91,23 +91,24 @@ t_ftab		*set_ftab(t_ftab *);
 **              LEXER
 ** ================================
 */
+char		check_type(char *, t_pos *);
 char		*add_to_label(char *, int, t_label *, int);
 char		*check_label(char *, t_label *, t_pos *);
 char		*format_instruction(char *);
 char		**cut_instruction(char *);
-char		check_type(char *, t_pos *);
-int		check_args(char, char *, t_pos *);
-int		fill_arg(char, char *, t_arg *, t_pos *);
 int		add_action(t_action *, t_action *);
 int		add_label(t_label *, t_label *);
+int		add_to_back(t_file *, char *);
+int		check_action(char *, t_action *, t_pos *, t_ftab *);
+int		check_args(char, char *, t_pos *);
+int		fill_arg(char, char *, t_arg *, t_pos *);
+int		get_header(char *, t_header *);
 int		icubed(char *, char);
 int		init_args(t_action *, int);
 int		is_valid_label(char *, int);
 int		is_char_valid(char, char *);
-int		add_to_back(t_file *, char *);
-int		check_action(char *, t_action *, t_pos *, t_ftab *);
-int		get_header(char *, t_header *);
 int		lexer(t_label *, t_action *, t_header *, int);
+int		print_error(char *, int, int);
 void		add_prog_size(char, t_pos *);
 /*
 ** ================================
@@ -131,6 +132,7 @@ int		my_strncmp(char *, char *, int);
 void		my_strcat(char *, char *);
 void		*free_first(t_file *);
 void		free_tab(char **);
+void		my_putnbr(int);
 void		showtab(char **);
 
 /*
@@ -139,6 +141,7 @@ void		showtab(char **);
 ** ================================
 */
 int		parser(t_label *, t_action *, t_header *, char *);
+int		write_action(t_action *, int, t_label *);
 int		write_header(t_header *, char *);
 /*
 ** ================================
