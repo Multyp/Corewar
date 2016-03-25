@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 16:03:05 2016 Arthur ARNAUD
-** Last update Thu Mar 24 23:28:42 2016 Arthur ARNAUD
+** Last update Fri Mar 25 12:41:44 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -15,7 +15,6 @@ void	test_action(t_action *action)
   while (action != NULL)
     {
       printf("action = %s\n", action->instruction);
-      printf("\n");
       action = action->next;
     }
 }
@@ -60,8 +59,6 @@ int	lexer(t_label *label, t_action *action, t_header *header, int fd)
   printf("header->progname |%s|\n", header->prog_name);
   printf("header->comment |%s|\n", header->comment);
   printf("prog_size = %d\n", pos.prog_size);
-  printf("======================================================\n");
-  printf("======================================================\n");
   printf("======================================================\n");
   header->prog_size = pos.prog_size;
   return (0);

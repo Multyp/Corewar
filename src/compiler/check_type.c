@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Tue Mar 22 17:19:48 2016 Poc
-** Last update Thu Mar 24 02:54:10 2016 Arthur ARNAUD
+** Last update Fri Mar 25 12:43:38 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -48,7 +48,6 @@ int	check_registery(char *str)
   int	i;
 
   i = 1;
-  printf("check_registery\n");
   while (str[i])
     {
       if (str[i] > 9 && str[i] < 0)
@@ -57,7 +56,6 @@ int	check_registery(char *str)
     }
   if (my_getnbr(str) > REG_NUMBER)
     return (1);
-  printf("lul\n");
   return (0);
 }
 
@@ -77,7 +75,6 @@ int	is_it_an_int(char *str)
 
 char	check_type(char *str, t_pos *pos)
 {
-  printf("check_type\n");
   if (str[0] == 'r')
     {
       if (check_registery(str) == 1)
