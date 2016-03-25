@@ -20,10 +20,10 @@ tirf:	live	%42
 	ld	%0,r11
 	fork	%:tirvd
 	live	%42
-	sti	r10,%-510,%0
-	sti	r10,%-404,%0
-	sti	r10,%-303,%0
-	sti	r10,%-202,%0
+	sti	r10,%510,%0
+	sti	r10,%404,%0
+	sti	r10,%303,%0
+	sti	r10,%202,%0
 	ld	%0,r11
 	zjmp	%:tirf
 
@@ -32,8 +32,8 @@ tirop:	ld	%368,r2
 	ld	%4,r4
 
 tirb:	live	%1
-	sti	r10,%-510,r2
-	sti	r10,%-510,r3
+	sti	r10,%510,r2
+	sti	r10,%510,r3
 	add	r4,r5,r4
 	add	r3,r4,r3
 	sub	r2,r4,r2
@@ -65,18 +65,18 @@ p32deb:	zjmp	%0
 p32:	sub	r6,r4,r6
 	add	r6,r6,r11
 	ldi	%:p32deb,r6,r7
-	sti	r7,%-510,r11
+	sti	r7,%510,r11
 p32li:	live	%1
 	ld	%0,r10
-	sti	r7,%-250,r6
+	sti	r7,%250,r6
 	zjmp	%-192
 
 tirvd:	zjmp	%:tirvd2
 
 bite:	sti     r1,%:copie,%2
         ldi     %:copie,%3,r2
-        sti     r2,%:entree,%-4
-        ldi     %:copie,%-1,r2
+        sti     r2,%:entree,%4
+        ldi     %:copie,%1,r2
         sti     r2,%:entree,%-8
 
 	sti	r1,%:p32li,%1
@@ -106,9 +106,9 @@ b1:	add	r2,r4,r2
 
 top:	live	%42
 	ld	%9,r3
-	sti	r3,%:p32deb,%-6
+	sti	r3,%:p32deb,%6
 	ld	%2,r3
-	sti	r3,%:p32deb,%-16
+	sti	r3,%:p32deb,%16
 	ld	%0,r3
 	zjmp	%:topd
 
@@ -165,9 +165,9 @@ tart:	sti	r1,%:p64li,%1
 tirvd2:	zjmp	%:tirdow
 
 topd:	ld	%9,r3
-	sti	r3,%:fin,%-6
+	sti	r3,%:fin,%6
 	ld	%2,r3
-	sti	r3,%:fin,%-16
+	sti	r3,%:fin,%16
 	ld	%0,r3
 	zjmp	%:infi
 
