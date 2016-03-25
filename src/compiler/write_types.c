@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 17:50:43 2016 Poc
-** Last update Fri Mar 25 15:33:46 2016 Poc
+** Last update Fri Mar 25 17:55:47 2016 Poc
 */
 
 #include "asm.h"
@@ -15,16 +15,19 @@ int	find_label_short(t_label *label, char *name, int pos)
   int	i;
 
   if (label->name || name)
-    return (-1);
-  printf("label->name %s\n", label->name);
-  printf("name %s\n", name);
+    {
+      printf("FIND_LABEL_SHORT---Returning at TOP...\n");
+      return (-1);
+    }
+  printf("FIND_LABEL_SHORT---label->name %s\n", label->name);
+  printf("FIND_LABEL_SHORT---name %s\n", name);
   while (label && my_strcmp(label->name, name) != 0)
     {
       label = label->next;
     }
-  printf("AFTR - label->name %s\n", label->name);
-  printf("find_label->pos %d && label->pos%d\n", pos, label->pos);
-  if (pos > label->pos)
+  printf("FIND_LABEL_SHORT---label->name %s\n", label->name);
+  printf("FIND_LABEL_SHORT---find_label->pos %d && label->pos%d\n", pos, label->pos);
+  if (pos >= label->pos)
     {
       i = 0xFFFF;
       return (i - pos);
@@ -32,39 +35,49 @@ int	find_label_short(t_label *label, char *name, int pos)
   if (label)
     return (label->pos - pos);
   else
-    return (-1);
+    {
+      printf("FIND_LABEL_SHORT---Returning at BOT...\n");
+      return (-1);
+    }
 }
 
 int	find_label(t_label *label, char *name, int pos)
 {
   int	i;
 
-  if (label->name || name)
-    return (-1);
-  printf("label->name %s\n", label->name);
-  printf("name %s\n", name);
+  printf("FIND_LABEL---label->name %s\nname %s\n", label->name, name);
+  if (label->name == NULL || name == NULL)
+    {
+      printf("FIND_LABEL---label->name || name\n");
+      return (-1);
+    }
   while (label && my_strcmp(label->name, name) != 0)
     {
       label = label->next;
     }
-  printf("AFTR - label->name %s\n", label->name);
-  printf("find_label->pos %d && label->pos%d\n", pos, label->pos);
-  if (pos > label->pos)
+  if (label && pos > label->pos)
     {
       i = 0xFFFFFFFF;
-      return (i - pos);
+      printf("FIND_LABEL---Returning i - pos + 2 = %d\n", i - pos + 2);
+      return (i - pos + 2);
     }
   if (label)
-    return (label->pos - pos);
+    {
+      printf("FIND_LABEL---Returning label->pos - pos - 1 = %d\n", label->pos- pos - 1);
+      return (label->pos - pos - 1);
+    }
   else
-    return (-1);
+    {
+      printf("FIND_LABEL---Returning BOT...\n");
+      return (-1);
+    }
 }
 
 int	write_registers(t_arg *arg, int fd)
 {
   char	c;
 
-  printf("arg->value %d\n", arg->value);
+  printf("WRITE_REGISTERS---arg->value %d\n", arg->value);
   c = arg->value;
   write(fd, &c, 1);
   return (0);
@@ -74,17 +87,20 @@ int	write_direct(t_arg *arg, int fd, t_label *label)
 {
   int	new_endian;
 
-  printf("je suis un direct\n");
-  printf("arg->link_name %s\n", arg->link_name);
+  printf("WRITE_DIRECT---je suis un direct\n");
+  printf("WRITE_DIRECT---arg->link_name %s\n", arg->link_name);
   if (arg->link_name != NULL)
     {
-      printf("j'ai un label %s\n", arg->link_name);
+      printf("WRITE_DIRECT---j'ai un label %s\n", arg->link_name);
       if ((new_endian =
 	   find_label(label, arg->link_name, arg->pos_link)) == -1)
-	return (1);
-      printf("label->pos %d\n", new_endian);
+	{
+	  printf("WRITE_DIRECT---I just broke sadface\n");
+	  return (1);
+	}
+      printf("WRITE_DIRECT---label->pos %x\n", new_endian);
       new_endian = change_endian(new_endian);
-      printf("label->pos %d\n", new_endian);
+      printf("WRITE_DIRECT---label->pos %x\n", new_endian);
       write(fd, &new_endian, 4);
     }
   else
@@ -99,17 +115,20 @@ int	write_odds(t_arg *arg, int fd, t_label *label)
 {
   int	new_endian;
 
-  printf("je suis un direct\n");
-  printf("arg->link_name %s\n", arg->link_name);
+  printf("WRITE_ODDS---je suis un odd\n");
+  printf("WRITE_ODDS---arg->link_name %s\n", arg->link_name);
   if (arg->link_name != NULL)
     {
-      printf("j'ai un label %s\n", arg->link_name);
+      printf("WRITE_ODDS---j'ai un label %s\n", arg->link_name);
       if ((new_endian =
 	   find_label_short(label, arg->link_name, arg->pos_link)) == -1)
-	return (1);
-      printf("label->pos %d\n", new_endian);
+	{
+	  printf("WRITE_ODDS---Returning...\n");
+	  return (1);
+	}
+      printf("WRITE_ODDS---label->pos %d\n", new_endian);
       new_endian = (arg->value>>8) | (arg->value<<8);
-      printf("label->pos %d\n", new_endian);
+      printf("WRITE_ODDS---label->pos %d\n", new_endian);
       write(fd, &new_endian, 2);
     }
   else
