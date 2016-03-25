@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Fri Mar 25 13:40:51 2016 Poc
+** Last update Fri Mar 25 18:49:59 2016 Poc
 */
 
 #ifndef ASM_H_
@@ -20,7 +20,7 @@
 # define COMMENT_CHAR '#'
 # define LABEL_CHAR ':'
 # define DIRECT_CHAR '%'
-# define LABEL_CHARS "abcdefghijklmnopqrstuvwxyz_012345678"
+# define LABEL_CHARS "abcdefghijklmnopqrstuvwxyz_0123456789"
 # define NAME_CMD_STRING ".name"
 # define COMMENT_CMD_STRING ".comment"
 # define REG_NUMBER 16

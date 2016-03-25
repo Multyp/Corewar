@@ -5,17 +5,17 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 16:25:34 2016 Poc
-** Last update Fri Mar 25 17:56:10 2016 Poc
+** Last update Fri Mar 25 19:31:59 2016 Poc
 */
 
 #include "asm.h"
 
 int	write_args(t_arg *arg, int fd, t_label *label)
 {
-  if (arg->type == 1 && write_registers(arg, fd) == 1 ||
-      arg->type == 2 && write_direct(arg, fd, label) == 1 ||
-      arg->type == 3 && write_indirects(arg, fd) == 1 ||
-      arg->type == 4 && write_odds(arg, fd, label) == 1)
+  if ((arg->type == 1 && write_registers(arg, fd) == 1) ||
+      (arg->type == 2 && write_direct(arg, fd, label) == 1) ||
+      (arg->type == 3 && write_indirects(arg, fd) == 1) ||
+      (arg->type == 4 && write_odds(arg, fd, label) == 1))
     {
       printf("WRITE_ARGS---Returning...\n");
       return (1);

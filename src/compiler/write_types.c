@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 17:50:43 2016 Poc
-** Last update Fri Mar 25 18:29:06 2016 Poc
+** Last update Fri Mar 25 18:39:44 2016 Poc
 */
 
 #include "asm.h"
@@ -14,7 +14,6 @@ int	find_label_short(t_label *label, char *name, int pos)
 {
   int	i;
 
-  test_label(label);
   if (label->name == NULL || name == NULL)
     {
       printf("FIND_LABEL_SHORT---Returning at TOP...\n");

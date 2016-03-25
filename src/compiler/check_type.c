@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Tue Mar 22 17:19:48 2016 Poc
-** Last update Fri Mar 25 12:43:38 2016 Arthur ARNAUD
+** Last update Fri Mar 25 18:47:22 2016 Poc
 */
 
 #include "asm.h"
@@ -15,9 +15,11 @@ int	check_direct(char *str)
   int	i;
 
   i = 0;
+  if (str[i] == '-')
+    i++;
   while (str[i])
     {
-      if (str[i] > '9' || str[i] < '0')
+      if ((str[i] > '9' || str[i] < '0'))
 	  return (1);
       i++;
     }

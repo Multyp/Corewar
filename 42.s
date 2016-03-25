@@ -150,14 +150,14 @@ tart:	sti	r1,%:p64li,%1
 	zjmp	%:p64
 	sub	r2,r4,r2
 	zjmp	%:p32
-#	sub	r2,r4,r2
-#	zjmp	%:infi
-#	sub	r2,r4,r2
-#	zjmp	%:infi
-#	sub	r2,r4,r2
-#	zjmp	%:infi
-#	sub	r2,r4,r2
-#	zjmp	%:infi
+	sub	r2,r4,r2
+	zjmp	%:infi
+	sub	r2,r4,r2
+	zjmp	%:infi
+	sub	r2,r4,r2
+	zjmp	%:infi
+	sub	r2,r4,r2
+	zjmp	%:infi
 	ld	%0,r2
 	zjmp	%:infi
 
