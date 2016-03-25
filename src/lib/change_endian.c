@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 14:57:54 2016 Poc
-** Last update Thu Mar 24 15:37:25 2016 Poc
+** Last update Fri Mar 25 13:34:33 2016 Poc
 */
 
 int	change_endian(int nb)

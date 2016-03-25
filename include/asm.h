@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Fri Mar 25 12:54:46 2016 Poc
+** Last update Fri Mar 25 13:40:51 2016 Poc
 */
 
 #ifndef ASM_H_
@@ -86,6 +86,7 @@ t_label		*create_label_list();
 t_action       	*create_action_list();
 t_file		*create_file_list();
 t_ftab		*set_ftab(t_ftab *);
+
 /*
 ** ================================
 **              LEXER
@@ -110,6 +111,7 @@ int		is_char_valid(char, char *);
 int		lexer(t_label *, t_action *, t_header *, int);
 int		print_error(char *, int, int);
 void		add_prog_size(char, t_pos *);
+
 /*
 ** ================================
 **              LIB
@@ -143,26 +145,31 @@ void		showtab(char **);
 int		parser(t_label *, t_action *, t_header *, char *);
 int		write_action(t_action *, int, t_label *);
 int		write_header(t_header *, char *);
+int		write_registers(t_arg *, int);
+int		write_direct(t_arg *, int, t_label *);
+int		write_odds(t_arg *, int, t_label *);
+int		write_indirects(t_arg *, int);
+
 /*
 ** ================================
 **        FUNCTION_POINTER
 ** ================================
 */
-int	op_live(t_action *, char *, t_pos *);
-int	op_ld(t_action *, char *, t_pos *);
-int	op_st(t_action *, char *, t_pos *);
-int	op_add(t_action *, char *, t_pos *);
-int	op_sub(t_action *, char *, t_pos *);
-int	op_and(t_action *, char *, t_pos *);
-int	op_or(t_action *, char *, t_pos *);
-int	op_xor(t_action *, char *, t_pos *);
-int	op_zjmp(t_action *, char *, t_pos *);
-int	op_ldi(t_action *, char *, t_pos *);
-int	op_sti(t_action *, char *, t_pos *);
-int	op_fork(t_action *, char *, t_pos *);
-int	op_lld(t_action *, char *, t_pos *);
-int	op_lldi(t_action *, char *, t_pos *);
-int	op_lfork(t_action *, char *, t_pos *);
-int	op_aff(t_action *, char *, t_pos *);
+int    		op_live(t_action *, char *, t_pos *);
+int		op_ld(t_action *, char *, t_pos *);
+int		op_st(t_action *, char *, t_pos *);
+int		op_add(t_action *, char *, t_pos *);
+int		op_sub(t_action *, char *, t_pos *);
+int		op_and(t_action *, char *, t_pos *);
+int		op_or(t_action *, char *, t_pos *);
+int		op_xor(t_action *, char *, t_pos *);
+int		op_zjmp(t_action *, char *, t_pos *);
+int		op_ldi(t_action *, char *, t_pos *);
+int		op_sti(t_action *, char *, t_pos *);
+int		op_fork(t_action *, char *, t_pos *);
+int		op_lld(t_action *, char *, t_pos *);
+int		op_lldi(t_action *, char *, t_pos *);
+int		op_lfork(t_action *, char *, t_pos *);
+int		op_aff(t_action *, char *, t_pos *);
 
 #endif /* !ASM_H_*/

@@ -5,7 +5,7 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Thu Mar 24 22:07:03 2016 Poc
+## Last update Fri Mar 25 14:48:05 2016 Poc
 ##
 
 POC=			yes
@@ -126,8 +126,8 @@ OBJ_DECOMPILER=		$(SRC_DECOMPILER:.c=.o)
 OBJ_ASM=		$(SRC_ASM:.c=.o)
 
 $(NAME):		$(OBJ_ASM) $(OBJ_LIB)
-			@echo "[ OK ] Soft Compiled"
 			@$(CC) $(OBJ_ASM) $(OBJ_LIB) -o asm
+			@echo "[ OK ] ASM Compiled"
 
 %.o:			%.c
 			@echo "[ OK ] Compiling" $<

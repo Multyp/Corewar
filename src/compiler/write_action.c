@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 16:25:34 2016 Poc
-** Last update Fri Mar 25 12:33:40 2016 Poc
+** Last update Fri Mar 25 13:37:04 2016 Poc
 */
 
 #include "asm.h"
@@ -13,11 +13,13 @@
 int	write_args(t_arg *arg, int fd, t_label *label)
 {
   if (arg->type == 1)
-    write_registers(arg, fd, label);
+    write_registers(arg, fd);
   else if (arg->type == 2)
     write_direct(arg, fd, label);
   else if (arg->type == 3)
-    write_indirects(arg, fd, label);
+    write_indirects(arg, fd);
+  else if (arg->type == 4)
+    write_odds(arg, fd, label);
   return (0);
 }
 
