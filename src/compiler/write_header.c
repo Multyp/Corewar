@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 13:01:09 2016 Poc
-** Last update Fri Mar 25 00:19:04 2016 Poc
+** Last update Sat Mar 26 14:12:25 2016 Poc
 */
 
 #include "asm.h"
@@ -26,7 +26,6 @@ char	*get_right_name(char *str)
     return (NULL);
   my_strcpy(new_str, str);
   my_strcat(new_str, ".cor");
-  printf("str = %s\n", new_str);
   return (new_str);
 }
 

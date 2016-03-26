@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Fri Mar 18 17:22:19 2016 Poc
-** Last update Sat Mar 26 02:28:26 2016 Arthur ARNAUD
+** Last update Sat Mar 26 14:13:24 2016 Poc
 */
 
 #include "asm.h"
@@ -16,7 +16,6 @@ char	**cut_instruction(char *str)
 
   if (!(instruction = str_to_word_tab(str, 32)))
     return (write(2, "Can't perform malloc\n", 21), NULL);
-  showtab(instruction);
   return (instruction);
 }
 

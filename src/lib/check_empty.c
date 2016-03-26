@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 17 12:40:01 2016 Clement Peau
-** Last update Sat Mar 26 13:12:27 2016 Poc
+** Last update Sat Mar 26 14:08:44 2016 Poc
 */
 
 #include "asm.h"
@@ -25,7 +25,6 @@ char		*get_line_not_empty(int fd, int *line)
 	return (NULL);
       (*line)++;
     }
-  printf("returned line %s\n", str);
   return (str);
 }
 
