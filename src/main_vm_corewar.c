@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:42:32 2016 Da Fonseca Samuel
-** Last update Sat Mar 26 05:41:47 2016 Marwane
+** Last update Sat Mar 26 08:11:53 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -59,30 +59,39 @@ void		my_affchamps(t_vm *vm)
     }
 }
 
-void	launch_engine(t_vm *vm)
-{
-  while (vm->dump > 0)
-    {
-      vm->dump--;
-    }
-}
-
-int	init_variables(t_vm *vm, int ac, char **av)
+int	init_structs(t_vm *vm, int ac, char **av)
 {
   check_options(av, vm, ac);
   add_champions(vm);
-  check_champs_error(vm);
-  init_defaultvalues(vm);
-  init_progaddress(vm);
-  vm->cycle_die = CYCLE_TO_DIE;
-  vm->nbr_live = NBR_LIVE;
   my_afflist(vm);
+  check_champs_error(vm);
   my_affchamps(vm);
+  init_defaultvalues(vm);
   if (check_champs_sizes(vm) == 1)
     return (1);
   file_arena(vm);
   file_arena_check(vm);
   return (0);
+}
+
+int	init_variables(t_vm *vm, int ac, char **av)
+{
+  vm->cycle_die = CYCLE_TO_DIE;
+  vm->live_calls = 0;
+  vm->cycle = 0;
+  if (init_structs(vm, ac, av) == 1)
+    return (1);
+  return (0);
+}
+
+void	launch_game(t_vm *vm)
+{
+  while (vm->dump > 0 && vm->progs_nb > 1)
+    {
+      game_check_steps(vm);
+      champions_actions(vm);
+      vm->dump--;
+    }
 }
 
 int	main(int ac, char **av)
@@ -92,6 +101,6 @@ int	main(int ac, char **av)
   init_vm(&vm);
   if (init_variables(&vm, ac, av) == 1)
     return (1);
-  launch_engine(&vm);
+  launch_game(&vm);
   return (0);
 }

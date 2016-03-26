@@ -4,7 +4,7 @@
 ## Login   <khsime_m@epitech.net>
 ##
 ## Started on  Fri Jan  8 02:57:27 2016 marwane khsime
-## Last update Sat Mar 26 04:24:41 2016 Marwane
+## Last update Sat Mar 26 06:40:26 2016 Marwane
 ##
 
 RM	= rm -f
@@ -18,6 +18,8 @@ SRC	=	main_vm_corewar.c	\
 		my_getnbr.c		\
 		cvrt_to_little_endian.c	\
 		file_arena_check.c	\
+		game_check_steps.c	\
+		live_function.c		\
 		check_champs_cors.c	\
 		put_champs_in_map.c	\
 		list_champs_tool.c	\

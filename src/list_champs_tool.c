@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:57:03 2016 Da Fonseca Samuel
-** Last update Sat Mar 26 05:39:05 2016 Marwane
+** Last update Sat Mar 26 08:05:18 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -24,18 +24,22 @@ int		file_champion(t_champ *champ, char *file_path)
       return (my_error(OPEN_FAILED(fle_path)));
       close(fd);
     }
-  if (read(fd, champ, (int)sizeof(t_champ)) < (int)sizeof(t_champ))
+  if (read(fd, champ, (int)sizeof(t_champ)) < 2192)
     {
       champ->name[0] = 0;
       champ->magic = -1;
       champ->size = -1;
       champ->comment[0] = 0;
       champ->pc = -1;
+      champ->alive = 0;
+      champ->cycles_to_wait = 0;
       close(fd);
       return (0);
     };
   champ->magic = convert_to_little_endian(champ->magic);
   champ->size = convert_to_little_endian(champ->size);
+  champ->alive = 1;
+  champ->cycles_to_wait = 0;
   close(fd);
   return (0);
 }
@@ -93,7 +97,10 @@ void		*add_champions(t_vm *vm)
     {
       if (add_champ_to_list(vm, tmp_progs->prog_name,
 			    tmp_progs->address) == NULL)
-	return (NULL);
+	{
+	  exit (0);
+	  return (NULL);
+	}
       tmp_progs = tmp_progs->next;
       i++;
     }

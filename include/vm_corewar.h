@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sat Mar 26 05:39:53 2016 Marwane
+** Last update Sat Mar 26 08:04:46 2016 Marwane
 */
 
 #ifndef __VM_COREWAR_H__
@@ -78,8 +78,10 @@ typedef struct		s_champ
   int			magic;
   char			name[NAME_SIZE + 1];
   int			size;
-  int			pc;
   char			comment[COMMENT_SIZE + 1];
+  int			alive;
+  int			pc;
+  int			cycles_to_wait;
   struct s_champ	*next;
 }			t_champ;
 
@@ -93,8 +95,17 @@ typedef struct		s_vm
   int			progs_nb;
   int			dump;
   int			cycle_die;
-  int			nbr_live;
+  int			cycle;
+  int			live_calls;
 }			t_vm;
+
+/*
+**
+**  VM
+**
+**/
+void	game_check_steps(t_vm *);
+void	live_function(t_vm *, t_champ *);
 
 /*
 ** ********
@@ -120,7 +131,7 @@ t_vm	*add_champ_to_list(t_vm *, char *, int);
 */
 int	check_list_for_address(t_vm *, int);
 int	check_list_for_prognb(t_vm *, int);
-int	check_champs_sizes(t_vm *vm);
+int	check_champs_sizes(t_vm *);
 
 /*
 ** ***********
@@ -129,12 +140,13 @@ int	check_champs_sizes(t_vm *vm);
 **
 **
 ** Parsing
+**
 */
 int	check_options(char **, t_vm *, int);
 int	convert_to_little_endian(int);
 char	*get_binary(char *);
-void	file_arena(t_vm *vm);
-void	file_arena_check(t_vm *vm);
+void	file_arena(t_vm *);
+void	file_arena_check(t_vm *);
 
 /*
 ** Commands

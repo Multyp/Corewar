@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:07:59 2016 Marwane
-** Last update Sat Mar 26 04:36:02 2016 Marwane
+** Last update Sat Mar 26 07:51:31 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -25,7 +25,7 @@ void		file_arena_check(t_vm *vm)
 {
   t_champ	*tmp_champs;
   t_prog	*tmp_progs;
-  int		i = 0;
+  /* int		i = 0; */
 
   my_imemset(vm->arena_check, -1, MEM_SIZE);
   tmp_champs = vm->champs;
@@ -37,6 +37,6 @@ void		file_arena_check(t_vm *vm)
       tmp_champs = tmp_champs->next;
       tmp_progs = tmp_progs->next;
     }
-  while (i < MEM_SIZE)
-    printf("%d|", vm->arena_check[i++]);
+  /* while (i < MEM_SIZE) */
+  /*   printf("%d|", vm->arena_check[i++]); */
 }
