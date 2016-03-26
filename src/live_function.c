@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 06:15:33 2016 Marwane
-** Last update Sat Mar 26 08:06:04 2016 Marwane
+** Last update Sat Mar 26 09:25:39 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -17,6 +17,6 @@ void	live_function(t_vm *vm, t_champ *champ)
       vm->live_calls = 0;
       vm->cycle_die -= (vm->cycle_die - CYCLE_DELTA > 0 ? CYCLE_DELTA : 0);
     }
-  champ->alive = 1;
+  champ->alive = true;
   champ->cycles_to_wait += 10;
 }

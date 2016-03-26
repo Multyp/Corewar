@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sat Mar 26 07:22:29 2016 Da Fonseca Samuel
+** Last update Sat Mar 26 09:23:34 2016 Marwane
 */
 
 #ifndef __VM_COREWAR_H__
@@ -79,7 +79,7 @@ typedef struct		s_champ
   char			name[NAME_SIZE + 1];
   int			size;
   char			comment[COMMENT_SIZE + 1];
-  int			alive;
+  bool			alive;
   int			pc;
   int			cycles_to_wait;
   struct s_champ	*next;

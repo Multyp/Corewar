@@ -5,17 +5,17 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 08:12:21 2016 Marwane
-** Last update Sat Mar 26 08:19:02 2016 Marwane
+** Last update Sat Mar 26 09:20:35 2016 Marwane
 */
 
 #include "vm_corewar.h"
 
-/* void		champion_turn(t_vm *vm, */
-/* 			      t_champ *tmp_champ, */
-/* 			      t_prog *tmp_prog) */
-/* { */
+void		champion_turn(t_vm *vm,
+			      t_champ *tmp_champ,
+			      t_prog *tmp_prog)
+{
 
-/* } */
+}
 
 void		champions_actions(t_vm *vm)
 {

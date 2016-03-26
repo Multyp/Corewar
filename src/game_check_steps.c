@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 06:23:36 2016 Marwane
-** Last update Sat Mar 26 06:37:44 2016 Marwane
+** Last update Sat Mar 26 09:23:56 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -21,7 +21,7 @@ void		does_everybody_say_alive(t_vm *vm)
   tmp_prog = vm->progs;
   while (tmp_champ)
     {
-      if (tmp_champ->alive == 0)
+      if (tmp_champ->alive == false)
 	{
 	  tmp_champ = tmp_champ->next;
 	  tmp_prog = tmp_prog->next;
@@ -30,7 +30,7 @@ void		does_everybody_say_alive(t_vm *vm)
 	}
       else
 	{
-	  tmp_champ->alive = 0;
+	  tmp_champ->alive = false;
 	  tmp_champ = tmp_champ->next;
 	  tmp_prog = tmp_prog->next;
 	}

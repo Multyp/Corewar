@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:42:32 2016 Da Fonseca Samuel
-** Last update Sat Mar 26 08:11:53 2016 Marwane
+** Last update Sat Mar 26 09:18:33 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -89,7 +89,7 @@ void	launch_game(t_vm *vm)
   while (vm->dump > 0 && vm->progs_nb > 1)
     {
       game_check_steps(vm);
-      champions_actions(vm);
+      /* champions_actions(vm); */
       vm->dump--;
     }
 }
