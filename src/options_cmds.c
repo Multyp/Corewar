@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:56:41 2016 Da Fonseca Samuel
-** Last update Wed Mar 23 03:22:11 2016 Da Fonseca Samuel
+** Last update Fri Mar 25 07:33:25 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -21,7 +21,10 @@ int		check_file(t_vm *vm, char *file_name, char *param)
     return (my_error(OPEN_FAILED(file_name)));
   else if (vm->file_opts[1] == false && vm->file_opts[0] == false &&
 	   (vm = add_prog(vm, file_name)) == NULL)
-    return (1);
+    {
+      close(fd);
+      return (1);
+    }
   else if (vm->file_opts[1] == true || vm->file_opts[0] == true)
     {
       while (tmp->next != NULL)
@@ -29,7 +32,6 @@ int		check_file(t_vm *vm, char *file_name, char *param)
       tmp->prog_name = my_strdup(file_name);
       vm->file_opts[0] = false;
       vm->file_opts[1] = false;
-      return (1);
     }
   close(fd);
   return (1);

@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:57:03 2016 Da Fonseca Samuel
-** Last update Tue Mar 22 15:57:03 2016 Da Fonseca Samuel
+** Last update Fri Mar 25 01:24:22 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -20,17 +20,22 @@ int		file_champion(t_champ *champ, char *file_path)
   int		fd;
 
   if ((fd = open(file_path, O_RDONLY)) == -1)
-    return (my_error(OPEN_FAILED(fle_path)));
+    {
+      return (my_error(OPEN_FAILED(fle_path)));
+      close(fd);
+    }
   if (read(fd, champ, (int)sizeof(t_champ)) < (int)sizeof(t_champ))
     {
       champ->name[0] = 0;
       champ->magic = -1;
       champ->size = -1;
       champ->comment[0] = 0;
+      close(fd);
       return (0);
     };
   champ->magic = convert_to_little_endian(champ->magic);
   champ->size = convert_to_little_endian(champ->size);
+  close(fd);
   return (0);
 }
 

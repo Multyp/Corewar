@@ -74,11 +74,13 @@ typedef struct		s_champ
 typedef struct		s_vm
 {
   char			arena[MEM_SIZE + 1];
-  int			dump;
   bool			file_opts[2];
-  int			progs_nb;
   t_prog		*progs;
   t_champ		*champs;
+  int			progs_nb;
+  int			dump;
+  int			cycle_die;
+  int			nbr_live;
 }			t_vm;
 
 /*
@@ -110,13 +112,14 @@ int	check_list_for_prognb(t_vm *, int);
 ** ***********
 ** * OPTIONS *
 ** ***********
-*/
-/*
+**
+**
 ** Parsing
 */
 int	check_options(char **, t_vm *, int);
 int	convert_to_little_endian(int);
 char	*get_binary(char *);
+void	file_arena(t_vm *vm);
 
 /*
 ** Commands
