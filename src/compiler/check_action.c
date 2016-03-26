@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Mar  6 18:29:49 2016 Arthur ARNAUD
-** Last update Sat Mar 26 14:44:06 2016 Arthur ARNAUD
+** Last update Sat Mar 26 15:34:09 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -50,7 +50,7 @@ int		check_action(char *str, t_action *action,
     return (1);
   if (ftab[ret] != NULL)
     {
-      new_action->pos = pos->prog_size;
+      new_action->pos = 0;
       if (ftab[ret](new_action, tab[1], pos))
 	return (1);
     }

@@ -5,12 +5,12 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Mar 22 21:09:48 2016 Arthur ARNAUD
-** Last update Fri Mar 25 13:39:55 2016 Arthur ARNAUD
+** Last update Sat Mar 26 15:10:58 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
 
-void	add_prog_size(char type, t_pos *pos)
+int	add_prog_size(char type, t_pos *pos)
 {
   if (type == 1)
     pos->prog_size += 1;
@@ -18,4 +18,5 @@ void	add_prog_size(char type, t_pos *pos)
     pos->prog_size += 4;
   else
     pos->prog_size += 2;
+  return (0);
 }

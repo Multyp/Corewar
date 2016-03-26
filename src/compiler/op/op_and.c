@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 04:02:38 2016 Arthur ARNAUD
-** Last update Thu Mar 24 04:03:06 2016 Arthur ARNAUD
+** Last update Sat Mar 26 15:13:43 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -18,7 +18,7 @@ int	op_and(t_action *action, char *str, t_pos *pos)
   char	**tab;
   char	**list_arg;
 
-  if ((c = 0) || !(pos->prog_size += 2) ||
+  if ((c = 0) || !(pos->prog_size += 2) || !(action->pos = pos->prog_size) ||
       !(i = -1) || !(action->identifier = 0x06) ||
       !(action->args = malloc(sizeof(t_arg *) * 4)) ||
       !(tab = str_to_word_tab(str, ',')) ||

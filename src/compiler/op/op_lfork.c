@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 01:20:39 2016 Arthur ARNAUD
-** Last update Sat Mar 26 00:33:57 2016 Arthur ARNAUD
+** Last update Sat Mar 26 15:22:03 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -18,6 +18,7 @@ int	op_lfork(t_action *action, char *str, t_pos *pos)
   char	**list_arg;
 
   pos->prog_size += 1;
+  action->pos = pos->prog_size;
   action->identifier = 0x0F;
   i = -1;
   if (!(action->args = malloc(sizeof(t_arg *) * 2)) ||
@@ -26,14 +27,12 @@ int	op_lfork(t_action *action, char *str, t_pos *pos)
       init_args(action, 1))
     return (1);
   while (tab[++i])
-    {
-      if (i > 0 || (type = check_type(tab[i], pos)) == -1 ||
-	  check_args(type, list_arg[i], pos) ||
-	  fill_arg(type, tab[i], action->args[i], pos))
-	return (1);
-      change_to_odds(action->args[i], &type);
-      add_prog_size(type, pos);
-    }
+    if (i > 0 || (type = check_type(tab[i], pos)) == -1 ||
+	check_args(type, list_arg[i], pos) ||
+	fill_arg(type, tab[i], action->args[i], pos) ||
+	change_to_odds(action->args[i], &type) ||
+	add_prog_size(type, pos))
+      return (1);
   action->coding_byte = 0;
   return ((i < 1) ? 1 : 0);
 }

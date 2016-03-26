@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Sat Mar 26 14:48:18 2016 Poc
+** Last update Sat Mar 26 15:06:57 2016 Arthur ARNAUD
 */
 
 #ifndef ASM_H_
@@ -111,7 +111,7 @@ int		is_valid_label(char *, int);
 int		is_char_valid(char, char *);
 int		lexer(t_label *, t_action *, t_header *, int);
 int		print_error(char *, int, int);
-void		add_prog_size(char, t_pos *);
+int		add_prog_size(char, t_pos *);
 int		change_to_odds(t_arg *, char *);
 /*
 ** ================================
