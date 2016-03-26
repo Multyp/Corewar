@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Thu Mar 24 05:28:00 2016 Marwane
-** Last update Fri Mar 25 09:31:33 2016 Marwane
+** Last update Sat Mar 26 04:26:04 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -18,9 +18,6 @@ void		memset_arena(char *arena, char *instructions,
 
   pos = address;
   i = 0;
-  (void)size;
-  (void)instructions;
-  /* printf("pos = %d\nMEM_SIZE = %d\nsize = %d\n", pos, MEM_SIZE, size); */
   while (i < size)
     {
       arena[pos % MEM_SIZE] = instructions[i];
@@ -44,9 +41,7 @@ void		send_to_memset_arena(char *arena,
   if ((fd = open(tmp_prog->prog_name, O_RDONLY)) == -1)
     return ;
   readed = read(fd, c, 2192);
-  printf("\nreaded 1 = %d\n", readed);
   readed = read(fd, buff, tmp_champ->size);
-  printf("\nreaded 2 = %d\n", readed);
   buff[readed] = 0;
   memset_arena(arena, buff, tmp_prog->address, tmp_champ->size);
   close(fd);

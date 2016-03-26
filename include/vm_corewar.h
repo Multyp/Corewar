@@ -1,3 +1,13 @@
+/*
+** vm_corewar.h for vm_corewar in /home/khsime_m/rendu/projets/CPE/vm_corewar/include
+**
+** Made by Marwane
+** Login   <khsime_m@epitech.net>
+**
+** Started on  Sat Mar 26 04:08:19 2016 Marwane
+** Last update Sat Mar 26 04:24:09 2016 Marwane
+*/
+
 #ifndef __VM_COREWAR_H__
 #define __VM_COREWAR_H__
 
@@ -58,6 +68,7 @@ typedef struct		s_prog
 {
   int			prog_number;
   int			address;
+  int			original;
   char			*prog_name;
   struct s_prog		*next;
 }			t_prog;
@@ -74,6 +85,7 @@ typedef struct		s_champ
 typedef struct		s_vm
 {
   char			arena[MEM_SIZE + 1];
+  int			arena_check[MEM_SIZE];
   bool			file_opts[2];
   t_prog		*progs;
   t_champ		*champs;
@@ -107,6 +119,7 @@ t_vm	*add_champ_to_list(t_vm *, char *);
 */
 int	check_list_for_address(t_vm *, int);
 int	check_list_for_prognb(t_vm *, int);
+int	check_champs_sizes(t_vm *vm);
 
 /*
 ** ***********
@@ -120,6 +133,7 @@ int	check_options(char **, t_vm *, int);
 int	convert_to_little_endian(int);
 char	*get_binary(char *);
 void	file_arena(t_vm *vm);
+void	file_arena_check(t_vm *vm);
 
 /*
 ** Commands
