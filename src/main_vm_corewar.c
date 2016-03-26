@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:42:32 2016 Da Fonseca Samuel
-** Last update Sat Mar 26 09:18:33 2016 Marwane
+** Last update Sat Mar 26 08:30:22 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -63,11 +63,12 @@ int	init_structs(t_vm *vm, int ac, char **av)
 {
   check_options(av, vm, ac);
   add_champions(vm);
-  my_afflist(vm);
+  /* my_afflist(vm); */
   check_champs_error(vm);
-  my_affchamps(vm);
+  /* my_affchamps(vm); */
   init_defaultvalues(vm);
-  if (check_champs_sizes(vm) == 1)
+  if (default_addr(vm) == 1 ||
+      check_champs_sizes(vm) == 1)
     return (1);
   file_arena(vm);
   file_arena_check(vm);
@@ -89,6 +90,7 @@ void	launch_game(t_vm *vm)
   while (vm->dump > 0 && vm->progs_nb > 1)
     {
       game_check_steps(vm);
+      printf("dump = %d\n", vm->dump);
       /* champions_actions(vm); */
       vm->dump--;
     }

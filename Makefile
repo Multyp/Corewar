@@ -4,7 +4,7 @@
 ## Login   <khsime_m@epitech.net>
 ##
 ## Started on  Fri Jan  8 02:57:27 2016 marwane khsime
-## Last update Sat Mar 26 06:40:26 2016 Marwane
+## Last update Sat Mar 26 08:21:44 2016 Da Fonseca Samuel
 ##
 
 RM	= rm -f
@@ -25,6 +25,9 @@ SRC	=	main_vm_corewar.c	\
 		list_champs_tool.c	\
 		free.c			\
 		check_champs_size.c	\
+		default_addr.c		\
+		progs_sorting.c		\
+		addr_get.c		\
 		options_cmds.c
 
 BASICS  =	my_memset.c		\

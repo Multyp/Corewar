@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sat Mar 26 09:23:34 2016 Marwane
+** Last update Sat Mar 26 08:28:34 2016 Da Fonseca Samuel
 */
 
 #ifndef __VM_COREWAR_H__
@@ -162,6 +162,7 @@ int	check_file(t_vm *, char *, char *);
 */
 void	init_defaultvalues(t_vm *);
 void	init_progaddress(t_vm *);
+int	default_addr(t_vm *);
 /*
 ** Sorting
 */
