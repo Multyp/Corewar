@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sat Mar 26 23:08:23 2016 Marwane
+** Last update Sun Mar 27 00:46:49 2016 Marwane
 */
 
 #ifndef __VM_COREWAR_H__
@@ -147,6 +147,7 @@ int	check_champs_sizes(t_vm *);
 */
 int	check_options(char **, t_vm *, int);
 int	convert_to_little_endian(int);
+int	change_endian(int nb);
 char	*get_binary(char *);
 void	file_arena(t_vm *);
 void	file_arena_check(t_vm *);
