@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sat Mar 26 04:24:09 2016 Marwane
+** Last update Sat Mar 26 05:39:53 2016 Marwane
 */
 
 #ifndef __VM_COREWAR_H__
@@ -78,6 +78,7 @@ typedef struct		s_champ
   int			magic;
   char			name[NAME_SIZE + 1];
   int			size;
+  int			pc;
   char			comment[COMMENT_SIZE + 1];
   struct s_champ	*next;
 }			t_champ;
@@ -112,7 +113,7 @@ void	*add_champions(t_vm *);
 void	check_champs_error(t_vm *);
 void	del_prog(t_vm *, int);
 void	del_champ(t_vm *, int);
-t_vm	*add_champ_to_list(t_vm *, char *);
+t_vm	*add_champ_to_list(t_vm *, char *, int);
 
 /*
 ** Checks for options

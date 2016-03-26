@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:57:03 2016 Da Fonseca Samuel
-** Last update Fri Mar 25 01:24:22 2016 Marwane
+** Last update Sat Mar 26 05:39:05 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -30,6 +30,7 @@ int		file_champion(t_champ *champ, char *file_path)
       champ->magic = -1;
       champ->size = -1;
       champ->comment[0] = 0;
+      champ->pc = -1;
       close(fd);
       return (0);
     };
@@ -39,7 +40,7 @@ int		file_champion(t_champ *champ, char *file_path)
   return (0);
 }
 
-t_champ		*create_champ(char *file_path)
+t_champ		*create_champ(char *file_path, int address)
 {
   t_champ	*new_champ;
 
@@ -50,6 +51,7 @@ t_champ		*create_champ(char *file_path)
       free (new_champ);
       return (NULL);
     }
+  new_champ->pc = address;
   new_champ->next = NULL;
   return (new_champ);
 }
@@ -58,7 +60,7 @@ t_champ		*create_champ(char *file_path)
 **   add_champt_to_list prend en paramètre un champion (vide et non malloc)
 **   le path du champion, et le rempli.
 */
-t_vm		*add_champ_to_list(t_vm *vm, char *file_path)
+t_vm		*add_champ_to_list(t_vm *vm, char *file_path, int address)
 {
   t_champ	*tmp_champ;
 
@@ -66,10 +68,10 @@ t_vm		*add_champ_to_list(t_vm *vm, char *file_path)
   while (vm->champs != NULL && vm->champs->next != NULL)
     vm->champs = vm->champs->next;
   if (vm->champs == NULL)
-    vm->champs = create_champ(file_path);
+    vm->champs = create_champ(file_path, address);
   else
     {
-      vm->champs->next = create_champ(file_path);
+      vm->champs->next = create_champ(file_path, address);
       vm->champs = tmp_champ;
     }
   return (vm);
@@ -89,7 +91,8 @@ void		*add_champions(t_vm *vm)
   i = 0;
   while (tmp_progs)
     {
-      if (add_champ_to_list(vm, tmp_progs->prog_name) == NULL)
+      if (add_champ_to_list(vm, tmp_progs->prog_name,
+			    tmp_progs->address) == NULL)
 	return (NULL);
       tmp_progs = tmp_progs->next;
       i++;

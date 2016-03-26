@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:56:41 2016 Da Fonseca Samuel
-** Last update Fri Mar 25 07:33:25 2016 Marwane
+** Last update Sat Mar 26 05:43:04 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -81,6 +81,7 @@ int		my_load_address(t_vm *vm, char *param, char *next_param)
   while (tmp->next != NULL)
     tmp = tmp->next;
   tmp->address = nb % MEM_SIZE;
+  tmp->original = 1;
   return (2);
 }
 
