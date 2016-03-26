@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Mar 23 00:26:41 2016 Arthur ARNAUD
-** Last update Sat Mar 26 15:43:42 2016 Poc
+** Last update Sat Mar 26 15:58:49 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -29,7 +29,7 @@ int	op_sti(t_action *action, char *str, t_pos *pos)
     {
       if (i > 2 || (type = check_type(tab[i], pos)) == -1 ||
 	  check_args(type, list_arg[i], pos) ||
-	  fill_arg(type, tab[i], action->args[i], pos))
+	  fill_arg(type, tab[i], action->args[i], action->pos + i + 1))
 	return (1);
       c += (type << (6 - (i * 2)));
       change_to_odds(action->args[i], &type);

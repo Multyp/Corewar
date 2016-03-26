@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Sat Mar 26 15:37:29 2016 Poc
+** Last update Sat Mar 26 16:01:14 2016 Arthur ARNAUD
 */
 
 #ifndef ASM_H_
@@ -103,7 +103,7 @@ int		add_label(t_label *, t_label *);
 int		add_to_back(t_file *, char *);
 int		check_action(char *, t_action *, t_pos *, t_ftab *);
 int		check_args(char, char *, t_pos *);
-int		fill_arg(char, char *, t_arg *, t_pos *);
+int		fill_arg(char, char *, t_arg *, int);
 int		get_header(char *, t_header *);
 int		icubed(char *, char);
 int		init_args(t_action *, int);

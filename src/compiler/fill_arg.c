@@ -5,12 +5,12 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Mar 22 20:37:20 2016 Arthur ARNAUD
-** Last update Sat Mar 26 14:58:28 2016 Arthur ARNAUD
+** Last update Sat Mar 26 16:02:41 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
 
-int	fill_arg(char type, char *str, t_arg *arg, t_pos * pos)
+int	fill_arg(char type, char *str, t_arg *arg, int pos)
 {
   arg->type = type;
   arg->pos_link = 0;
