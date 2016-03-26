@@ -4,7 +4,7 @@
 ## Login   <khsime_m@epitech.net>
 ##
 ## Started on  Fri Jan  8 02:57:27 2016 marwane khsime
-## Last update Sat Mar 26 09:55:24 2016 Marwane
+## Last update Sat Mar 26 10:01:31 2016 Marwane
 ##
 
 RM	= rm -f
@@ -28,6 +28,7 @@ SRC	=	main_vm_corewar.c	\
 		progs_sorting.c		\
 		addr_get.c		\
 		options_cmds.c		\
+		functions_calls.c	\
 		live_function.c		\
 		ld_function.c		\
 		st_function.c		\

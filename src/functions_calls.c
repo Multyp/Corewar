@@ -5,30 +5,30 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 02:44:26 2016 Marwane
-** Last update Sat Mar 26 09:47:34 2016 Marwane
+** Last update Sat Mar 26 10:05:44 2016 Marwane
 */
 
-#include ""
+#include "vm_corewar.h"
 
-void	functions_vm(t_champ *champ, int i, t_vm *vm)
+void	functions_vm(t_vm *vm, t_champ *champ, int i)
 {
-  int	(*ptr[16])(t_champ *, char *);
+  void	(*ptr[16])(t_champ *, char *);
 
-  ptr[0] = &function_live;
-  ptr[1] = &function_ld;
-  ptr[2] = &function_st;
-  ptr[3] = &function_add;
-  ptr[4] = &function_sub;
-  ptr[5] = &function_and;
-  ptr[6] = &function_or;
-  ptr[7] = &function_xor;
-  ptr[8] = &function_zjmp;
-  ptr[9] = &function_ldi;
-  ptr[10] = &function_sti;
-  ptr[11] = &function_fork;
-  ptr[12] = &function_lld;
-  ptr[13] = &function_lldi;
-  ptr[14] = &function_lfork;
-  ptr[15] = &function_aff;
-  ptr[c](champ, vm->arena);
+  ptr[0] = &live_function;
+  /* ptr[1] = &ld_function; */
+  /* ptr[2] = &st_function; */
+  /* ptr[3] = &add_function; */
+  /* ptr[4] = &sub_function; */
+  /* ptr[5] = &and_function; */
+  /* ptr[6] = &or_function; */
+  /* ptr[7] = &xor_function; */
+  /* ptr[8] = &zjmp_function; */
+  /* ptr[9] = &ldi_function; */
+  /* ptr[10] = &sti_function; */
+  /* ptr[11] = &fork_function; */
+  /* ptr[12] = &lld_function; */
+  /* ptr[13] = &lldi_function; */
+  /* ptr[14] = &lfork_function; */
+  /* ptr[15] = &aff_function; */
+  ptr[i](champ, vm->arena);
 }
