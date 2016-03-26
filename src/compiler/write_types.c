@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 17:50:43 2016 Poc
-** Last update Sat Mar 26 19:59:59 2016 Poc
+** Last update Sat Mar 26 20:29:24 2016 Poc
 */
 
 #include "asm.h"
@@ -21,7 +21,6 @@ short	find_label_short(t_label *label, char *name, int pos)
   if (label && pos >= label->pos)
     {
       i = 0xFFFF;
-      printf("(label->pos - pos) %hx\n", ((short)label->pos - pos));
       return (((short)label->pos - pos));
     }
   if (label != NULL)
@@ -46,10 +45,10 @@ int	find_label(t_label *label, char *name, int pos)
   if (label)
     return ((short)label->pos - pos);
   else
-      return (-1);
+    return (-1);
 }
 
-int	write_registers(t_arg *arg, int fd, int decal)
+int	write_registers(t_arg *arg, int fd)
 {
   char	c;
 
@@ -89,8 +88,8 @@ int	write_odds(t_arg *arg, int fd, t_label *label, int decal)
 	   find_label_short(label, arg->link_name, decal)) == -1)
 	return (1);
       new_endian = (((tmp >> 8) & 0x00FF) | (((tmp << 8) & 0xFF00)));
-  write(fd, &new_endian, 2);
-}
+      write(fd, &new_endian, 2);
+    }
   else
     {
       new_endian = (((arg->value >> 8) & 0x00FF) |

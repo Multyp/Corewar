@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Tue Mar 22 17:19:48 2016 Poc
-** Last update Sat Mar 26 19:49:19 2016 Poc
+** Last update Sat Mar 26 20:18:42 2016 Poc
 */
 
 #include "asm.h"
@@ -84,7 +84,7 @@ char	check_type(char *str, t_pos *pos)
 {
   if (str[0] == 'r')
     {
-      if (check_registery(str, &pos->line) == 1)
+      if (check_registery(str, &pos->line))
 	return (-1);
       else
 	  return (1);
