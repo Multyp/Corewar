@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Sat Mar 26 14:43:59 2016 Arthur ARNAUD
+** Last update Sat Mar 26 14:48:18 2016 Poc
 */
 
 #ifndef ASM_H_
@@ -146,10 +146,10 @@ void		showtab(char **);
 int		parser(t_label *, t_action *, t_header *, char *);
 int		write_action(t_action *, int, t_label *);
 int		write_header(t_header *, char *);
-int		write_registers(t_arg *, int);
-int		write_direct(t_arg *, int, t_label *);
-int		write_odds(t_arg *, int, t_label *);
-int		write_indirects(t_arg *, int);
+int		write_registers(t_arg *, int, int);
+int		write_direct(t_arg *, int, t_label *, int);
+int		write_odds(t_arg *, int, t_label *, int);
+int		write_indirects(t_arg *, int, int);
 
 /*
 ** ================================
