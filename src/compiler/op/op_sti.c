@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Wed Mar 23 00:26:41 2016 Arthur ARNAUD
-** Last update Sat Mar 26 00:31:48 2016 Arthur ARNAUD
+** Last update Sat Mar 26 14:04:03 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -31,9 +31,9 @@ int	op_sti(t_action *action, char *str, t_pos *pos)
 	  check_args(type, list_arg[i], pos) ||
 	  fill_arg(type, tab[i], action->args[i], pos))
 	return (1);
+      c += (type << (6 - (i * 2)));
       change_to_odds(action->args[i], &type);
       add_prog_size(type, pos);
-      c += (type << (6 - (i * 2)));
     }
   action->coding_byte = c;
   return ((i < 3) ? 1 : 0);
