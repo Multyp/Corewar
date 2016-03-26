@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 03:40:16 2016 Marwane
-** Last update Sat Mar 26 04:03:57 2016 Marwane
+** Last update Sat Mar 26 08:40:39 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -42,7 +42,7 @@ int		check_champs_sizes(t_vm *vm)
     {
       if (check_champs_sizes_file_map(map, tmp_champs->size, tmp_progs->address,
 				      tmp_progs->prog_number) == -1)
-	return (my_putstr("Error: not enought spaces for champions"), 1);
+	return (my_putstr("Error: not enough spaces for champions"), 1);
       tmp_champs = tmp_champs->next;
       tmp_progs = tmp_progs->next;
     }

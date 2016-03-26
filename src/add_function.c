@@ -5,7 +5,13 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:48:41 2016 Marwane
-** Last update Sat Mar 26 09:48:47 2016 Marwane
+** Last update Sat Mar 26 09:10:11 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
+
+void	add_function(t_champ *champ, char *arena)
+{
+  (void)champ;
+  (void)arena;
+}
