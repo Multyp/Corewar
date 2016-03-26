@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Tue Jan  5 14:33:32 2016
-** Last update Sat Mar 26 13:30:56 2016 Poc
+** Last update Sat Mar 26 20:47:24 2016 Poc
 */
 
 #include "asm.h"
@@ -18,7 +18,7 @@ char	*epur_commas(char *str)
 
   j = 0;
   i = 0;
-  if ((new_str = malloc(my_strlen(str) * sizeof(char))) == NULL)
+  if ((new_str = malloc((my_strlen(str) + 1) * sizeof(char))) == NULL)
     return (NULL);
   while (str[i])
     {
