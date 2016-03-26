@@ -5,14 +5,17 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Fri Mar 25 19:23:11 2016 Arthur ARNAUD
-** Last update Fri Mar 25 19:25:37 2016 Arthur ARNAUD
+** Last update Sat Mar 26 01:18:31 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
 
-int	change_to_odds(t_arg *arg)
+int	change_to_odds(t_arg *arg, char *type)
 {
   if (arg->type == 2)
-    arg->type = 4;
+    {
+      *type = 4;
+      arg->type = 4;
+    }
   return (0);
 }

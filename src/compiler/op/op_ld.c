@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 03:55:10 2016 Arthur ARNAUD
-** Last update Fri Mar 25 13:06:16 2016 Arthur ARNAUD
+** Last update Sat Mar 26 01:21:13 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -35,7 +35,5 @@ int	op_ld(t_action *action, char *str, t_pos *pos)
       c += (type << (6 - (i * 2)));
     }
   action->coding_byte = c;
-  printf("action %s: coding byte = %d\n", action->instruction,
-	 action->coding_byte);
   return ((i < 2) ? 1 : 0);
 }

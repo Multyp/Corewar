@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Fri Mar 18 17:22:19 2016 Poc
-** Last update Tue Mar 22 16:47:22 2016 Poc
+** Last update Sat Mar 26 02:28:26 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -15,7 +15,7 @@ char	**cut_instruction(char *str)
   char	**instruction;
 
   if (!(instruction = str_to_word_tab(str, 32)))
-    return (NULL);
+    return (write(2, "Can't perform malloc\n", 21), NULL);
   showtab(instruction);
   return (instruction);
 }
@@ -36,7 +36,7 @@ char	*format_instruction(char *str)
   i = 0;
   k = 0;
   if ((new_str = malloc((my_strlen(str) + 1) * sizeof(char))) == NULL)
-    return (NULL);
+    return (write(2, "Can't perform malloc\n", 21), NULL);
   while (str[i] != 0 && str[i] != 32 && str[i] != COMMENT_CHAR)
     new_str[k++] = str[i++];
   new_str[k++] = 32;

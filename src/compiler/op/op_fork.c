@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 01:18:25 2016 Arthur ARNAUD
-** Last update Fri Mar 25 19:54:54 2016 Arthur ARNAUD
+** Last update Sat Mar 26 01:17:35 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -31,7 +31,7 @@ int	op_fork(t_action *action, char *str, t_pos *pos)
 	  check_args(type, list_arg[i], pos) ||
 	  fill_arg(type, tab[i], action->args[i], pos))
 	return (1);
-      action->args[i]->type = 4;
+      change_to_odds(action->args[i], &type);
       add_prog_size(type, pos);
     }
   action->coding_byte = 0;

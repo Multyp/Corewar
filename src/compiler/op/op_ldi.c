@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 04:06:39 2016 Arthur ARNAUD
-** Last update Fri Mar 25 19:06:52 2016 Arthur ARNAUD
+** Last update Sat Mar 26 01:13:41 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -31,7 +31,7 @@ int	op_ldi(t_action *action, char *str, t_pos *pos)
 	  check_args(type, list_arg[i], pos) ||
 	  fill_arg(type, tab[i], action->args[i], pos))
 	return (1);
-      change_to_odds(action->args[i]);
+      change_to_odds(action->args[i], &type);
       add_prog_size(type, pos);
       c += (type << (6 - (i * 2)));
     }

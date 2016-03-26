@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 01:16:27 2016 Arthur ARNAUD
-** Last update Fri Mar 25 13:56:46 2016 Arthur ARNAUD
+** Last update Sat Mar 26 00:42:14 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -31,10 +31,9 @@ int	op_zjmp(t_action *action, char *str, t_pos *pos)
 	  check_args(type, list_arg[i], pos) ||
 	  fill_arg(type, tab[i], action->args[i], pos))
 	return (1);
-      action->args[i]->type = 4;
+      change_to_odds(action->args[i], &type);
       add_prog_size(type, pos);
     }
-  printf("prog_size = %d\n",pos->prog_size);
   action->coding_byte = 0;
   return ((i < 1) ? 1 : 0);
 }

@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Mar 22 02:20:07 2016 Arthur ARNAUD
-** Last update Thu Mar 24 23:34:48 2016 Arthur ARNAUD
+** Last update Sat Mar 26 02:27:58 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -13,7 +13,7 @@
 t_ftab	*set_ftab(t_ftab *ftab)
 {
   if ((!(ftab = malloc(sizeof(t_ftab *) * 17))))
-    return (NULL);
+    return (write(2, "Can't perform malloc\n", 21), NULL);
   ftab[0] = op_live;
   ftab[1] = op_ld;
   ftab[2] = op_st;
