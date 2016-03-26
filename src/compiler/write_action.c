@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 16:25:34 2016 Poc
-** Last update Sat Mar 26 19:49:39 2016 Poc
+** Last update Sat Mar 26 19:57:54 2016 Poc
 */
 
 #include "asm.h"
@@ -33,7 +33,7 @@ int	write_action(t_action *action, int fd, t_label *label)
   while (action->args[i])
     {
       if (write_args(action->args[i], fd, label, action->args[i]->pos_link))
-	  return (1);
+	return (1);
       i++;
     }
   return (0);
