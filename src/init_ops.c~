@@ -1,0 +1,11 @@
+/*
+** init_ops.c for ops in /home/da-fon_s/rendu/vm_corewar
+**
+** Made by Da Fonseca Samuel
+** Login   <da-fon_s@epitech.net>
+**
+** Started on  Sat Mar 26 15:02:56 2016 Da Fonseca Samuel
+** Last update Sat Mar 26 15:03:03 2016 Da Fonseca Samuel
+*/
+
+#include "vm_corewar.h"

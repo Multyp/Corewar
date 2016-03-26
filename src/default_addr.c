@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Wed Mar 23 10:17:56 2016 Da Fonseca Samuel
-** Last update Sat Mar 26 07:18:30 2016 Da Fonseca Samuel
+** Last update Sat Mar 26 16:35:24 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -60,7 +60,7 @@ int		*write_progs(t_vm *vm, char map[])
   tmp_champ = vm->champs;
   my_memset(map, '*', MEM_SIZE + 1);
   map[MEM_SIZE] = '\0';
-  while (tmp_prog != NULL)
+  while (tmp_prog != NULL && tmp_champ != NULL)
     {
       if (tmp_prog->address != -1)
 	write_champ(tmp_prog, tmp_champ, map);

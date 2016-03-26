@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sat Mar 26 09:30:26 2016 Da Fonseca Samuel
+** Last update Sat Mar 26 16:46:11 2016 Da Fonseca Samuel
 */
 
 #ifndef __VM_COREWAR_H__
@@ -21,10 +21,10 @@
 /*
 ** Errors
 */
-# define MALLOC_FAILED "Error: Malloc Failed"
+# define MALLOC_FAILED	"Error: Malloc Failed"
 # define INVALID_OPTION "Error: Invalid option, try to use --help"
 # define OPEN_FAILED(file_name) "Error: Could not open file "#file_name
-# define INVALID_FILE(file_name) "Error: "#file_name" is not a corewar executable"
+# define INVALID_FILE(file) "Error: "#file" is not a corewar executable"
 # define USED_PROGNUMBER(x) "Error: Prog number "#x" already used"
 # define PLAYER_ALIVE(player_name) "Player "#player_name" is alive"
 # define PLAYER_WIN(winner_name) "Player "#winner_name" wins"
@@ -33,7 +33,8 @@
 # define NAME_SIZE 128
 # define COMMENT_SIZE 2048
 # define MEM_SIZE (6 * 1024)
-# define MAX_ARGS_NUMBER 6
+# define IDX_MOD 512
+# define MAX_ARGS_NUMBER 4
 
 /*
 ** regs
@@ -82,6 +83,7 @@ typedef struct		s_champ
   bool			alive;
   int			pc;
   int			cycles_to_wait;
+  int			carry;
   struct s_champ	*next;
 }			t_champ;
 
@@ -147,26 +149,43 @@ char	*get_binary(char *);
 void	file_arena(t_vm *);
 void	file_arena_check(t_vm *);
 
+
+/*
+** Main_functions
+*/
+void	main_loop(t_vm *);
+int	get_octet_code(int, int, char);
+int	get_size_octet_code(unsigned char);
+int	get_myint(t_vm *, t_champ *);
+
 /*
 ** Functions
 */
 void	functions_vm(t_vm *, t_champ *, int);
-void	live_function(t_vm *, t_champ *);
-void	ld_function(t_vm *, t_champ *);
-void	st_function(t_vm *, t_champ *);
-void	add_function(t_vm *, t_champ *);
-void	sub_function(t_vm *, t_champ *);
-void	and_function(t_vm *, t_champ *);
-void	or_function(t_vm *, t_champ *);
-void	xor_function(t_vm *, t_champ *);
-void	zjmp_function(t_vm *, t_champ *);
-void	ldi_function(t_vm *, t_champ *);
-void	sti_function(t_vm *, t_champ *);
-void	fork_function(t_vm *, t_champ *);
-void	lld_function(t_vm *, t_champ *);
-void	lldi_function(t_vm *, t_champ *);
-void	lfork_function(t_vm *, t_champ *);
-void	aff_function(t_vm *, t_champ *);
+int	live_function(t_vm *, t_champ *);
+int	ld_function(t_vm *, t_champ *);
+int	st_function(t_vm *, t_champ *);
+int	add_function(t_vm *, t_champ *);
+int	sub_function(t_vm *, t_champ *);
+int	and_function(t_vm *, t_champ *);
+int	or_function(t_vm *, t_champ *);
+int	xor_function(t_vm *, t_champ *);
+int	zjmp_function(t_vm *, t_champ *);
+int	ldi_function(t_vm *, t_champ *);
+int	sti_function(t_vm *, t_champ *);
+int	fork_function(t_vm *, t_champ *);
+int	lld_function(t_vm *, t_champ *);
+int	lldi_function(t_vm *, t_champ *);
+int	lfork_function(t_vm *, t_champ *);
+int	aff_function(t_vm *, t_champ *);
+
+/*
+** CHECK
+*/
+int	check_addoctet(int octet[]);
+int	check_oroctet(int octet[]);
+int	check_ldoctet(int octet[]);
+int	check_ldioctet(int octet[]);
 
 /*
 ** Commands

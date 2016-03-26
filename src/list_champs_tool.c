@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:57:03 2016 Da Fonseca Samuel
-** Last update Sat Mar 26 09:25:21 2016 Marwane
+** Last update Sat Mar 26 11:57:03 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -56,6 +56,7 @@ t_champ		*create_champ(char *file_path, int address)
       return (NULL);
     }
   new_champ->pc = address;
+  new_champ->carry = 0;
   new_champ->next = NULL;
   return (new_champ);
 }

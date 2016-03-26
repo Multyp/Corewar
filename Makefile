@@ -4,7 +4,7 @@
 ## Login   <khsime_m@epitech.net>
 ##
 ## Started on  Fri Jan  8 02:57:27 2016 marwane khsime
-## Last update Sat Mar 26 10:01:31 2016 Marwane
+## Last update Sat Mar 26 15:12:32 2016 Da Fonseca Samuel
 ##
 
 RM	= rm -f
@@ -45,6 +45,8 @@ SRC	=	main_vm_corewar.c	\
 		lldi_function.c		\
 		lfork_function.c	\
 		aff_function.c		\
+		octet_codage.c		\
+		init_ops.c
 
 
 BASICS  =	my_memset.c		\

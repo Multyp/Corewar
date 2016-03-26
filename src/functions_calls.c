@@ -5,14 +5,32 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 02:44:26 2016 Marwane
-** Last update Sat Mar 26 09:30:42 2016 Da Fonseca Samuel
+** Last update Sat Mar 26 20:38:57 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
 
+void		main_loop(t_vm *vm)
+{
+  t_champ	*tmp_champ;
+
+  tmp_champ = vm->champs;
+  while (tmp_champ != NULL)
+    {
+      if (vm->arena[tmp_champ->pc] < 1 || vm->arena[tmp_champ->pc] > 15)
+	tmp_champ->pc++;
+      else if (tmp_champ->cycles_to_wait == 0)
+	functions_vm(vm, tmp_champ, vm->arena[tmp_champ->pc]);
+      else
+	tmp_champ->cycles_to_wait--;
+      tmp_champ = tmp_champ->next;
+    }
+
+}
+
 void	functions_vm(t_vm *vm, t_champ *champ, int i)
 {
-  void	(*ptr[16])(t_vm *, t_champ *);
+  int	(*ptr[16])(t_vm *, t_champ *);
 
   ptr[0] = &live_function;
   ptr[1] = &ld_function;
@@ -30,5 +48,7 @@ void	functions_vm(t_vm *vm, t_champ *champ, int i)
   ptr[13] = &lldi_function;
   ptr[14] = &lfork_function;
   ptr[15] = &aff_function;
-  ptr[i](vm, champ);
+  printf("fct n° %d\n", i);
+  if (ptr[i](vm, champ) == 0)
+    champ->carry = 1;
 }
