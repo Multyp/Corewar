@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Mon Feb 29 12:45:46 2016 Arthur ARNAUD
-** Last update Tue Mar 22 21:19:15 2016 Arthur ARNAUD
+** Last update Sat Mar 26 17:49:03 2016 Poc
 */
 
 #include "asm.h"
@@ -37,7 +37,7 @@ int	is_valid_label(char *str, int i)
   k = -1;
   while (str[++k] < i)
     {
-      if (is_char_valid(str[k], "abcdefghijklmnopqrstuvwxyz_012345678"))
+      if (is_char_valid(str[k], LABEL_CHARS))
 	return (0);
     }
   return (1);

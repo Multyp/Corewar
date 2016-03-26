@@ -1,6 +1,3 @@
-	.name "zork"
-	.comment "Just a basic living program"
-
-	live %53
-#		zjmp %:live
-live:	live %43
+	.name "je test ce putain d'asm"
+	.comment "t'as besoins d'un comment ?"
+	live %13

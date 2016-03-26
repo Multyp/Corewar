@@ -1,11 +1,11 @@
- /*
+/*
 ** lexer.c for lexer in /home/arnaud_e/rendu/cpe/corewar/src
 **
 ** Made by Arthur ARNAUD
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 16:03:05 2016 Arthur ARNAUD
-** Last update Sat Mar 26 14:11:03 2016 Poc
+** Last update Sat Mar 26 19:48:14 2016 Poc
 */
 
 #include "asm.h"
@@ -44,18 +44,14 @@ int	lexer(t_label *label, t_action *action, t_header *header, int fd)
   while ((str = get_line_not_empty(fd, &pos.line)) != NULL)
     {
       if (header->full && check_empty(str))
-	{
-	  if (!(str = check_label(str, label, &pos)) ||
-	      (check_action(str, action, &pos, ftab)))
-	    return (1);
-	}
+	if (!(str = check_label(str, label, &pos)) ||
+	    (check_action(str, action, &pos, ftab)))
+	  return (1);
       else
 	if (get_header(str, header))
 	  return (1);
       pos.line += 1;
     }
-  printf("======================================================\n");
-  printf("======================================================\n");
   header->prog_size = pos.prog_size;
   return (0);
 }

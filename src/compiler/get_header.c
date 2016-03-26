@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Wed Mar 16 17:17:26 2016 Clement Peau
-** Last update Thu Mar 24 00:53:35 2016 Arthur ARNAUD
+** Last update Sat Mar 26 17:55:21 2016 Poc
 */
 
 #include "asm.h"
@@ -17,9 +17,7 @@ int		get_name(t_header *header, char *str)
 
   k = 0;
   if (my_strncmp(str, NAME_CMD_STRING, my_strlen(NAME_CMD_STRING)) == 0)
-    {
       return (1);
-    }
   i = 0;
   while (str[i++] != '"')
     if (str[i] == 0)

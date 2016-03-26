@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 04:11:57 2016 Arthur ARNAUD
-** Last update Sat Mar 26 17:40:24 2016 Arthur ARNAUD
+** Last update Sat Mar 26 18:19:00 2016 Poc
 */
 
 #include "asm.h"
@@ -19,7 +19,7 @@ int	op_aff(t_action *action, char *str, t_pos *pos)
   char	**list_arg;
 
   if ((c = 0) || !(pos->prog_size += 2) ||
-      !(i = -1) || !(action->identifier = 0x0E) ||
+      !(i = -1) || !(action->identifier = 0x10) ||
       !(action->args = malloc(sizeof(t_arg *) * 2)) ||
       !(tab = str_to_word_tab(str, ',')) ||
       !(list_arg = str_to_word_tab("1", ' ')) ||

@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Sat Mar 26 16:01:14 2016 Arthur ARNAUD
+** Last update Sat Mar 26 19:02:52 2016 Poc
 */
 
 #ifndef ASM_H_
@@ -125,7 +125,7 @@ char		*get_next_line(int);
 char		*my_strdup(char *);
 int		change_endian(int);
 int		check_empty(char *);
-int		my_getnbr(char *);
+int		my_getnbr(char *, int *);
 int		my_memset(void *, char , int);
 int		my_putstr(char *);
 int		my_strlen(char *);

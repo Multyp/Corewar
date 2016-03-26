@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Fri Mar 18 17:22:19 2016 Poc
-** Last update Sat Mar 26 14:13:24 2016 Poc
+** Last update Sat Mar 26 19:46:14 2016 Poc
 */
 
 #include "asm.h"
@@ -40,7 +40,7 @@ char	*format_instruction(char *str)
     new_str[k++] = str[i++];
   new_str[k++] = 32;
   i++;
-  while(str[i] != 0 && str[i] != COMMENT_CHAR)
+  while (str[i] != 0 && str[i] != COMMENT_CHAR)
     {
       while (str[i] != 0 && str[i] == 32)
 	i++;

@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:29:36 2016 Arthur ARNAUD
-** Last update Sat Mar 26 16:27:39 2016 Poc
+** Last update Sat Mar 26 19:48:32 2016 Poc
 */
 
 #include "asm.h"
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
   int		fd;
 
   if (ac != 2)
-    return(write(2, "Usage : ./asm file.s\n", 21), 1);
+    return (write(2, "Usage : ./asm file.s\n", 21), 1);
   my_memset(&header, 0, sizeof(t_header) - 4);
   header.magic = 0xF383EA00;
   if (!(label = create_label_list()) ||
@@ -26,6 +26,8 @@ int	main(int ac, char **av)
       (fd = open(av[1], O_RDONLY)) == -1)
     return (1);
   if (lexer(label, action, &header, fd))
+    return (1);
   close (fd);
   parser(label, action, &header, av[1]);
+  return (0);
 }

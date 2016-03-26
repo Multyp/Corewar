@@ -5,12 +5,12 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Mar 22 21:35:11 2016 Arthur ARNAUD
-** Last update Tue Mar 22 21:35:19 2016 Arthur ARNAUD
+** Last update Sat Mar 26 19:40:58 2016 Poc
 */
 
 #include "asm.h"
 
-int	my_getnbr(char *str)
+int	my_getnbr(char *str, int *ret)
 {
   int	i;
   int	nb;
@@ -31,6 +31,9 @@ int	my_getnbr(char *str)
       i = i + 1;
     }
   if (nb >= 2147483647)
-    return (0);
+    {
+      *ret = -1;
+      return (0);
+    }
   return (nb * signe);
 }

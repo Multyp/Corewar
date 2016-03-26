@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 17:50:43 2016 Poc
-** Last update Sat Mar 26 16:36:52 2016 Poc
+** Last update Sat Mar 26 19:53:42 2016 Poc
 */
 
 #include "asm.h"
@@ -87,13 +87,16 @@ int	write_odds(t_arg *arg, int fd, t_label *label, int decal)
     {
       if ((tmp =
 	   find_label_short(label, arg->link_name, decal)) == -1)
+	{
 	  return (1);
-      new_endian = ((tmp>>8 & 0x00FF) | (tmp<<8 & 0xFF00));
+	}
+      new_endian = (((tmp >> 8) & 0x00FF)) | (((tmp << 8) & 0xFF00)));
       write(fd, &new_endian, 2);
     }
   else
     {
-      new_endian = ((arg->value>>8 & 0x00FF) | (arg->value<<8 & 0xFF00));
+      new_endian = (((arg->value >> 8) & 0x00FF) |
+		    ((arg->value << 8) & 0xFF00));
       write (fd, &new_endian, 2);
     }
   return (0);
