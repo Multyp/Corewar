@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sat Mar 26 08:04:46 2016 Marwane
+** Last update Sat Mar 26 07:22:29 2016 Da Fonseca Samuel
 */
 
 #ifndef __VM_COREWAR_H__
@@ -162,7 +162,15 @@ int	check_file(t_vm *, char *, char *);
 */
 void	init_defaultvalues(t_vm *);
 void	init_progaddress(t_vm *);
-
+/*
+** Sorting
+*/
+int	*check_spaces_with_progs(t_vm *);
+int	*tabcpy(int *, int *);
+int	get_sizetoload(int *);
+int	get_sizefree(int *);
+int	get_addr(int *, int);
+int	get_nbtab(int *);
 /*
 ** *********
 ** * Frees *
