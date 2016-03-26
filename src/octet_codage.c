@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 11:07:59 2016 Marwane
-** Last update Sat Mar 26 20:45:37 2016 Da Fonseca Samuel
+** Last update Sat Mar 26 21:58:41 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -34,11 +34,13 @@ int		get_size_octet_code(unsigned char codage)
   int		c;
   unsigned char	octet;
   int		size[4];
+  int		nb;
 
   size[0] = 0;
   size[1] = 1;
   size[2] = 2;
   size[3] = 4;
+  nb = 0;
   c = 0;
   while (c != 4)
     {
@@ -46,15 +48,11 @@ int		get_size_octet_code(unsigned char codage)
       octet = octet >> ((3 - c) * 2);
       octet = octet % 4;
       if (octet == 0)
-	{
-	  printf("octet null size octet = %d\n", c);
-	  return (c);
-	}
-      c += size[octet];
-      printf("octet = %d\tsize[octet] = %d\n", octet, size[octet]);
+	  return (nb);
+      nb += size[octet];
+      c++;
     }
-  printf("size octet = %d\n", c);
-  return (c);
+  return (nb);
 }
 
 int		get_octet_code(int special_func, int parameter, char codage)
