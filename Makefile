@@ -4,7 +4,7 @@
 ## Login   <khsime_m@epitech.net>
 ##
 ## Started on  Fri Jan  8 02:57:27 2016 marwane khsime
-## Last update Sat Mar 26 08:21:44 2016 Da Fonseca Samuel
+## Last update Sat Mar 26 09:55:24 2016 Marwane
 ##
 
 RM	= rm -f
@@ -19,7 +19,6 @@ SRC	=	main_vm_corewar.c	\
 		cvrt_to_little_endian.c	\
 		file_arena_check.c	\
 		game_check_steps.c	\
-		live_function.c		\
 		check_champs_cors.c	\
 		put_champs_in_map.c	\
 		list_champs_tool.c	\
@@ -28,7 +27,24 @@ SRC	=	main_vm_corewar.c	\
 		default_addr.c		\
 		progs_sorting.c		\
 		addr_get.c		\
-		options_cmds.c
+		options_cmds.c		\
+		live_function.c		\
+		ld_function.c		\
+		st_function.c		\
+		add_function.c		\
+		sub_function.c		\
+		and_function.c		\
+		or_function.c		\
+		xor_function.c		\
+		zjmp_function.c		\
+		ldi_function.c		\
+		sti_function.c		\
+		fork_function.c		\
+		lld_function.c		\
+		lldi_function.c		\
+		lfork_function.c	\
+		aff_function.c		\
+
 
 BASICS  =	my_memset.c		\
 		my_revstr.c		\

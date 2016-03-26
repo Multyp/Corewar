@@ -5,14 +5,14 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 02:44:26 2016 Marwane
-** Last update Sat Mar 26 04:43:25 2016 Marwane
+** Last update Sat Mar 26 09:47:34 2016 Marwane
 */
 
 #include ""
 
-void	functions_vm(int i, t_vm *vm)
+void	functions_vm(t_champ *champ, int i, t_vm *vm)
 {
-  int	(*ptr[16])(t_vm *vm);
+  int	(*ptr[16])(t_champ *, char *);
 
   ptr[0] = &function_live;
   ptr[1] = &function_ld;
@@ -30,5 +30,5 @@ void	functions_vm(int i, t_vm *vm)
   ptr[13] = &function_lldi;
   ptr[14] = &function_lfork;
   ptr[15] = &function_aff;
-  ptr[c](vm);
+  ptr[c](champ, vm->arena);
 }
