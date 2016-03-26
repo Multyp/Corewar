@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Mar 22 14:58:29 2016 Arthur ARNAUD
-** Last update Sat Mar 26 15:23:39 2016 Arthur ARNAUD
+** Last update Sat Mar 26 17:46:57 2016 Arthur ARNAUD
 ** Last update Tue Mar 22 21:23:47 2016 Arthur ARNAUD
 */
 
@@ -30,7 +30,7 @@ int	op_live(t_action *action, char *str, t_pos *pos)
   while (tab[++i])
     if (i > 0 || (type = check_type(tab[i], pos)) == -1 ||
 	check_args(type, list_arg[i], pos) ||
-	fill_arg(type, tab[i], action->args[i], pos) ||
+	fill_arg(type, tab[i], action->args[i], action->pos - i - 1) ||
 	add_prog_size(type, pos))
       return (1);
   action->coding_byte = 0;

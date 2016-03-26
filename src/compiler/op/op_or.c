@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 04:03:58 2016 Arthur ARNAUD
-** Last update Sat Mar 26 15:27:57 2016 Arthur ARNAUD
+** Last update Sat Mar 26 17:49:59 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -29,7 +29,7 @@ int	op_or(t_action *action, char *str, t_pos *pos)
     {
       if (i > 2 || (type = check_type(tab[i], pos)) == -1 ||
 	  check_args(type, list_arg[i], pos) ||
-	  fill_arg(type, tab[i], action->args[i], pos))
+	  fill_arg(type, tab[i], action->args[i], action->pos - i - 1))
 	return (1);
       add_prog_size(type, pos);
       c += (type << (6 - (i * 2)));

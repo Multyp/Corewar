@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 04:08:26 2016 Arthur ARNAUD
-** Last update Sat Mar 26 15:25:36 2016 Arthur ARNAUD
+** Last update Sat Mar 26 17:47:49 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -29,7 +29,7 @@ int	op_lld(t_action *action, char *str, t_pos *pos)
     {
       if (i > 1 || (type = check_type(tab[i], pos)) == -1 ||
 	  check_args(type, list_arg[i], pos) ||
-	  fill_arg(type, tab[i], action->args[i], pos))
+	  fill_arg(type, tab[i], action->args[i], action->pos - i - 1))
 	return (1);
       add_prog_size(type, pos);
       c += (type << (6 - (i * 2)));

@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 17 15:30:59 2016 Clement Peau
-** Last update Thu Mar 24 12:45:12 2016 Poc
+** Last update Sat Mar 26 17:33:07 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -19,7 +19,7 @@ int		add_to_back_file(t_file *file, char *str)
   while (tmp_list->next != NULL)
     tmp_list = tmp_list->next;
   if ((tmp = malloc(sizeof(t_file))) == NULL)
-    return (1);
+    return (write(2, "Can't perform malloc\n", 21), 1);
   tmp->next = tmp_list->next;
   tmp->str = str;
   tmp_list->next = tmp;
