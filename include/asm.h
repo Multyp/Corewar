@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Sat Mar 26 01:18:48 2016 Arthur ARNAUD
+** Last update Sat Mar 26 14:43:59 2016 Arthur ARNAUD
 */
 
 #ifndef ASM_H_
@@ -68,6 +68,7 @@ typedef struct		s_file
 
 typedef struct		s_action
 {
+  int			pos;
   int			coding_byte;
   char			identifier;
   char			*instruction;
