@@ -1,4 +1,6 @@
 	.name "zork"
 	.comment "Just a basic living program"
 
-	zjmp %:live
+	live %53
+#		zjmp %:live
+live:	live %43

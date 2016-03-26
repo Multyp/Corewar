@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 17:50:43 2016 Poc
-** Last update Fri Mar 25 22:45:35 2016 Poc
+** Last update Sat Mar 26 12:44:25 2016 Poc
 */
 
 #include "asm.h"
@@ -32,12 +32,12 @@ short	find_label_short(t_label *label, char *name, int pos)
     {
       i = 0xFFFF;
       printf("FIND_LABEL_SHORT---i - pos + 2 %d\n", label->pos - pos);
-      return (i - pos + 2);
+      return (i - pos);
     }
   if (label != NULL)
     {
       printf("FIND_LABEL_SHORT---label->pos - pos %d\n", label->pos - pos);
-      return (label->pos - pos);
+      return (label->pos - pos + 1);
     }
   else
     {
@@ -69,7 +69,7 @@ int	find_label(t_label *label, char *name, int pos)
   if (label)
     {
       printf("FIND_LABEL---Returning label->pos - pos - 1 = %x\n", label->pos- pos - 1);
-      return (label->pos - pos - 2);
+      return (label->pos - pos);
     }
   else
     {
@@ -132,7 +132,7 @@ int	write_odds(t_arg *arg, int fd, t_label *label)
 	  printf("WRITE_ODDS---Returning...\n");
 	  return (1);
 	}
-      new_endian = (tmp>>8) | (tmp<<8);
+      new_endian = ((tmp>>8) | (tmp<<8));
       printf("WRITE_ODDS---label->pos %d\n", new_endian);
       write(fd, &new_endian, 2);
     }
