@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 12:58:41 2016 Poc
-** Last update Sat Mar 26 15:42:36 2016 Poc
+** Last update Sat Mar 26 18:57:41 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -19,7 +19,6 @@ int	parser(t_label *label, t_action *action, t_header *header, char *name)
   if ((fd = write_header(header, name)) == -1)
     return (1);
   while (action && action->instruction)
-
     {
       if (write_action(action, fd, label))
 	return (1);
