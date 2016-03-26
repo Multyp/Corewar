@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Tue Mar 22 17:19:48 2016 Poc
-** Last update Sat Mar 26 20:18:42 2016 Poc
+** Last update Sat Mar 26 21:08:55 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -68,7 +68,6 @@ int	is_it_an_int(char *str, int *size)
   int	i;
 
   i = 0;
-  printf("str = %s\n", str);
   if (str[i] == '-')
     i++;
   while (str[i])

@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Mar  6 18:29:49 2016 Arthur ARNAUD
-** Last update Sat Mar 26 20:18:41 2016 Poc
+** Last update Sat Mar 26 20:40:16 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -48,7 +48,6 @@ int		check_action(char *str, t_action *action,
       !(tab = cut_instruction(str)) ||
       (ret = check_name(tab[0], new_action, pos)) == -1)
     return (1);
-  printf("%d\n", ret);
   if (ftab[ret] != NULL)
     {
       new_action->pos = 0;

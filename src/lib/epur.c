@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Tue Jan  5 14:33:32 2016
-** Last update Sat Mar 26 20:47:24 2016 Poc
+** Last update Sat Mar 26 21:10:57 2016 Arthur ARNAUD
 */
 
 #include "asm.h"
@@ -24,10 +24,12 @@ char	*epur_commas(char *str)
     {
       if (str[i] == ',' && str[i + 1] == ',')
 	i++;
-      new_str[j++] = str[i++];
+      else
+	new_str[j++] = str[i++];
     }
   new_str[j] = 0;
   free(str);
+  printf("new_str = %s\n", new_str);
   return (new_str);
 }
 

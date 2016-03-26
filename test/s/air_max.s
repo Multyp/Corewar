@@ -1,9 +1,9 @@
 	.name		"Lebrun"
 	.comment	"Jaime"
 
-begin:	sti r1, %:live, %1
+begin:	sti r1, %:lol, %1
 
-live:	live %4920
+lol:	live %4920
 	fork %:begin
 	ld %0, r3
-	zjmp %:live
+	zjmp %:lol
