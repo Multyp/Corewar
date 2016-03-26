@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 02:44:26 2016 Marwane
-** Last update Sat Mar 26 22:30:06 2016 Marwane
+** Last update Sat Mar 26 22:46:07 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -14,6 +14,7 @@ void	functions_vm(t_vm *vm, t_champ *champ, int i)
 {
   int	(*ptr[16])(t_vm *, t_champ *);
 
+  champ->pc = (champ->pc + 1) % MEM_SIZE;
   ptr[0] = &live_function;
   ptr[1] = &ld_function;
   ptr[2] = &st_function;
@@ -45,7 +46,7 @@ void		main_loop(t_vm *vm)
       printf("champ name = %s | pc = %d\n", tmp_champ->name, tmp_champ->pc);
       printf("cycles to wait for champ = %d\n", tmp_champ->cycles_to_wait);
       if (vm->arena[tmp_champ->pc] < 1 || vm->arena[tmp_champ->pc] > 15)
-	tmp_champ->pc++;
+	tmp_champ->pc = (tmp_champ->pc + 1) % MEM_SIZE;
       else if (tmp_champ->cycles_to_wait == 0)
 	functions_vm(vm, tmp_champ, vm->arena[tmp_champ->pc] - 1);
       else

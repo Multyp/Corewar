@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:42:32 2016 Da Fonseca Samuel
-** Last update Sat Mar 26 22:37:39 2016 Marwane
+** Last update Sat Mar 26 22:43:57 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -68,6 +68,7 @@ int	init_structs(t_vm *vm, int ac, char **av)
   if (default_addr(vm) == 1 ||
       check_champs_sizes(vm) == 1)
     return (1);
+  pc_correction(vm);
   file_arena(vm);
   file_arena_check(vm);
   return (0);
