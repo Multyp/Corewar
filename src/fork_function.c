@@ -5,13 +5,13 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:50:44 2016 Marwane
-** Last update Sat Mar 26 09:13:14 2016 Da Fonseca Samuel
+** Last update Sat Mar 26 09:34:26 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
 
-void	fork_function(t_champ *champ, char *arena)
+void	fork_function(t_vm *vm, t_champ *champ)
 {
-  (void)arena;
   (void)champ;
+  (void)vm;
 }

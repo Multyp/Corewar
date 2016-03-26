@@ -5,14 +5,14 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 02:44:26 2016 Marwane
-** Last update Sat Mar 26 09:15:18 2016 Da Fonseca Samuel
+** Last update Sat Mar 26 09:30:42 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
 
 void	functions_vm(t_vm *vm, t_champ *champ, int i)
 {
-  void	(*ptr[16])(t_champ *, char *);
+  void	(*ptr[16])(t_vm *, t_champ *);
 
   ptr[0] = &live_function;
   ptr[1] = &ld_function;
@@ -30,5 +30,5 @@ void	functions_vm(t_vm *vm, t_champ *champ, int i)
   ptr[13] = &lldi_function;
   ptr[14] = &lfork_function;
   ptr[15] = &aff_function;
-  ptr[i](champ, vm->arena);
+  ptr[i](vm, champ);
 }

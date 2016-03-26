@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sat Mar 26 10:03:17 2016 Marwane
+** Last update Sat Mar 26 09:30:26 2016 Da Fonseca Samuel
 */
 
 #ifndef __VM_COREWAR_H__
@@ -151,22 +151,22 @@ void	file_arena_check(t_vm *);
 ** Functions
 */
 void	functions_vm(t_vm *, t_champ *, int);
-void	live_function(t_champ *, char *);
-void	ld_function(t_champ *, char *);
-void	st_function(t_champ *, char *);
-void	add_function(t_champ *, char *);
-void	sub_function(t_champ *, char *);
-void	and_function(t_champ *, char *);
-void	or_function(t_champ *, char *);
-void	xor_function(t_champ *, char *);
-void	zjmp_function(t_champ *, char *);
-void	ldi_function(t_champ *, char *);
-void	sti_function(t_champ *, char *);
-void	fork_function(t_champ *, char *);
-void	lld_function(t_champ *, char *);
-void	lldi_function(t_champ *, char *);
-void	lfork_function(t_champ *, char *);
-void	aff_function(t_champ *, char *);
+void	live_function(t_vm *, t_champ *);
+void	ld_function(t_vm *, t_champ *);
+void	st_function(t_vm *, t_champ *);
+void	add_function(t_vm *, t_champ *);
+void	sub_function(t_vm *, t_champ *);
+void	and_function(t_vm *, t_champ *);
+void	or_function(t_vm *, t_champ *);
+void	xor_function(t_vm *, t_champ *);
+void	zjmp_function(t_vm *, t_champ *);
+void	ldi_function(t_vm *, t_champ *);
+void	sti_function(t_vm *, t_champ *);
+void	fork_function(t_vm *, t_champ *);
+void	lld_function(t_vm *, t_champ *);
+void	lldi_function(t_vm *, t_champ *);
+void	lfork_function(t_vm *, t_champ *);
+void	aff_function(t_vm *, t_champ *);
 
 /*
 ** Commands
