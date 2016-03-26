@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sat Mar 26 22:44:28 2016 Marwane
+** Last update Sat Mar 26 23:08:23 2016 Marwane
 */
 
 #ifndef __VM_COREWAR_H__
@@ -107,6 +107,7 @@ typedef struct		s_vm
 **
 **/
 void	game_check_steps(t_vm *);
+void	put_memory_hexa_format(char *arena);
 
 /*
 ** ********
