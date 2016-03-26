@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:29:36 2016 Arthur ARNAUD
-** Last update Sat Mar 26 01:58:09 2016 Arthur ARNAUD
+** Last update Sat Mar 26 16:27:39 2016 Poc
 */
 
 #include "asm.h"
@@ -25,7 +25,7 @@ int	main(int ac, char **av)
       !(action = create_action_list()) ||
       (fd = open(av[1], O_RDONLY)) == -1)
     return (1);
-  lexer(label, action, &header, fd);
+  if (lexer(label, action, &header, fd))
   close (fd);
   parser(label, action, &header, av[1]);
 }

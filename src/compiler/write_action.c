@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 16:25:34 2016 Poc
-** Last update Sat Mar 26 15:42:16 2016 Poc
+** Last update Sat Mar 26 16:11:43 2016 Poc
 */
 
 #include "asm.h"
@@ -32,7 +32,8 @@ int	write_action(t_action *action, int fd, t_label *label)
     write(fd, &action->coding_byte, 1);
   while (action->args[i])
     {
-      if (write_args(action->args[i], fd, label, action->pos))
+      printf("action->pos %d\naction->args[i]->pos_link %d\n", action->pos, action->args[i]->pos_link);
+      if (write_args(action->args[i], fd, label, action->args[i]->pos_link))
 	  return (1);
       i++;
     }

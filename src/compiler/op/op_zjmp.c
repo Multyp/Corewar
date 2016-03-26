@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 01:16:27 2016 Arthur ARNAUD
-** Last update Sat Mar 26 16:00:36 2016 Arthur ARNAUD
+** Last update Sat Mar 26 16:13:52 2016 Poc
 */
 
 #include "asm.h"
@@ -29,7 +29,7 @@ int	op_zjmp(t_action *action, char *str, t_pos *pos)
   while (tab[++i])
     if (i > 0 || (type = check_type(tab[i], pos)) == -1 ||
 	check_args(type, list_arg[i], pos) ||
-	fill_arg(type, tab[i], action->args[i], action->pos + i + 1) ||
+	fill_arg(type, tab[i], action->args[i], action->pos - i - 1) ||
 	change_to_odds(action->args[i], &type) ||
 	add_prog_size(type, pos))
       return (1);

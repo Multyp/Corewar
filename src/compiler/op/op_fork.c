@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 01:18:25 2016 Arthur ARNAUD
-** Last update Sat Mar 26 15:59:45 2016 Arthur ARNAUD
+** Last update Sat Mar 26 16:16:09 2016 Poc
 */
 
 #include "asm.h"
@@ -29,7 +29,7 @@ int	op_fork(t_action *action, char *str, t_pos *pos)
   while (tab[++i])
     if (i > 0 || (type = check_type(tab[i], pos)) == -1 ||
 	check_args(type, list_arg[i], pos) ||
-	fill_arg(type, tab[i], action->args[i], action->pos + i + 1) ||
+	fill_arg(type, tab[i], action->args[i], action->pos - i - 1) ||
 	change_to_odds(action->args[i], &type) ||
 	add_prog_size(type, pos))
       return (1);

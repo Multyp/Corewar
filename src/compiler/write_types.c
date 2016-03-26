@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 17:50:43 2016 Poc
-** Last update Sat Mar 26 15:49:39 2016 Poc
+** Last update Sat Mar 26 16:36:52 2016 Poc
 */
 
 #include "asm.h"
@@ -20,7 +20,7 @@ short	find_label_short(t_label *label, char *name, int pos)
       label = label->next;
   if (label && pos >= label->pos)
     {
-      i = 0;
+      i = 0xFFFF;
       printf("(label->pos - pos) %hx\n", ((short)label->pos - pos));
       return (((short)label->pos - pos));
     }
@@ -103,7 +103,7 @@ int	write_indirects(t_arg *arg, int fd, int decal)
 {
   short	new_endian;
 
-  new_endian = change_endian(arg->value + decal);
+  new_endian = ((arg->value>>8 & 0x00FF) | (arg->value<<8 & 0xFF00));
   write(fd, &new_endian, 2);
   return (0);
 }
