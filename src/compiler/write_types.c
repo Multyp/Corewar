@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 17:50:43 2016 Poc
-** Last update Sat Mar 26 14:50:34 2016 Poc
+** Last update Sat Mar 26 15:49:39 2016 Poc
 */
 
 #include "asm.h"
@@ -25,7 +25,7 @@ short	find_label_short(t_label *label, char *name, int pos)
       return (((short)label->pos - pos));
     }
   if (label != NULL)
-    return ((short)label->pos - pos + 1);
+    return ((short)label->pos - pos);
   else
       return (-1);
 }
@@ -65,7 +65,7 @@ int	write_direct(t_arg *arg, int fd, t_label *label, int decal)
   if (arg->link_name != NULL)
     {
       if ((new_endian =
-	   find_label(label, arg->link_name, arg->pos_link)) == -1)
+	   find_label(label, arg->link_name, decal)) == -1)
 	  return (1);
       new_endian = change_endian(new_endian);
       write(fd, &new_endian, 4);
@@ -86,10 +86,9 @@ int	write_odds(t_arg *arg, int fd, t_label *label, int decal)
   if (arg->link_name != NULL)
     {
       if ((tmp =
-	   find_label_short(label, arg->link_name, arg->pos_link)) == -1)
+	   find_label_short(label, arg->link_name, decal)) == -1)
 	  return (1);
       new_endian = ((tmp>>8 & 0x00FF) | (tmp<<8 & 0xFF00));
-      printf("new_endian = %hx\n", new_endian);
       write(fd, &new_endian, 2);
     }
   else
@@ -104,7 +103,7 @@ int	write_indirects(t_arg *arg, int fd, int decal)
 {
   short	new_endian;
 
-  new_endian = change_endian(arg->value);
+  new_endian = change_endian(arg->value + decal);
   write(fd, &new_endian, 2);
   return (0);
 }
