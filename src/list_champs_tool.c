@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:57:03 2016 Da Fonseca Samuel
-** Last update Sat Mar 26 11:57:03 2016 Da Fonseca Samuel
+** Last update Sat Mar 26 22:37:21 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -21,8 +21,8 @@ int		file_champion(t_champ *champ, char *file_path)
 
   if ((fd = open(file_path, O_RDONLY)) == -1)
     {
-      return (my_error(OPEN_FAILED(fle_path)));
       close(fd);
+      return (my_error(OPEN_FAILED(fle_path)));
     }
   if (read(fd, champ, (int)sizeof(t_champ)) < 2192)
     {
