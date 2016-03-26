@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Tue Mar 22 14:58:29 2016 Arthur ARNAUD
-** Last update Sat Mar 26 19:47:13 2016 Poc
+** Last update Sat Mar 26 23:32:48 2016 Poc
 */
 
 #include "asm.h"
@@ -29,7 +29,7 @@ int	op_live(t_action *action, char *str, t_pos *pos)
   while (tab[++i])
     if (i > 0 || (type = check_type(tab[i], pos)) == -1 ||
 	check_args(type, list_arg[i], pos) ||
-	fill_arg(type, tab[i], action->args[i], action->pos - i - 1) ||
+	fill_arg(type, tab[i], action->args[i], action->pos - 1) ||
 	add_prog_size(type, pos))
       return (1);
   action->coding_byte = 0;

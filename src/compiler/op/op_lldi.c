@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 04:09:23 2016 Arthur ARNAUD
-** Last update Sat Mar 26 17:42:56 2016 Poc
+** Last update Sat Mar 26 23:31:28 2016 Poc
 */
 
 #include "asm.h"
@@ -29,7 +29,7 @@ int	op_lldi(t_action *action, char *str, t_pos *pos)
     {
       if (i > 2 || (type = check_type(tab[i], pos)) == -1 ||
 	  check_args(type, list_arg[i], pos) ||
-	  fill_arg(type, tab[i], action->args[i], action->pos - i - 2))
+	  fill_arg(type, tab[i], action->args[i], action->pos - 2))
 	return (1);
       c += (type << (6 - (i * 2)));
       change_to_odds(action->args[i], &type);

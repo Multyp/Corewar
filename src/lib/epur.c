@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Tue Jan  5 14:33:32 2016
-** Last update Sat Mar 26 21:10:57 2016 Arthur ARNAUD
+** Last update Sat Mar 26 23:44:28 2016 Poc
 */
 
 #include "asm.h"
@@ -29,7 +29,6 @@ char	*epur_commas(char *str)
     }
   new_str[j] = 0;
   free(str);
-  printf("new_str = %s\n", new_str);
   return (new_str);
 }
 

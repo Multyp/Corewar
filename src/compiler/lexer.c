@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 16:03:05 2016 Arthur ARNAUD
-** Last update Sat Mar 26 20:25:32 2016 Poc
+** Last update Sat Mar 26 23:44:00 2016 Poc
 */
 
 #include "asm.h"
@@ -14,7 +14,6 @@ void	test_action(t_action *action)
 {
   while (action != NULL)
     {
-      printf("action = %s\n", action->instruction);
       action = action->next;
     }
 }
@@ -23,7 +22,6 @@ void	test_label(t_label *action)
 {
   while (action != NULL)
     {
-      printf("label = %s\n", action->name);
       action = action->next;
     }
 }

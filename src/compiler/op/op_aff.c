@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 04:11:57 2016 Arthur ARNAUD
-** Last update Sat Mar 26 18:19:00 2016 Poc
+** Last update Sat Mar 26 23:33:44 2016 Poc
 */
 
 #include "asm.h"
@@ -29,7 +29,7 @@ int	op_aff(t_action *action, char *str, t_pos *pos)
     {
       if (i > 0 || (type = check_type(tab[i], pos)) == -1 ||
 	  check_args(type, list_arg[i], pos) ||
-	  fill_arg(type, tab[i], action->args[i], action->pos - i - 1))
+	  fill_arg(type, tab[i], action->args[i], action->pos - 2))
 	return (1);
       add_prog_size(type, pos);
       c += (type << (6 - (i * 2)));
