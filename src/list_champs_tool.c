@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:57:03 2016 Da Fonseca Samuel
-** Last update Sun Mar 27 09:07:14 2016 Marwane
+** Last update Sun Mar 27 10:24:18 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -23,6 +23,7 @@ int		file_champion(t_champ *champ, char *file_path)
     return (my_error(OPEN_FAILED(fle_path)));
   if (file_path == NULL || read(fd, champ, 2192) < 2192)
     {
+      printf("erreur\n");
       champ->name[0] = 0;
       champ->magic = -1;
       champ->size = -1;
@@ -41,7 +42,7 @@ int		file_champion(t_champ *champ, char *file_path)
   return (0);
 }
 
-t_champ		*create_champ(char *file_path, int address)
+t_champ		*create_champ(char *file_path, int address, int prog_nb)
 {
   t_champ	*new_champ;
 
@@ -55,6 +56,8 @@ t_champ		*create_champ(char *file_path, int address)
   new_champ->pc = address;
   new_champ->carry = 0;
   new_champ->next = NULL;
+  my_imemset(new_champ->registres, 0, 16);
+  new_champ->registres[0] = prog_nb;
   return (new_champ);
 }
 
@@ -62,7 +65,8 @@ t_champ		*create_champ(char *file_path, int address)
 **   add_champt_to_list prend en paramètre un champion (vide et non malloc)
 **   le path du champion, et le rempli.
 */
-t_vm		*add_champ_to_list(t_vm *vm, char *file_path, int address)
+t_vm		*add_champ_to_list(t_vm *vm, char *file_path,
+				   int address, int prog_nb)
 {
   t_champ	*tmp_champ;
 
@@ -70,10 +74,10 @@ t_vm		*add_champ_to_list(t_vm *vm, char *file_path, int address)
   while (vm->champs != NULL && vm->champs->next != NULL)
     vm->champs = vm->champs->next;
   if (vm->champs == NULL)
-    vm->champs = create_champ(file_path, address);
+    vm->champs = create_champ(file_path, address, prog_nb);
   else
     {
-      vm->champs->next = create_champ(file_path, address);
+      vm->champs->next = create_champ(file_path, address, prog_nb);
       vm->champs = tmp_champ;
     }
   return (vm);
@@ -94,7 +98,7 @@ void		*add_champions(t_vm *vm)
   while (tmp_progs)
     {
       if (add_champ_to_list(vm, tmp_progs->prog_name,
-			    tmp_progs->address) == NULL)
+			    tmp_progs->address, tmp_progs->prog_number) == NULL)
 	  return (NULL);
       tmp_progs = tmp_progs->next;
       i++;

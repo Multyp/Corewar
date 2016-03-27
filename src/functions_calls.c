@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 02:44:26 2016 Marwane
-** Last update Sat Mar 26 21:49:08 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 10:24:44 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -31,7 +31,7 @@ void	functions_vm(t_vm *vm, t_champ *champ, int i)
   ptr[13] = &lldi_function;
   ptr[14] = &lfork_function;
   ptr[15] = &aff_function;
-  printf("fct n° %d\n", i);
+  /* printf("fct n° %d\n", i); */
   if (ptr[i](vm, champ) == 0)
     champ->carry = 1;
 }
@@ -43,8 +43,6 @@ void		main_loop(t_vm *vm)
   tmp_champ = vm->champs;
   while (tmp_champ != NULL)
     {
-      /* printf("champ name = %s | pc = %d\n", tmp_champ->name, tmp_champ->pc); */
-      /* printf("cycles to wait for champ = %d\n", tmp_champ->cycles_to_wait); */
       if (vm->arena[tmp_champ->pc] < 1 || vm->arena[tmp_champ->pc] > 15)
 	tmp_champ->pc = (tmp_champ->pc + 1) % MEM_SIZE;
       else if (tmp_champ->cycles_to_wait == 0)

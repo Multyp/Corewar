@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 06:15:33 2016 Marwane
-** Last update Sun Mar 27 03:45:25 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 09:57:47 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -30,7 +30,11 @@ int		live_function(t_vm *vm, t_champ *champ)
       tmp_prog = tmp_prog->next;
     }
   if (tmp_champ)
-    tmp_champ->alive = true;
+    {
+      my_printf("le joueur %d(%s) est en vie, si si ..\n",
+		tmp_prog->prog_number, tmp_champ->name);
+      tmp_champ->alive = true;
+    }
   champ->cycles_to_wait += 10;
   champ->pc = (champ->pc + 4) % MEM_SIZE;
   return (0);

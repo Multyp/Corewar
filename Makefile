@@ -4,7 +4,7 @@
 ## Login   <khsime_m@epitech.net>
 ##
 ## Started on  Fri Jan  8 02:57:27 2016 marwane khsime
-## Last update Sun Mar 27 00:46:59 2016 Marwane
+## Last update Sun Mar 27 09:50:31 2016 Marwane
 ##
 
 RM	= rm -f
@@ -20,6 +20,7 @@ SRC	=	main_vm_corewar.c	\
 		file_arena_check.c	\
 		game_check_steps.c	\
 		check_champs_cors.c	\
+		aff_winner.c		\
 		put_champs_in_map.c	\
 		list_champs_tool.c	\
 		change_endian.c		\

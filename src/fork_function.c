@@ -5,12 +5,12 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:50:44 2016 Marwane
-** Last update Sun Mar 27 08:36:12 2016 Marwane
+** Last update Sun Mar 27 10:21:14 2016 Marwane
 */
 
 #include "vm_corewar.h"
 
-char		*get_current_prog_name(t_vm *vm, t_champ *champ)
+t_prog		*get_current_prog(t_vm *vm, t_champ *champ)
 {
   t_champ	*tmp_champ;
   t_prog	*tmp_prog;
@@ -23,20 +23,23 @@ char		*get_current_prog_name(t_vm *vm, t_champ *champ)
       tmp_prog = tmp_prog->next;
     }
   if (tmp_champ)
-    return (tmp_prog->prog_name);
+    return (tmp_prog);
   return (NULL);
 }
 
-int	fork_function(t_vm *vm, t_champ *champ)
+int		fork_function(t_vm *vm, t_champ *champ)
 {
-  char	*file_path;
+  t_prog	*tmp_prog;
 
-  if ((file_path = get_current_prog_name(vm, champ)) != NULL)
+  if ((tmp_prog = get_current_prog(vm, champ)) != NULL)
     {
-      add_champ_to_list(vm, file_path,
+      printf("name : %s\n", tmp_prog->prog_name);
+      printf("prognb : %d\n", tmp_prog->prog_number);
+      printf("registre = %d\n", champ->registres[0]);
+      if ((add_champ_to_list(vm, tmp_prog->prog_name,
 			((champ->pc + get_myint(vm, champ->pc, 2)) % IDX_MOD)
-			% MEM_SIZE);
-      add_prog(vm, file_path);
+			     % MEM_SIZE, tmp_prog->prog_number)) != NULL)
+	add_prog(vm, tmp_prog->prog_name);
     }
   champ->cycles_to_wait += 800;
   return (1);
