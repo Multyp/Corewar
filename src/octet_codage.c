@@ -5,19 +5,30 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 11:07:59 2016 Marwane
-** Last update Sun Mar 27 03:42:43 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 14:03:38 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
+
+int	get_spesize(int opt)
+{
+  int	sizes[4];
+
+  sizes[0] = 0;
+  sizes[1] = 1;
+  sizes[2] = 2;
+  sizes[3] = 2;
+  return (sizes[opt]);
+}
 
 int	get_size(int opt)
 {
   int	sizes[4];
 
   sizes[0] = 0;
-  sizes[1] = T_REG;
-  sizes[2] = T_DIR;
-  sizes[3] = T_IND;
+  sizes[1] = 1;
+  sizes[2] = DIR_SIZE;
+  sizes[3] = IND_SIZE;
   return (sizes[opt]);
 }
 
@@ -42,6 +53,7 @@ int	get_myint(t_vm *vm, int pc, int n_octets)
       nb += ((s[c] << (8 * c)) % 126);
       c--;
     }
+  /* printf("nb = %d\n", nb); */
   return (nb);
 }
 

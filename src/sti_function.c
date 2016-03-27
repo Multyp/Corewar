@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:50:29 2016 Marwane
-** Last update Sun Mar 27 07:53:28 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 14:05:37 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -19,6 +19,17 @@ int	check_stioctet(int octet[])
       octet[3] != 0)
     return (1);
   return (0);
+}
+
+int	init_stiopeparams(t_vm *vm, t_champ *champ, int octet, int *p)
+{
+  if (get_spesize(octet) == 1)
+    {
+      *p = (char)(champ->registres[(get_myint(vm, champ->pc, 1) - 1) % 16]);
+      return (1);
+    }
+  *p = (short)get_myint(vm, champ->pc, 2);
+  return (2);
 }
 
 int	sti_function(t_vm *vm, t_champ *champ)

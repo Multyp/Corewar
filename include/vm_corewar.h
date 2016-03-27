@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sun Mar 27 11:45:47 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 14:04:15 2016 Da Fonseca Samuel
 */
 
 #ifndef __VM_COREWAR_H__
@@ -49,7 +49,6 @@
 #define T_IND           4       /* indirecte toujours relatif
                                    ( ld 1,r1 met ce qu'il y a l'adress (1+pc)
                                    dans r1 (4 octecs )) */
-#define T_LAB           8       /* LABEL */
 
 /*
 ** size
@@ -118,6 +117,7 @@ void	aff_winner(t_vm *);
 */
 t_vm	*init_vm(t_vm *);
 int	init_opeparams(t_vm *, t_champ *, int, int *);
+int	init_stiopeparams(t_vm *, t_champ *, int, int *);
 
 /*
 ** *****************
@@ -164,6 +164,7 @@ int	get_octet_code(int, int, char);
 int	get_size_octet_code(unsigned char);
 int	get_myint(t_vm *, int, int);
 int	get_size(int);
+int	get_spesize(int);
 
 /*
 ** Functions
