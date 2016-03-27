@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:50:29 2016 Marwane
-** Last update Sun Mar 27 16:07:47 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 16:22:20 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -46,7 +46,8 @@ void	write_sti(t_vm *vm, int reg, int pos)
     {
 
       reg_changed = change_endian(reg);
-      vm->arena[(pos + c) % MEM_SIZE] = (reg_changed >> ((4 - c) * 8) % 126);
+      vm->arena[(pos + c) % MEM_SIZE] =
+	(reg_changed >> ((4 - 1 - c) * 8) % 126);
       printf("%d|", vm->arena[(pos + c) % MEM_SIZE]);
       c++;
     }

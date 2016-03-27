@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 22:41:59 2016 Marwane
-** Last update Sat Mar 26 22:44:49 2016 Marwane
+** Last update Sun Mar 27 16:15:41 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -19,6 +19,8 @@ void		pc_correction(t_vm *vm)
   tmp_progs = vm->progs;
   while (tmp_progs)
     {
+      my_imemset(tmp_champs->registres, 0, 16);
+      tmp_champs->registres[0] = tmp_progs->prog_number;
       tmp_champs->pc = tmp_progs->address;
       tmp_champs = tmp_champs->next;
       tmp_progs = tmp_progs->next;

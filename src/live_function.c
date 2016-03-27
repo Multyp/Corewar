@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 06:15:33 2016 Marwane
-** Last update Sun Mar 27 13:05:47 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 16:21:16 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -24,17 +24,17 @@ int		live_function(t_vm *vm, t_champ *champ)
   tmp_champ = vm->champs;
   tmp_prog = vm->progs;
   nb = get_myint(vm, champ->pc, 4);
-  while (tmp_champ != NULL && tmp_prog->prog_number != nb)
+  printf("live pour nb = %d\n", nb);
+  while (tmp_champ != NULL && tmp_champ->next != NULL)
     {
+      if (tmp_champ->registres[0] == nb)
+	{
+	  my_printf("Le joueur %d(%s) est en vie,\n",
+		    tmp_prog->prog_number, tmp_champ->name);
+	  tmp_champ->alive = true;
+	}
       tmp_champ = tmp_champ->next;
       tmp_prog = tmp_prog->next;
-    }
-  printf("live pour nb = %d\n", nb);
-  if (tmp_champ)
-    {
-      my_printf("Le joueur %d(%s) est en vie,\n",
-		tmp_prog->prog_number, tmp_champ->name);
-      tmp_champ->alive = true;
     }
   champ->cycles_to_wait += 10;
   champ->pc = (champ->pc + 4) % MEM_SIZE;
