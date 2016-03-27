@@ -5,7 +5,7 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Sun Mar 27 21:41:27 2016 Marwane
+## Last update Sun Mar 27 21:56:31 2016 Poc
 ##
 
 .SUFFIXES:
@@ -13,29 +13,6 @@
 POC=			no
 
 DEBUG=			no
-
-SRC_FILES_DECOMPILER=	main.c			\
-			header.c		\
-			fill_file.c		\
-			check_codage.c		\
-			set_ftab.c		\
-			new_name.c		\
-			op_live.c		\
-			op_add.c		\
-			op_aff.c		\
-			op_and.c		\
-			op_fork.c		\
-			op_ld.c			\
-			op_ldi.c		\
-			op_lfork.c		\
-			op_lld.c		\
-			op_lldi.c		\
-			op_or.c			\
-			op_st.c			\
-			op_sti.c		\
-			op_sub.c		\
-			op_xor.c		\
-			op_zjmp.c		\
 
 SRC_VM	=		main_vm_corewar.c	\
 			options.c		\
@@ -161,8 +138,6 @@ SRC_LIB=		$(addprefix src/lib/,$(SRC_FILES_LIB))
 
 SRC_ASM=		$(addprefix src/compiler/,$(SRC_FILES_ASM))
 
-SRC_DECOMPILER=		$(addprefix src/decompiler/,$(SRC_FILES_DECOMPILER))
-
 OBJ_VM= 		$(addprefix src/src_vm/, $(SRC_VM:.c=.o))
 
 OBJLIB= 		$(addprefix basics/, $(BASICS:.c=.o))
@@ -190,8 +165,6 @@ else
 endif
 
 RM=			rm -f
-
-OBJ_DECOMPILER=		$(SRC_DECOMPILER:.c=.o)
 
 OBJ_ASM=		$(SRC_ASM:.c=.o)
 
@@ -224,10 +197,6 @@ fclean:			clean
 			@$(RM) $(LIBNAME)
 
 re:			fclean all
-
-decompiler:		$(OBJ_DECOMPILER) $(OBJ_LIB)
-			@$(CC) -o decompiler $(OBJ_DECOMPILER) $(OBJ_LIB)
-			@echo "[ OK ] Decompiler Compiled"
 
 %.o:			%.c
 			@echo "[ OK ] Compiling" $<

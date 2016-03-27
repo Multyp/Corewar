@@ -1,5 +1,5 @@
-.name           "42"
-
+	.name		"42"
+	.comment	"Just a basic winner program"
 entree:	live	%42
 	fork	%:tir
 	ld	%0,r5

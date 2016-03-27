@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Tue Mar 22 17:19:48 2016 Poc
-** Last update Sat Mar 26 21:08:55 2016 Arthur ARNAUD
+** Last update Sun Mar 27 21:58:13 2016 Poc
 */
 
 #include "asm.h"
@@ -26,7 +26,6 @@ int	check_direct(char *str, int *size)
   return (0);
 }
 
-
 int	check_percent(char *str, int *size)
 {
   int	i;
@@ -36,7 +35,7 @@ int	check_percent(char *str, int *size)
     while (str[i])
       {
 	if (icubed(LABEL_CHARS, str[i]))
-	  return (print_error("Invalid character\n",*size, 1));
+	  return (print_error("Invalid character\n", *size, 1));
 	i++;
       }
   else

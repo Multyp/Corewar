@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Wed Mar 16 17:17:26 2016 Clement Peau
-** Last update Sun Mar 27 21:14:09 2016 Poc
+** Last update Sun Mar 27 21:55:32 2016 Poc
 */
 
 #include "asm.h"
@@ -27,6 +27,8 @@ int		get_name(t_header *header, char *str)
     if (str[i] == 0)
       return (1);
   str[i - 1] = 0;
+  if (my_strlen(str + k) > PROG_NAME_SIZE)
+    return (print_error("Name is too big, 256 chars max\n", 1, 1));
   my_strcpy(header->prog_name, str + k);
   return (0);
 }
@@ -53,6 +55,8 @@ int		get_comment(t_header *header, char *str)
 	return (1);
       }
   str[i - 1] = 0;
+  if (my_strlen(str + k) > COMMENT_LENGTH)
+    return (print_error("Comment is too big, 2048 chars max\n", 1, 1));
   my_strcpy(header->comment, str + k);
   return (0);
 }
