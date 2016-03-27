@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sun Mar 27 03:43:39 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 03:47:18 2016 Da Fonseca Samuel
 */
 
 #ifndef __VM_COREWAR_H__
@@ -84,6 +84,7 @@ typedef struct		s_champ
   int			pc;
   int			cycles_to_wait;
   int			carry;
+  int			registres[16];
   struct s_champ	*next;
 }			t_champ;
 
