@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:57:03 2016 Da Fonseca Samuel
-** Last update Sun Mar 27 22:44:52 2016 Marwane
+** Last update Sun Mar 27 23:14:17 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -20,6 +20,7 @@ int		file_champion(t_champ *champ, char *file_path)
   if (file_path == NULL || read(fd, champ, 2192) < 2192 ||
       read(fd, &c, 1) == 0)
     {
+      my_printf("Error with file %s, invalid format .\n", file_path);
       champ->name[0] = 0;
       champ->magic = -1;
       champ->size = -1;
