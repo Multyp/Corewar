@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:56:41 2016 Da Fonseca Samuel
-** Last update Sat Mar 26 05:43:04 2016 Marwane
+** Last update Sun Mar 27 11:36:21 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -18,7 +18,7 @@ int		check_file(t_vm *vm, char *file_name, char *param)
   (void)param;
   tmp = vm->progs;
   if ((fd = open(file_name, O_RDONLY)) == -1)
-    return (my_error(OPEN_FAILED(file_name)));
+    return (my_error(OPEN_FAILED));
   else if (vm->file_opts[1] == false && vm->file_opts[0] == false &&
 	   (vm = add_prog(vm, file_name)) == NULL)
     {
@@ -71,7 +71,7 @@ int		my_load_address(t_vm *vm, char *param, char *next_param)
   (void)param;
   nb = my_getnbr(next_param);
   if (nb < 0)
-    return (my_error("Invalid number: should be a positiv one") + 1);
+    return (my_error(INVALID_NUMBER) + 1);
   if (check_list_for_address(vm, nb) == 1 ||
       (vm->file_opts[1] == false && vm->file_opts[0] == false &&
        add_prog(vm, NULL) == NULL))
@@ -81,7 +81,6 @@ int		my_load_address(t_vm *vm, char *param, char *next_param)
   while (tmp->next != NULL)
     tmp = tmp->next;
   tmp->address = nb % MEM_SIZE;
-  tmp->original = 1;
   return (2);
 }
 

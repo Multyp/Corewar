@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 06:15:33 2016 Marwane
-** Last update Sun Mar 27 11:49:03 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 08:47:47 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -24,16 +24,13 @@ int		live_function(t_vm *vm, t_champ *champ)
   tmp_champ = vm->champs;
   tmp_prog = vm->progs;
   nb = get_myint(vm, champ->pc, 4);
-  while (tmp_champ != NULL && tmp_prog->prog_number != nb)
+  while (tmp_champ != NULL)
     {
+      if (tmp_prog->prog_number == nb)
+	Erreur de segmentation (core dumped)
+	  da-fon_s@Witwicky-Pc:~/rendu/vm_corewa	tmp_champ->alive = true;
       tmp_champ = tmp_champ->next;
       tmp_prog = tmp_prog->next;
-    }
-  if (tmp_champ)
-    {
-      my_printf("Player n° %d(%s) est en vie,\n",
-		tmp_prog->prog_number, tmp_champ->name);
-      tmp_champ->alive = true;
     }
   champ->cycles_to_wait += 10;
   champ->pc = (champ->pc + 4) % MEM_SIZE;

@@ -5,12 +5,12 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:50:44 2016 Marwane
-** Last update Sun Mar 27 10:21:14 2016 Marwane
+** Last update Sun Mar 27 11:47:27 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
 
-t_prog		*get_current_prog(t_vm *vm, t_champ *champ)
+char		*get_current_prog_name(t_vm *vm, t_champ *champ)
 {
   t_champ	*tmp_champ;
   t_prog	*tmp_prog;
@@ -23,24 +23,61 @@ t_prog		*get_current_prog(t_vm *vm, t_champ *champ)
       tmp_prog = tmp_prog->next;
     }
   if (tmp_champ)
-    return (tmp_prog);
+    return (tmp_prog->prog_name);
   return (NULL);
+}
+
+void	init_sonvalues(t_prog *nprog, t_champ *nchamp,
+		       t_prog *fprog)
+{
+  nprog->prog_number = fprog->prog_number;
+  nprog->address = fprog->address;
+  nprog->prog_name = my_strdup(fprog->prog_name);
+  nchamp->pc = nprog->address;
+  nchamp->cycles_to_wait = 800;
+  nchamp->registres[0] = nprog->prog_number;
+}
+
+void		init_son(t_vm *vm, t_champ *champ)
+{
+  t_champ	*tmp_champ;
+  t_prog	*tmp_prog;
+  t_prog	*tmp2_prog;
+
+  tmp_champ = vm->champs;
+  tmp_prog = vm->progs;
+  tmp2_prog = vm->progs;
+  while (tmp2_prog && tmp_champ != champ)
+    {
+      tmp2_prog = tmp2_prog->next;
+      tmp_champ = tmp_champ->next;
+    }
+  tmp_champ = vm->champs;
+  while (tmp_champ && tmp_champ->next)
+    {
+      tmp_prog = tmp_prog->next;
+      tmp_champ = tmp_champ->next;
+    }
+  if (!tmp_champ)
+    return ;
+  init_sonvalues(tmp_prog, tmp_champ, tmp2_prog);
+  tmp_champ->pc =
+    (tmp_champ->pc + (get_myint(vm, champ->pc, 2) % IDX_MOD)) % MEM_SIZE;
+  tmp_prog->address = tmp_champ->pc;
 }
 
 int		fork_function(t_vm *vm, t_champ *champ)
 {
-  t_prog	*tmp_prog;
+  char		*file_path;
 
-  if ((tmp_prog = get_current_prog(vm, champ)) != NULL)
+  if ((file_path = get_current_prog_name(vm, champ)) != NULL)
     {
-      printf("name : %s\n", tmp_prog->prog_name);
-      printf("prognb : %d\n", tmp_prog->prog_number);
-      printf("registre = %d\n", champ->registres[0]);
-      if ((add_champ_to_list(vm, tmp_prog->prog_name,
+      add_champ_to_list(vm, file_path,
 			((champ->pc + get_myint(vm, champ->pc, 2)) % IDX_MOD)
-			     % MEM_SIZE, tmp_prog->prog_number)) != NULL)
-	add_prog(vm, tmp_prog->prog_name);
+			% MEM_SIZE, 0);
+      add_prog(vm, file_path);
     }
   champ->cycles_to_wait += 800;
+  init_son(vm, champ);
   return (1);
 }

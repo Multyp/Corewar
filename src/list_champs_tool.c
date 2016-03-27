@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:57:03 2016 Da Fonseca Samuel
-** Last update Sun Mar 27 10:24:18 2016 Marwane
+** Last update Sun Mar 27 11:46:21 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -20,7 +20,7 @@ int		file_champion(t_champ *champ, char *file_path)
   int		fd;
 
   if (file_path != NULL && (fd = open(file_path, O_RDONLY)) == -1)
-    return (my_error(OPEN_FAILED(fle_path)));
+    return (my_error(OPEN_FAILED));
   if (file_path == NULL || read(fd, champ, 2192) < 2192)
     {
       printf("erreur\n");

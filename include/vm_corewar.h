@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sun Mar 27 10:06:13 2016 Marwane
+** Last update Sun Mar 27 11:45:47 2016 Da Fonseca Samuel
 */
 
 #ifndef __VM_COREWAR_H__
@@ -23,12 +23,12 @@
 */
 # define MALLOC_FAILED	"Error: Malloc Failed"
 # define INVALID_OPTION "Error: Invalid option, try to use --help"
-# define OPEN_FAILED(file_name) "Error: Could not open file "#file_name
+# define OPEN_FAILED "Error: Could not open file "
 # define INVALID_FILE(file) "Error: "#file" is not a corewar executable"
 # define USED_PROGNUMBER(x) "Error: Prog number "#x" already used"
 # define PLAYER_ALIVE(player_name) "Player "#player_name" is alive"
 # define PLAYER_WIN(winner_name) "Player "#winner_name" wins"
-
+# define INVALID_NUMBER "Error: Invalid number. Option ignored."
 
 # define NAME_SIZE 128
 # define COMMENT_SIZE 2048
