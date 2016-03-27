@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 02:44:26 2016 Marwane
-** Last update Sun Mar 27 12:58:48 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 14:20:53 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -31,9 +31,14 @@ void	functions_vm(t_vm *vm, t_champ *champ, int i)
   ptr[13] = &lldi_function;
   ptr[14] = &lfork_function;
   ptr[15] = &aff_function;
-  printf("fct n° %d\n", i);
+  if (i == 10)
+    exit (1);
   if (ptr[i](vm, champ) == 0)
-    champ->carry = 1;
+    champ->carry = (champ->carry + 1) % 2;
+  printf("fct n° %d\n", i);
+  printf("name = %s\n", champ->name);
+  printf("pc = %d\n", champ->pc);
+  printf("######################\n");
 }
 
 void		main_loop(t_vm *vm)
