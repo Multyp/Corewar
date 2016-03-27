@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 11:07:59 2016 Marwane
-** Last update Sun Mar 27 01:10:10 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 03:14:44 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -32,16 +32,24 @@ int	get_myint(t_vm *vm, t_champ *champ, int n_octets)
   my_memset(s, 0, n_octets + 1);
   p = champ->pc;
   c = 0;
-  while (c != 1)
+  while (c != n_octets)
     {
       s[c] = vm->arena[p];
-      printf("s[c] = %d\nnb = %d\n", s[c], nb);
       p = (p + 1) % MEM_SIZE;
       c++;
     }
-  nb = (s[0] << (8 * 3)) + (s[1] << (8 * 2)) + (s[2] << 8) + s[3];
-      printf("nb = %d\n", nb);
-  return (0);
+  c--;
+  s[0] = 13;
+  s[1] = 15;
+  s[2] = 17;
+  s[3] = 82;
+  while (c >= 0)
+    {
+      nb += ((s[c] << (8 * c)) % 126);
+      c--;
+    }
+  printf("nb = %d\n", nb);
+  return (nb);
 }
 
 

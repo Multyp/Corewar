@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:42:32 2016 Da Fonseca Samuel
-** Last update Sat Mar 26 23:10:38 2016 Marwane
+** Last update Sun Mar 27 01:53:08 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -86,13 +86,15 @@ int	init_variables(t_vm *vm, int ac, char **av)
 
 void	launch_game(t_vm *vm)
 {
-  while (vm->dump > 0 && vm->progs_nb > 1)
+  while (vm->dump != 0 && vm->progs_nb > 1)
     {
       main_loop(vm);
       game_check_steps(vm);
       /* printf("dump = %d\n", vm->dump); */
       vm->dump--;
     }
+  /* if (vm->dump == 0) */
+  /*   put_memory_hexa_format(vm->arena); */
 }
 
 int	main(int ac, char **av)
@@ -105,7 +107,5 @@ int	main(int ac, char **av)
   /* my_afflist(&vm); */
   /* my_affchamps(&vm); */
   launch_game(&vm);
-  if (vm.dump == 0)
-    put_memory_hexa_format(vm.arena);
   return (0);
 }
