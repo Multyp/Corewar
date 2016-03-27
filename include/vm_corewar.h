@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sun Mar 27 14:04:15 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 16:00:00 2016 Da Fonseca Samuel
 */
 
 #ifndef __VM_COREWAR_H__
@@ -117,7 +117,7 @@ void	aff_winner(t_vm *);
 */
 t_vm	*init_vm(t_vm *);
 int	init_opeparams(t_vm *, t_champ *, int, int *);
-int	init_stiopeparams(t_vm *, t_champ *, int, int *);
+int	init_stiopeparams(t_vm *, t_champ *, int, short *);
 
 /*
 ** *****************

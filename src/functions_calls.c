@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 02:44:26 2016 Marwane
-** Last update Sun Mar 27 14:44:39 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 16:11:30 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -35,13 +35,7 @@ void	functions_vm(t_vm *vm, t_champ *champ, int i)
 
   if (ptr[i](vm, champ) == 0)
     champ->carry = (champ->carry + 1) % 2;
-  if (p % 2 == 0)
-    {
-      printf("fct n° %d\n", i);
-      printf("name = %s\n", champ->name);
-      printf("pc = %d\n", champ->pc);
-      printf("######################\n");
-    }
+  printf("vm->champs reg = %d\tprog nb = %d\n", vm->champs->registres[0], vm->progs->prog_number);
   p++;
 }
 

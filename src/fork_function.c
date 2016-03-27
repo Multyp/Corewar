@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:50:44 2016 Marwane
-** Last update Sun Mar 27 13:07:23 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 15:21:21 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -45,15 +45,15 @@ void		init_son(t_vm *vm, t_champ *champ)
   t_prog	*tmp2_prog;
 
   tmp_champ = vm->champs;
-  tmp_prog = vm->progs;
   tmp2_prog = vm->progs;
   while (tmp2_prog && tmp_champ != champ)
     {
       tmp2_prog = tmp2_prog->next;
       tmp_champ = tmp_champ->next;
     }
+  tmp_prog = vm->progs;
   tmp_champ = vm->champs;
-  while (tmp_champ && tmp_champ->next)
+  while (tmp_champ != NULL && tmp_champ->next != NULL)
     {
       tmp_prog = tmp_prog->next;
       tmp_champ = tmp_champ->next;
@@ -62,7 +62,7 @@ void		init_son(t_vm *vm, t_champ *champ)
     return ;
   init_sonvalues(tmp_prog, tmp_champ, tmp2_prog);
   tmp_champ->pc =
-    (tmp_champ->pc + (get_myint(vm, champ->pc, 2) % IDX_MOD)) % MEM_SIZE;
+    (champ->pc + (get_myint(vm, champ->pc, 2) % IDX_MOD)) % MEM_SIZE;
   tmp_prog->address = tmp_champ->pc;
 }
 
@@ -76,9 +76,9 @@ int		fork_function(t_vm *vm, t_champ *champ)
 			((champ->pc + get_myint(vm, champ->pc, 2)) % IDX_MOD)
 			% MEM_SIZE, 0);
       add_prog(vm, file_path);
-      champ->pc = (champ->pc + 2) % MEM_SIZE;
     }
   champ->cycles_to_wait += 800;
   init_son(vm, champ);
+  champ->pc = (champ->pc + 2) % MEM_SIZE;
   return (1);
 }
