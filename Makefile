@@ -5,14 +5,14 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Sun Mar 27 21:31:16 2016 Marwane
+## Last update Sun Mar 27 21:41:27 2016 Marwane
 ##
 
 .SUFFIXES:
 
 POC=			no
 
-DEBUG=			yes
+DEBUG=			no
 
 SRC_FILES_DECOMPILER=	main.c			\
 			header.c		\
@@ -47,36 +47,36 @@ SRC_VM	=		main_vm_corewar.c	\
 			aff_winner.c		\
 			put_champs_in_map.c	\
 			list_champs_tool.c	\
-		change_endian.c		\
-		pc_correction.c		\
-		free.c			\
-		displays.c		\
-		free_champions.c	\
-		get_base_16.c		\
-		check_champs_size.c	\
-		default_addr.c		\
-		progs_sorting.c		\
-		addr_get.c		\
-		options_cmds.c		\
-		functions_calls.c	\
-		live_function.c		\
-		ld_function.c		\
-		st_function.c		\
-		add_function.c		\
-		sub_function.c		\
-		and_function.c		\
-		or_function.c		\
-		xor_function.c		\
-		zjmp_function.c		\
-		ldi_function.c		\
-		sti_function.c		\
-		fork_function.c		\
-		lld_function.c		\
-		lldi_function.c		\
-		lfork_function.c	\
-		aff_function.c		\
-		octet_codage.c		\
-		init_ops.c
+			change_endian.c		\
+			pc_correction.c		\
+			free.c			\
+			displays.c		\
+			free_champions.c	\
+			get_base_16.c		\
+			check_champs_size.c	\
+			default_addr.c		\
+			progs_sorting.c		\
+			addr_get.c		\
+			options_cmds.c		\
+			functions_calls.c	\
+			live_function.c		\
+			ld_function.c		\
+			st_function.c		\
+			add_function.c		\
+			sub_function.c		\
+			and_function.c		\
+			or_function.c		\
+			xor_function.c		\
+			zjmp_function.c		\
+			ldi_function.c		\
+			sti_function.c		\
+			fork_function.c		\
+			lld_function.c		\
+			lldi_function.c		\
+			lfork_function.c	\
+			aff_function.c		\
+			octet_codage.c		\
+			init_ops.c
 
 BASICS  =		my_memset.c		\
 			my_revstr.c		\
@@ -180,7 +180,7 @@ HEAD=			-Iinclude
 ifeq ($(DEBUG), yes)
 	CFLAGS=		$(HEAD) -W -Wall -Wextra -ansi -pedantic -g -D DEBUG
 else
-	CFLAGS=		$(HEAD) -W -Wall -Wextra -Werror -ansi -pedantic
+	CFLAGS=		$(HEAD) -W -Wall -Wextra -Werror
 endif
 
 ifeq ($(POC), yes)
@@ -203,7 +203,7 @@ $(NAME_VM):		$(LIBNAME) $(OBJ_VM)
 
 $(NAME):		$(NAME_VM) $(OBJ_ASM) $(OBJ_LIB)
 			@$(CC) $(OBJ_ASM) $(OBJ_LIB) -o asm/asm
-			@echo "[ OK ] ASM Compiled"
+			@ echo -e "\033[1;31m \t \t \n \t ♩♪♫ $(NAME) Compiled\033[0;31m®\033[1;31m Created Sucesfully \033[0m "
 
 $(LIBNAME):		$(OBJLIB)
 			ar rc $(LIBNAME) $(OBJLIB)

@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Sun Mar 27 19:24:26 2016 Poc
+** Last update Sun Mar 27 21:38:34 2016 Marwane
 */
 
 #ifndef ASM_H_
@@ -126,6 +126,7 @@ int		my_strcmp(char *, char *);
 int		my_strncmp(char *, char *, int);
 void		my_strcat(char *, char *);
 void		free_tab(char **);
+void		free_lists(t_label *, t_action *);
 void		my_putnbr(int);
 void		showtab(char **);
 

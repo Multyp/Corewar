@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Sun Mar 27 17:54:07 2016 Poc
-** Last update Sun Mar 27 20:45:47 2016 Poc
+** Last update Sun Mar 27 21:36:27 2016 Marwane
 */
 
 #include "asm.h"
@@ -51,7 +51,7 @@ void	free_action(t_action *action)
     }
 }
 
-void	free_lists(t_label *label, t_action *action, t_header header)
+void	free_lists(t_label *label, t_action *action)
 {
   free_labels(label);
   free_action(action);
