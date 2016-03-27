@@ -1,3 +1,12 @@
+/*
+** libmy.h for libmy in /home/khsime_m/rendu/projets/CPE_2015_corewar/include
+**
+** Made by Marwane
+** Login   <khsime_m@epitech.net>
+**
+** Started on  Sun Mar 27 22:11:38 2016 Marwane
+** Last update Sun Mar 27 22:11:39 2016 Marwane
+*/
 
 #ifndef __LIBMY_H__
 #define __LIBMY_H__

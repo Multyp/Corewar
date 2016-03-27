@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sun Mar 27 20:46:29 2016 Marwane
+** Last update Sun Mar 27 22:11:15 2016 Marwane
 */
 
 #ifndef __VM_COREWAR_H__
@@ -35,28 +35,26 @@
 /*
 ** regs
 */
-#define REG_NUMBER      16              /* r1 <--> rx */
+#define REG_NUMBER      16
 
 /*
 **
 */
-#define T_REG           1       /* registre */
-#define T_DIR           2       /* directe  (ld  #1,r1  met 1 dans r1) */
-#define T_IND           4       /* indirecte toujours relatif
-                                   ( ld 1,r1 met ce qu'il y a l'adress (1+pc)
-                                   dans r1 (4 octecs )) */
+#define T_REG           1
+#define T_DIR           2
+#define T_IND           4
 
 /*
 ** size
 */
-#define IND_SIZE        2               /* en octet */
-#define REG_SIZE        4               /* en octet */
-#define DIR_SIZE        REG_SIZE        /* en octet */
+#define IND_SIZE        2
+#define REG_SIZE        4
+#define DIR_SIZE        REG_SIZE
 
 /*
 ** live
 */
-#define CYCLE_TO_DIE    1536    /* nombre de cycle pour etre d\'eclarer mort */
+#define CYCLE_TO_DIE    1536
 #define CYCLE_DELTA     5
 #define NBR_LIVE        40
 
@@ -151,7 +149,6 @@ int	change_endian(int nb);
 char	*get_binary(char *);
 void	file_arena(t_vm *);
 void	file_arena_check(t_vm *);
-
 
 /*
 ** Display
