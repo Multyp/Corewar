@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:42:32 2016 Da Fonseca Samuel
-** Last update Sun Mar 27 11:48:03 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 12:52:10 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -108,7 +108,7 @@ int	main(int ac, char **av)
   if (init_variables(&vm, ac, av) == 1)
     return (1);
   launch_game(&vm);
-  if (vm.dump == 0)
-    put_memory_hexa_format(vm.arena);
+  /* if (vm.dump == 0) */
+  /*   put_memory_hexa_format(vm.arena); */
   return (0);
 }

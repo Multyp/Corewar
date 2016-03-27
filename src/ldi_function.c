@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:50:11 2016 Marwane
-** Last update Sun Mar 27 07:23:31 2016 Marwane
+** Last update Sun Mar 27 13:28:48 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -63,7 +63,7 @@ int	ldi_function_first_param(t_vm *vm, t_champ *champ, int octet[])
   else
     {
       ret = get_myint(vm, champ->pc, 4);
-      return ((champ->pc = (champ->pc + 4) % MEM_SIZE), ret);
+      return ((champ->pc = (champ->pc + 2) % MEM_SIZE), ret);
     }
   return (0);
 }
