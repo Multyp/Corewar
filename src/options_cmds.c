@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:56:41 2016 Da Fonseca Samuel
-** Last update Sun Mar 27 11:36:21 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 20:03:13 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -48,9 +48,9 @@ int	show_help(t_vm *vm, char *param, char *next_param)
   my_printf("Usage: %s [options]\n"
             "Options:\n"
             "\t--help\t\t\tDisplay this help\n"
-	    "\t-dump\n"
-	    "\t-a\n"
-	    "\t-n\n", binary);
+	    "\t-dump\t\t\t<cycles>\n"
+	    "\t-a\t\t\t<address>\n"
+	    "\t-n\t\t\t<programme number>\n", binary);
   return (1);
 }
 

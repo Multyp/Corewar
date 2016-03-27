@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:57:03 2016 Da Fonseca Samuel
-** Last update Sun Mar 27 11:46:21 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 19:53:58 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -23,7 +23,6 @@ int		file_champion(t_champ *champ, char *file_path)
     return (my_error(OPEN_FAILED));
   if (file_path == NULL || read(fd, champ, 2192) < 2192)
     {
-      printf("erreur\n");
       champ->name[0] = 0;
       champ->magic = -1;
       champ->size = -1;
