@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 16:03:05 2016 Arthur ARNAUD
-** Last update Sat Mar 26 23:44:00 2016 Poc
+** Last update Sun Mar 27 01:41:06 2016 Poc
 */
 
 #include "asm.h"
@@ -46,15 +46,15 @@ int	lexer(t_label *label, t_action *action, t_header *header, int fd)
     return (1);
   while ((str = get_line_not_empty(fd, &pos.line)) != NULL)
     {
+      if (!header->full)
+	if (get_header(str, header))
+	  return (1);
       if (header->full && check_empty(str))
 	{
 	  if (!(str = check_label(str, label, &pos)) ||
 	    (check_action(str, action, &pos, ftab)))
 	    return (1);
 	}
-      else
-	if (get_header(str, header))
-	  return (1);
       pos.line++;
     }
   header->prog_size = pos.prog_size;
