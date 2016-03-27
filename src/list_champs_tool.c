@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:57:03 2016 Da Fonseca Samuel
-** Last update Sat Mar 26 22:37:21 2016 Marwane
+** Last update Sun Mar 27 09:07:14 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -19,12 +19,9 @@ int		file_champion(t_champ *champ, char *file_path)
 {
   int		fd;
 
-  if ((fd = open(file_path, O_RDONLY)) == -1)
-    {
-      close(fd);
-      return (my_error(OPEN_FAILED(fle_path)));
-    }
-  if (read(fd, champ, (int)sizeof(t_champ)) < 2192)
+  if (file_path != NULL && (fd = open(file_path, O_RDONLY)) == -1)
+    return (my_error(OPEN_FAILED(fle_path)));
+  if (file_path == NULL || read(fd, champ, 2192) < 2192)
     {
       champ->name[0] = 0;
       champ->magic = -1;
@@ -33,7 +30,7 @@ int		file_champion(t_champ *champ, char *file_path)
       champ->pc = -1;
       champ->alive = false;
       champ->cycles_to_wait = 0;
-      close(fd);
+      (file_path != NULL ? close(fd) : 0);
       return (0);
     };
   champ->magic = convert_to_little_endian(champ->magic);
@@ -98,7 +95,7 @@ void		*add_champions(t_vm *vm)
     {
       if (add_champ_to_list(vm, tmp_progs->prog_name,
 			    tmp_progs->address) == NULL)
-	return (NULL);
+	  return (NULL);
       tmp_progs = tmp_progs->next;
       i++;
     }

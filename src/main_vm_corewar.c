@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:42:32 2016 Da Fonseca Samuel
-** Last update Sun Mar 27 01:53:08 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 08:52:25 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -106,6 +106,7 @@ int	main(int ac, char **av)
     return (1);
   /* my_afflist(&vm); */
   /* my_affchamps(&vm); */
+  exit (0);
   launch_game(&vm);
   return (0);
 }

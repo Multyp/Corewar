@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:55:37 2016 Da Fonseca Samuel
-** Last update Sat Mar 26 15:47:40 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 08:47:58 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -30,7 +30,6 @@ void		check_champs_error(t_vm *vm)
     {
       if (check_prog_blocs(tmp->name, tmp->size, tmp->magic) == -1)
       	{
-	  printf("name = %s\nsize = %d\nmagic = %d\n", tmp->name, tmp->size, tmp->magic);
       	  del_prog(vm, i);
       	  del_champ(vm, i);
       	}
