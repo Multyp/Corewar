@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:48:27 2016 Marwane
-** Last update Sun Mar 27 14:59:58 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 19:12:50 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -26,17 +26,17 @@ void	st_function_t_ind(t_vm *vm, t_champ *champ,
 
   champ->pc = (champ->pc + 1) % MEM_SIZE;
   second_param = get_myint(vm, champ->pc, 2);
-  vm->arena[(_pc + second_param % IDX_MOD) % MEM_SIZE] = first_param;
   champ->pc = (champ->pc + 2) % MEM_SIZE;
+  write_map(vm, first_param, (_pc + second_param % IDX_MOD) % MEM_SIZE);
 }
 
 void	st_function_t_reg(t_vm *vm, t_champ *champ, int first_param)
 {
   int	second_param;
 
-  second_param = get_myint(vm, (champ->pc = ((champ->pc  + 1) % MEM_SIZE)), 1);
-  champ->registres[second_param % 16] = first_param;
-  (void)first_param;
+  champ->pc = (champ->pc + 1) % MEM_SIZE;
+  second_param = get_myint(vm, champ->pc, 1);
+  champ->registres[(second_param - 1) % 16] = first_param;
 }
 
 int	st_function(t_vm *vm, t_champ *champ)
@@ -55,8 +55,7 @@ int	st_function(t_vm *vm, t_champ *champ)
   _pc = champ->pc;
   if (check_stoctet(octet) == 0)
     {
-      first_param = get_myint(vm,
-			      (champ->pc = ((champ->pc + 1) % MEM_SIZE)), 1);
+      first_param = get_myint(vm, champ->pc, 1);
       if (octet[1] == T_IND)
 	st_function_t_ind(vm, champ, _pc, first_param);
       else

@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:52:08 2016 Marwane
-** Last update Sun Mar 27 08:05:28 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 19:42:56 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -31,10 +31,11 @@ int	aff_function(t_vm *vm, t_champ *champ)
       octet[i] = get_octet_code(0, i, vm->arena[champ->pc]);
       i++;
     }
+  if (i > 0 || check_affoctet(octet) == 1)
+    return (1);
   champ->cycles_to_wait += 2;
   champ->pc = (champ->pc + 1) % MEM_SIZE;
   i = get_myint(vm, champ->pc, get_size(octet[0]));
-  if (i > 0 && check_affoctet(octet) == 0)
-    my_printf("%c\n", champ->registres[(i - 1) % 16] % 256);
+  my_printf("%c\n", champ->registres[(i - 1) % 16] % 256);
   return (1);
 }

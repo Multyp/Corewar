@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:48:07 2016 Marwane
-** Last update Sun Mar 27 14:15:22 2016 Marwane
+** Last update Sun Mar 27 19:43:30 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -35,13 +35,14 @@ int	ld_function(t_vm *vm, t_champ *champ)
       octet[i] = get_octet_code(0, i, vm->arena[champ->pc]);
       i++;
     }
+  champ->cycles_to_wait += 5;
+  if (check_ldoctet(octet) == 1)
+    return (0);
   champ->pc = (champ->pc + 1) % MEM_SIZE;
   i = init_opeparams(vm, champ, octet[0], &first_param);
   champ->pc = (champ->pc + i) % MEM_SIZE;
   reg_param = get_myint(vm, champ->pc, 1);
   champ->pc = (champ->pc + 1) % MEM_SIZE;
-  champ->cycles_to_wait += 5;
-  if (reg_param > 0 && check_ldoctet(octet) == 0)
     champ->registres[(reg_param - 1) % 16] =
       get_myint(vm, (stock_pc + (first_param % IDX_MOD)) % MEM_SIZE, 4);
   return (0);

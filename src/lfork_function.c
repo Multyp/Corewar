@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:50:44 2016 Marwane
-** Last update Sun Mar 27 13:42:24 2016 Marwane
+** Last update Sun Mar 27 19:42:31 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -76,9 +76,9 @@ int		lfork_function(t_vm *vm, t_champ *champ)
 			((champ->pc + get_myint(vm, champ->pc, 2)))
 			% MEM_SIZE, 0);
       add_prog(vm, file_path);
-      champ->pc = (champ->pc + 2) % MEM_SIZE;
+      champ->cycles_to_wait += 1000;
+      init_son_lfork(vm, champ);
     }
-  champ->cycles_to_wait += 1000;
-  init_son_lfork(vm, champ);
+  champ->pc = (champ->pc + 2) % MEM_SIZE;
   return (1);
 }

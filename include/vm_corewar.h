@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sun Mar 27 16:00:00 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 19:32:16 2016 Da Fonseca Samuel
 */
 
 #ifndef __VM_COREWAR_H__
@@ -117,7 +117,7 @@ void	aff_winner(t_vm *);
 */
 t_vm	*init_vm(t_vm *);
 int	init_opeparams(t_vm *, t_champ *, int, int *);
-int	init_stiopeparams(t_vm *, t_champ *, int, short *);
+int	init_stiopeparams(t_vm *, t_champ *, int, int *);
 
 /*
 ** *****************
@@ -165,6 +165,7 @@ int	get_size_octet_code(unsigned char);
 int	get_myint(t_vm *, int, int);
 int	get_size(int);
 int	get_spesize(int);
+void	write_map(t_vm *, int, int);
 
 /*
 ** Functions

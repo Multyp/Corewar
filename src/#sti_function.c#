@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:50:29 2016 Marwane
-** Last update Sun Mar 27 19:44:42 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 18:53:23 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -21,8 +21,9 @@ int	check_stioctet(int octet[])
   return (0);
 }
 
-int	init_stiopeparams(t_vm *vm, t_champ *champ, int octet, int *p)
+int	init_stiopeparams(t_vm *vm, t_champ *champ, int octet, short *p)
 {
+  printf("\nSTI\nsize = %d\n", get_spesize(octet));
   if (get_spesize(octet) == 1)
     {
       *p = (char)(champ->registres[(get_myint(vm, champ->pc, 1) - 1) % 16]);
@@ -39,13 +40,13 @@ void	write_map(t_vm *vm, int reg, int pos)
 
   c = 0;
   reg_changed = change_endian(reg);
-  printf("WRITE MAP\nparam = %d\n", reg);
+  printf("WRITE MAP\n");
   while (c != 4)
     {
       reg_changed = change_endian(reg);
       vm->arena[(pos + c) % MEM_SIZE] =
 	(reg_changed >> ((3 - c) * 8) % 126);
-      printf("%d|", vm->arena[(pos + c) % MEM_SIZE]);
+      printf("%c|" , vm->arena[(pos + c) % MEM_SIZE]);
       c++;
     }
   printf("\n");
@@ -56,20 +57,17 @@ int	sti_function(t_vm *vm, t_champ *champ)
   int	octet[4];
   int	i;
   int	p1;
-  int	p2;
-  int	p3;
+  short	p2;
+  short	p3;
   int	s;
 
   i = 0;
   s = champ->pc;
-  printf("sti\n");
   while (i != 4)
     {
       octet[i] = get_octet_code(0, i, vm->arena[champ->pc]);
       i++;
     }
-  if (check_stioctet(octet) == 1)
-    return (1);
   champ->cycles_to_wait += 25;
   champ->pc = (champ->pc + 1) % MEM_SIZE;
   p1 = get_myint(vm, champ->pc, 1);
@@ -78,6 +76,7 @@ int	sti_function(t_vm *vm, t_champ *champ)
   champ->pc = (champ->pc + i) % MEM_SIZE;
   i = init_stiopeparams(vm, champ, octet[2], &p3);
   champ->pc = (champ->pc + i) % MEM_SIZE;
-  write_map(vm, champ->registres[(p1 - 1) % 16], (s + p1 + p2) % MEM_SIZE);
+  if (check_stioctet(octet) == 0)
+    write_map(vm, champ->registres[(p1 - 1) % 16], (s + p1 + p2) % MEM_SIZE);
   return (1);
 }

@@ -5,15 +5,15 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 06:15:33 2016 Marwane
-** Last update Sun Mar 27 16:21:16 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 19:49:08 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
 
 int		live_function(t_vm *vm, t_champ *champ)
 {
-  t_champ	*tmp_champ;
-  t_prog	*tmp_prog;
+  t_champ	*c;
+  t_prog	*prog;
   int		nb;
 
   if (++vm->live_calls == NBR_LIVE)
@@ -21,22 +21,21 @@ int		live_function(t_vm *vm, t_champ *champ)
       vm->live_calls = 0;
       vm->cycle_die -= (vm->cycle_die - CYCLE_DELTA > 0 ? CYCLE_DELTA : 0);
     }
-  tmp_champ = vm->champs;
-  tmp_prog = vm->progs;
+  c = vm->champs;
+  prog = vm->progs;
   nb = get_myint(vm, champ->pc, 4);
-  printf("live pour nb = %d\n", nb);
-  while (tmp_champ != NULL && tmp_champ->next != NULL)
+  while (c != NULL && c->next != NULL)
     {
-      if (tmp_champ->registres[0] == nb)
+      my_printf("prog nb = %d\t%d\n", prog->prog_number, c->registres[0]);
+      if (c->registres[0] == nb || prog->prog_number == nb)
 	{
-	  my_printf("Le joueur %d(%s) est en vie,\n",
-		    tmp_prog->prog_number, tmp_champ->name);
-	  tmp_champ->alive = true;
+	  my_printf("Le joueur %d(%s) est en vie\n", prog->prog_number, c->name);
+	  c->alive = true;
 	}
-      tmp_champ = tmp_champ->next;
-      tmp_prog = tmp_prog->next;
+      c = c->next;
+      prog = prog->next;
     }
   champ->cycles_to_wait += 10;
   champ->pc = (champ->pc + 4) % MEM_SIZE;
-  return (0);
+  return (1);
 }
