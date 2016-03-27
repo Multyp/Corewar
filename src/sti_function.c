@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:50:29 2016 Marwane
-** Last update Sun Mar 27 19:44:42 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 19:55:38 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -39,16 +39,13 @@ void	write_map(t_vm *vm, int reg, int pos)
 
   c = 0;
   reg_changed = change_endian(reg);
-  printf("WRITE MAP\nparam = %d\n", reg);
   while (c != 4)
     {
       reg_changed = change_endian(reg);
       vm->arena[(pos + c) % MEM_SIZE] =
 	(reg_changed >> ((3 - c) * 8) % 126);
-      printf("%d|", vm->arena[(pos + c) % MEM_SIZE]);
       c++;
     }
-  printf("\n");
 }
 
 int	sti_function(t_vm *vm, t_champ *champ)
@@ -62,7 +59,6 @@ int	sti_function(t_vm *vm, t_champ *champ)
 
   i = 0;
   s = champ->pc;
-  printf("sti\n");
   while (i != 4)
     {
       octet[i] = get_octet_code(0, i, vm->arena[champ->pc]);
