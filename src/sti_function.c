@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:50:29 2016 Marwane
-** Last update Sat Mar 26 22:06:13 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 07:53:28 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -25,6 +25,9 @@ int	sti_function(t_vm *vm, t_champ *champ)
 {
   int	octet[4];
   int	i;
+  int	p1;
+  int	p2;
+  int	p3;
 
   i = 0;
   while (i != 4)
@@ -32,10 +35,15 @@ int	sti_function(t_vm *vm, t_champ *champ)
       octet[i] = get_octet_code(0, i, vm->arena[champ->pc]);
       i++;
     }
-  champ->pc =
-    (champ->pc + 1 + vm->arena[champ->pc]) % MEM_SIZE;
   champ->cycles_to_wait += 25;
-  if (check_stioctet(octet) == 1)
-    return (1);
-  return (0);
+  champ->pc = (champ->pc + 1) % MEM_SIZE;
+  i = init_opeparams(vm, champ, octet[0], &p1);
+  champ->pc = (champ->pc + i) % MEM_SIZE;
+  i = init_opeparams(vm, champ, octet[1], &p2);
+  champ->pc = (champ->pc + i) % MEM_SIZE;
+  i = init_opeparams(vm, champ, octet[2], &p3);
+  champ->pc = (champ->pc + i) % MEM_SIZE;
+  if (check_stioctet(octet) == 0)
+    vm->arena[(p3 + p2) % MEM_SIZE] = p1;
+  return (1);
 }

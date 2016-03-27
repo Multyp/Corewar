@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sun Mar 27 03:47:18 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 07:36:08 2016 Da Fonseca Samuel
 */
 
 #ifndef __VM_COREWAR_H__
@@ -116,6 +116,7 @@ void	put_memory_hexa_format(char *arena);
 ** ********
 */
 t_vm	*init_vm(t_vm *);
+int	init_opeparams(t_vm *, t_champ *, int, int *);
 
 /*
 ** *****************
@@ -161,6 +162,7 @@ void	main_loop(t_vm *);
 int	get_octet_code(int, int, char);
 int	get_size_octet_code(unsigned char);
 int	get_myint(t_vm *, int, int);
+int	get_size(int);
 
 /*
 ** Functions
@@ -188,6 +190,7 @@ int	aff_function(t_vm *, t_champ *);
 */
 int	check_addoctet(int octet[]);
 int	check_oroctet(int octet[]);
+int	check_andoctet(int octet[]);
 int	check_ldoctet(int octet[]);
 int	check_ldioctet(int octet[]);
 

@@ -5,17 +5,18 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:48:57 2016 Marwane
-** Last update Sat Mar 26 22:04:35 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 07:52:11 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
 
 int	sub_function(t_vm *vm, t_champ *champ)
 {
-  (void)vm;
-  (void)champ;
   int	octet[4];
   int	i;
+  char	reg_n1;
+  char	reg_n2;
+  char	reg_dest;
 
   i = 0;
   while (i != 4)
@@ -23,10 +24,17 @@ int	sub_function(t_vm *vm, t_champ *champ)
       octet[i] = get_octet_code(0, i, vm->arena[champ->pc]);
       i++;
     }
-  champ->pc =
-    (champ->pc + get_size_octet_code(vm->arena[champ->pc] + 1)) % MEM_SIZE;
+  champ->pc = (champ->pc + 1) % MEM_SIZE;
+  reg_n1 = get_myint(vm, champ->pc, 1);
+  champ->pc = (champ->pc + 1) % MEM_SIZE;
+  reg_n2 = get_myint(vm, champ->pc, 1);
+  champ->pc = (champ->pc + 1) % MEM_SIZE;
+  reg_dest = get_myint(vm, champ->pc, 1);
+  champ->pc = (champ->pc + 1) % MEM_SIZE;
   champ->cycles_to_wait += 10;
-  if (check_addoctet(octet) == 1)
-    return (1);
+  if (reg_n1 > 0 && reg_n2 > 0 && reg_dest > 0 &&
+      check_addoctet(octet) == 0)
+    champ->registres[(reg_dest - 1) % 16] =
+      champ->registres[(reg_n1 - 1) % 16] - champ->registres[(reg_n2 - 1) % 16];
   return (0);
 }
