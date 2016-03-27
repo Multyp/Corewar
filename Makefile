@@ -5,10 +5,12 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Sun Mar 27 00:46:03 2016 Poc
+## Last update Sun Mar 27 01:29:16 2016 Poc
 ##
 
-POC=			yes
+.SUFFIXES:
+
+POC=			no
 
 DEBUG=			yes
 
@@ -192,19 +194,21 @@ OBJ_DECOMPILER=		$(SRC_DECOMPILER:.c=.o)
 
 OBJ_ASM=		$(SRC_ASM:.c=.o)
 
-all:			asm lib proj
 
-asm:			$(OBJ_ASM) $(OBJ_LIB)
-			@$(CC) $(OBJ_ASM) $(OBJ_LIB) -o asm/asm
-			@echo "[ OK ] ASM Compiled"
+
+lib:			$(OBJLIB)
+			ar rc $(LIBNAME) $(OBJLIB)
+			@ echo -e "\033[1;31m \t \t \n \t ♩♪♫ $(LIBNAME) Compiled\033[0;31m®\033[1;31m Created Sucesfully \033[0m "
 
 proj:			$(OBJ_VM)
 			@ $(CC) $(OBJ_VM) -o $(NAME_VM) $(LIBNAME)
 			@ echo -e "\033[1;33m \t \t \n \t ♩♪♫ $(NAME_VM) \033[1;33m Compiled Sucesfully ♩♪♫\033[0m "
 
-lib:			$(OBJLIB)
-			ar rc $(LIBNAME) $(OBJLIB)
-			@ echo -e "\033[1;31m \t \t \n \t ♩♪♫ $(LIBNAME) da-fon_s\033[0;31m®\033[1;31m Created Sucesfully \033[0m "
+asm:			$(OBJ_ASM) $(OBJ_LIB)
+			@$(CC) $(OBJ_ASM) $(OBJ_LIB) -o asm/asm
+			@echo "[ OK ] ASM Compiled"
+
+all:			asm lib proj
 
 clean:
 			@echo "[ OK ] Removing OBJ files ..."
@@ -217,7 +221,8 @@ clean:
 fclean:			clean
 			@echo "[ OK ] Deleting binaries ..."
 			@$(RM) $(NAME)
-			@$(RM) vm_corewar
+			@$(RM) $(NAME_VM)
+			@$(RM) $(LIBNAME)
 
 re:			fclean all
 

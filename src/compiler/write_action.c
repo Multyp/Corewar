@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 16:25:34 2016 Poc
-** Last update Sat Mar 26 20:31:37 2016 Poc
+** Last update Sun Mar 27 00:58:18 2016 Poc
 */
 
 #include "asm.h"
@@ -22,11 +22,9 @@ int	write_args(t_arg *arg, int fd, t_label *label, int decal)
 
 int	write_action(t_action *action, int fd, t_label *label)
 {
-  int	decal;
   int	i;
 
   i = 0;
-  decal = 0;
   write(fd , &action->identifier, 1);
   if (action->coding_byte != 0)
     write(fd, &action->coding_byte, 1);

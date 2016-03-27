@@ -5,24 +5,19 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 17:50:43 2016 Poc
-** Last update Sat Mar 26 20:29:24 2016 Poc
+** Last update Sun Mar 27 00:54:58 2016 Poc
 */
 
 #include "asm.h"
 
 short	find_label_short(t_label *label, char *name, int pos)
 {
-  short	i;
-
   if (label->name == NULL || name == NULL)
       return (-1);
   while (label && my_strcmp(label->name, name) != 0)
       label = label->next;
   if (label && pos >= label->pos)
-    {
-      i = 0xFFFF;
       return (((short)label->pos - pos));
-    }
   if (label != NULL)
     return ((short)label->pos - pos);
   else
