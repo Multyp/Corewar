@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 02:44:26 2016 Marwane
-** Last update Sun Mar 27 20:24:17 2016 Marwane
+** Last update Sun Mar 27 22:34:39 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -15,6 +15,8 @@ void	functions_vm(t_vm *vm, t_champ *champ, int i)
   int	(*ptr[16])(t_vm *, t_champ *);
 
   champ->pc = (champ->pc + 1) % MEM_SIZE;
+  if (champ->pc < 0)
+    champ->pc = 0;
   ptr[0] = &live_function;
   ptr[1] = &ld_function;
   ptr[2] = &st_function;
