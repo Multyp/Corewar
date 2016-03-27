@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Thu Mar 24 05:28:00 2016 Marwane
-** Last update Sat Mar 26 07:51:16 2016 Marwane
+** Last update Sun Mar 27 20:11:06 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -24,9 +24,6 @@ void		memset_arena(char *arena, char *instructions,
       i++;
       pos ++;
     }
-  /* i = 0; */
-  /* while (i < 6144) */
-  /*   printf("%d|", arena[i++]); */
 }
 
 void		send_to_memset_arena(char *arena,

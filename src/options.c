@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 19 23:02:29 2016 marwane khsime
-** Last update Wed Mar 23 06:56:08 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 20:54:55 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -53,8 +53,8 @@ void	free_options(char **opts)
 
   i = 0;
   while (i != 4)
-    free (opts[i++]);
-  free (opts);
+    free(opts[i++]);
+  free(opts);
 }
 
 int	check_options(char **av, t_vm *vm, int ac)

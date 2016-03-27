@@ -4,7 +4,7 @@
 ## Login   <khsime_m@epitech.net>
 ##
 ## Started on  Fri Jan  8 02:57:27 2016 marwane khsime
-## Last update Sun Mar 27 09:50:31 2016 Marwane
+## Last update Sun Mar 27 20:47:45 2016 Marwane
 ##
 
 RM	= rm -f
@@ -16,8 +16,6 @@ SRC	=	main_vm_corewar.c	\
 		default_opts.c		\
 		list_manage_tool.c	\
 		my_getnbr.c		\
-		cvrt_to_little_endian.c	\
-		file_arena_check.c	\
 		game_check_steps.c	\
 		check_champs_cors.c	\
 		aff_winner.c		\
@@ -26,6 +24,8 @@ SRC	=	main_vm_corewar.c	\
 		change_endian.c		\
 		pc_correction.c		\
 		free.c			\
+		displays.c		\
+		free_champions.c	\
 		get_base_16.c		\
 		check_champs_size.c	\
 		default_addr.c		\

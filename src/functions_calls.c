@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 02:44:26 2016 Marwane
-** Last update Sun Mar 27 16:18:07 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 20:24:17 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -13,7 +13,6 @@
 void	functions_vm(t_vm *vm, t_champ *champ, int i)
 {
   int	(*ptr[16])(t_vm *, t_champ *);
-  static int p = 0;
 
   champ->pc = (champ->pc + 1) % MEM_SIZE;
   ptr[0] = &live_function;
@@ -32,10 +31,8 @@ void	functions_vm(t_vm *vm, t_champ *champ, int i)
   ptr[13] = &lldi_function;
   ptr[14] = &lfork_function;
   ptr[15] = &aff_function;
-
   if (ptr[i](vm, champ) == 0)
     champ->carry = (champ->carry + 1) % 2;
-  p++;
 }
 
 void		main_loop(t_vm *vm)

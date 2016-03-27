@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:50:29 2016 Marwane
-** Last update Sun Mar 27 19:55:38 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 20:14:53 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -64,9 +64,8 @@ int	sti_function(t_vm *vm, t_champ *champ)
       octet[i] = get_octet_code(0, i, vm->arena[champ->pc]);
       i++;
     }
-  if (check_stioctet(octet) == 1)
+  if (champ->cycles_to_wait += 25 && check_stioctet(octet) == 1)
     return (1);
-  champ->cycles_to_wait += 25;
   champ->pc = (champ->pc + 1) % MEM_SIZE;
   p1 = get_myint(vm, champ->pc, 1);
   champ->pc = (champ->pc + 1) % MEM_SIZE;

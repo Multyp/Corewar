@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 11:07:59 2016 Marwane
-** Last update Sun Mar 27 14:03:38 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 20:15:11 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -53,7 +53,6 @@ int	get_myint(t_vm *vm, int pc, int n_octets)
       nb += ((s[c] << (8 * c)) % 126);
       c--;
     }
-  /* printf("nb = %d\n", nb); */
   return (nb);
 }
 

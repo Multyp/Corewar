@@ -5,16 +5,11 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:57:03 2016 Da Fonseca Samuel
-** Last update Sun Mar 27 19:53:58 2016 Marwane
+** Last update Sun Mar 27 20:56:18 2016 Marwane
 */
 
 #include "vm_corewar.h"
 
-/*
-**  file_champion lis les 2184 octets contenu dans un fichier et remplis
-**  dans champ (cf structure : include/vm_corewar.h") toutes les informations
-**  contenu dans celui ci sur les 2184 octets.
-*/
 int		file_champion(t_champ *champ, char *file_path)
 {
   int		fd;
@@ -33,8 +28,8 @@ int		file_champion(t_champ *champ, char *file_path)
       (file_path != NULL ? close(fd) : 0);
       return (0);
     };
-  champ->magic = convert_to_little_endian(champ->magic);
-  champ->size = convert_to_little_endian(champ->size);
+  champ->magic = change_endian(champ->magic);
+  champ->size = change_endian(champ->size);
   champ->alive = false;
   champ->cycles_to_wait = 0;
   close(fd);
@@ -49,7 +44,7 @@ t_champ		*create_champ(char *file_path, int address, int prog_nb)
     return (my_perror(MALLOC_FAILED));
   if (file_champion(new_champ, file_path) == 1)
     {
-      free (new_champ);
+      free(new_champ);
       return (NULL);
     }
   new_champ->pc = address;
@@ -60,10 +55,6 @@ t_champ		*create_champ(char *file_path, int address, int prog_nb)
   return (new_champ);
 }
 
-/*
-**   add_champt_to_list prend en paramètre un champion (vide et non malloc)
-**   le path du champion, et le rempli.
-*/
 t_vm		*add_champ_to_list(t_vm *vm, char *file_path,
 				   int address, int prog_nb)
 {
@@ -82,11 +73,6 @@ t_vm		*add_champ_to_list(t_vm *vm, char *file_path,
   return (vm);
 }
 
-/*
-**  add_champion ajoute tous les programmes contenu dans t_prog dans la
-**  liste chainee t_champ, add_champions ne corrige pas les erreurs des
-**  progs (cf : check_champs_cors.c)
-*/
 void		*add_champions(t_vm *vm)
 {
   t_prog	*tmp_progs;
@@ -105,10 +91,6 @@ void		*add_champions(t_vm *vm)
   return (vm);
 }
 
-/*
-**  del_champ permet de supprimer un champion dans la liste chainée de champions
-**  à la position i.
-*/
 void		del_champ(t_vm *vm, int i)
 {
   t_champ	*tmp;

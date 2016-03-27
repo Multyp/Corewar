@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Wed Mar 23 10:17:56 2016 Da Fonseca Samuel
-** Last update Sat Mar 26 16:35:24 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 20:10:12 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -39,9 +39,9 @@ int	*getfreespaces(char map[])
   return (freespaces);
 }
 
-void    write_champ(t_prog *prog, t_champ *champ, char map[])
+void	write_champ(t_prog *prog, t_champ *champ, char map[])
 {
-  int   n;
+  int	n;
 
   n = (champ->size > (MEM_SIZE - prog->address))
     ? (MEM_SIZE - prog->address) : champ->size;
@@ -53,8 +53,8 @@ void    write_champ(t_prog *prog, t_champ *champ, char map[])
 
 int		*write_progs(t_vm *vm, char map[])
 {
-  t_prog        *tmp_prog;
-  t_champ       *tmp_champ;
+  t_prog	*tmp_prog;
+  t_champ	*tmp_champ;
 
   tmp_prog = vm->progs;
   tmp_champ = vm->champs;

@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sun Mar 27 20:01:41 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 20:46:29 2016 Marwane
 */
 
 #ifndef __VM_COREWAR_H__
@@ -126,6 +126,7 @@ void	check_champs_error(t_vm *);
 void	del_prog(t_vm *, int);
 void	del_champ(t_vm *, int);
 void	pc_correction(t_vm *);
+void	free_champions(t_vm *);
 t_vm	*add_champ_to_list(t_vm *, char *, int, int);
 
 /*
@@ -151,6 +152,12 @@ char	*get_binary(char *);
 void	file_arena(t_vm *);
 void	file_arena_check(t_vm *);
 
+
+/*
+** Display
+*/
+void	my_afflist(t_vm *);
+void	my_affchamps(t_vm *);
 
 /*
 ** Main_functions
@@ -208,6 +215,7 @@ int	check_file(t_vm *, char *, char *);
 void	init_defaultvalues(t_vm *);
 void	init_progaddress(t_vm *);
 int	default_addr(t_vm *);
+
 /*
 ** Sorting
 */
@@ -217,6 +225,7 @@ int	get_sizetoload(int *);
 int	get_sizefree(int *);
 int	get_addr(int *, int);
 int	get_nbtab(int *);
+
 /*
 ** *********
 ** * Frees *
