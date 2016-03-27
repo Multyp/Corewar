@@ -5,27 +5,43 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 11:07:59 2016 Marwane
-** Last update Sat Mar 26 21:58:41 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 01:10:10 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
 
-int	get_myint(t_vm *vm, t_champ *champ)
+int	get_size(int opt)
 {
-  int	nb;
+  int	sizes[4];
+
+  sizes[0] = 0;
+  sizes[1] = T_REG;
+  sizes[2] = T_DIR;
+  sizes[3] = T_IND;
+  return (sizes[opt]);
+}
+
+int	get_myint(t_vm *vm, t_champ *champ, int n_octets)
+{
   int	c;
   int	p;
+  char	s[n_octets + 1];
+  int	nb;
 
+  nb = 0;
+  my_memset(s, 0, n_octets + 1);
   p = champ->pc;
   c = 0;
-  nb = 0;
-  while (c != 4)
+  while (c != 1)
     {
-      nb += (vm->arena[p] << (3 - c) * 4);
+      s[c] = vm->arena[p];
+      printf("s[c] = %d\nnb = %d\n", s[c], nb);
       p = (p + 1) % MEM_SIZE;
       c++;
     }
-  return (nb);
+  nb = (s[0] << (8 * 3)) + (s[1] << (8 * 2)) + (s[2] << 8) + s[3];
+      printf("nb = %d\n", nb);
+  return (0);
 }
 
 
@@ -33,13 +49,8 @@ int		get_size_octet_code(unsigned char codage)
 {
   int		c;
   unsigned char	octet;
-  int		size[4];
   int		nb;
 
-  size[0] = 0;
-  size[1] = 1;
-  size[2] = 2;
-  size[3] = 4;
   nb = 0;
   c = 0;
   while (c != 4)
@@ -49,7 +60,7 @@ int		get_size_octet_code(unsigned char codage)
       octet = octet % 4;
       if (octet == 0)
 	  return (nb);
-      nb += size[octet];
+      nb += get_size(octet);
       c++;
     }
   return (nb);
