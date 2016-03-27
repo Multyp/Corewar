@@ -1,104 +1,3 @@
-<<<<<<< HEAD
-## Makefile for Makefile in /home/khsime_m/rendu/Projet/PSU/PSU_2015_minishell1
-##
-## Made by marwane khsime
-## Login   <khsime_m@epitech.net>
-##
-## Started on  Fri Jan  8 02:57:27 2016 marwane khsime
-## Last update Sat Mar 26 23:07:37 2016 Marwane
-##
-
-RM	= rm -f
-
-CC	= gcc
-
-SRC	=	main_vm_corewar.c	\
-		options.c		\
-		default_opts.c		\
-		list_manage_tool.c	\
-		my_getnbr.c		\
-		cvrt_to_little_endian.c	\
-		file_arena_check.c	\
-		game_check_steps.c	\
-		check_champs_cors.c	\
-		put_champs_in_map.c	\
-		list_champs_tool.c	\
-		pc_correction.c		\
-		free.c			\
-		get_base_16.c		\
-		check_champs_size.c	\
-		default_addr.c		\
-		progs_sorting.c		\
-		addr_get.c		\
-		options_cmds.c		\
-		functions_calls.c	\
-		live_function.c		\
-		ld_function.c		\
-		st_function.c		\
-		add_function.c		\
-		sub_function.c		\
-		and_function.c		\
-		or_function.c		\
-		xor_function.c		\
-		zjmp_function.c		\
-		ldi_function.c		\
-		sti_function.c		\
-		fork_function.c		\
-		lld_function.c		\
-		lldi_function.c		\
-		lfork_function.c	\
-		aff_function.c		\
-		octet_codage.c		\
-		init_ops.c
-
-
-BASICS  =	my_memset.c		\
-		my_revstr.c		\
-		my_strcmp.c		\
-		my_strseek.c		\
-		my_getbase.c		\
-		my_putc.c		\
-		my_realloc.c		\
-		my_strcat.c		\
-		my_strcat_cpy.c		\
-		my_strcpy.c		\
-		my_str_to_wordtab.c   	\
-		my_showtabs.c 		\
-		my_putnbr.c		\
-		my_printf.c		\
-		my_strdup.c		\
-		my_error.c
-
-OBJ	= $(addprefix src/, $(SRC:.c=.o))
-
-OBJLIB  = $(addprefix basics/, $(BASICS:.c=.o))
-
-CFLAGS	= -W -Werror -Wall -I./include -g3
-
-NAME	= vm_corewar
-
-LIBNAME	= libmy.a
-
-name: 	lib proj
-
-lib:	$(OBJLIB)
-	ar rc $(LIBNAME) $(OBJLIB)
-	@ echo -e "\033[1;31m \t \t \n \t ♩♪♫ $(LIBNAME) da-fon_s\033[0;31m®\033[1;31m Created Sucesfully \033[0m "
-
-proj:	$(OBJ)
-	@ $(CC) $(OBJ) -o $(NAME) $(LIBNAME)
-	@ echo -e "\033[1;33m \t \t \n \t ♩♪♫ $(NAME) \033[1;33m Compiled Sucesfully ♩♪♫\033[0m "
-
-all:	name
-
-clean:
-	$(RM) $(OBJ) $(OBJLIB)
-
-fclean:	clean
-	$(RM) $(NAME) $(LIBNAME)
-
-re:	fclean all
-=======
 ##
 ## Makefile for Makefile in /home/arnaud_e/rendu/cpe/corewar
 ##
@@ -106,7 +5,7 @@ re:	fclean all
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Sat Mar 26 19:50:15 2016 Poc
+## Last update Sun Mar 27 00:46:03 2016 Poc
 ##
 
 POC=			yes
@@ -136,7 +35,62 @@ SRC_FILES_DECOMPILER=	main.c			\
 			op_xor.c		\
 			op_zjmp.c		\
 
-SRC_DECOMPILER=		$(addprefix src/decompiler/,$(SRC_FILES_DECOMPILER))
+SRC_VM	=		main_vm_corewar.c	\
+			options.c		\
+			default_opts.c		\
+			list_manage_tool.c	\
+			my_getnbr.c		\
+			cvrt_to_little_endian.c	\
+			file_arena_check.c	\
+			game_check_steps.c	\
+			check_champs_cors.c	\
+			put_champs_in_map.c	\
+			list_champs_tool.c	\
+			pc_correction.c		\
+			free.c			\
+			get_base_16.c		\
+			check_champs_size.c	\
+			default_addr.c		\
+			progs_sorting.c		\
+			addr_get.c		\
+			options_cmds.c		\
+			functions_calls.c	\
+			live_function.c		\
+			ld_function.c		\
+			st_function.c		\
+			add_function.c		\
+			sub_function.c		\
+			and_function.c		\
+			or_function.c		\
+			xor_function.c		\
+			zjmp_function.c		\
+			ldi_function.c		\
+			sti_function.c		\
+			fork_function.c		\
+			lld_function.c		\
+			lldi_function.c		\
+			lfork_function.c	\
+			aff_function.c		\
+			octet_codage.c		\
+			init_ops.c
+
+
+BASICS  =		my_memset.c		\
+			my_revstr.c		\
+			my_strcmp.c		\
+			my_strseek.c		\
+			my_getbase.c		\
+			my_putc.c		\
+			my_realloc.c		\
+			my_strcat.c		\
+			my_strcat_cpy.c		\
+			my_strcpy.c		\
+			my_str_to_wordtab.c   	\
+			my_showtabs.c 		\
+			my_putnbr.c		\
+			my_printf.c		\
+			my_strdup.c		\
+			my_error.c
 
 SRC_FILES_ASM=		add_to_list.c		\
 			add_label.c		\
@@ -178,8 +132,6 @@ SRC_FILES_ASM=		add_to_list.c		\
 			op/op_lfork.c		\
 			op/op_aff.c
 
-SRC_ASM=		$(addprefix src/compiler/,$(SRC_FILES_ASM))
-
 SRC_FILES_LIB=		change_endian.c		\
 			check_empty.c		\
 			convert_to_nb.c		\
@@ -204,9 +156,21 @@ SRC_FILES_LIB=		change_endian.c		\
 
 SRC_LIB=		$(addprefix src/lib/,$(SRC_FILES_LIB))
 
+SRC_ASM=		$(addprefix src/compiler/,$(SRC_FILES_ASM))
+
+SRC_DECOMPILER=		$(addprefix src/decompiler/,$(SRC_FILES_DECOMPILER))
+
+OBJ_VM= 		$(addprefix src_vm/, $(SRC_VM:.c=.o))
+
+OBJLIB= 		$(addprefix basics/, $(BASICS:.c=.o))
+
 OBJ_LIB=		$(SRC_LIB:.c=.o)
 
-NAME=			asm
+NAME_VM	= 		corewar/corewar
+
+LIBNAME	= 		libmy.a
+
+NAME=			asm/asm
 
 HEAD=			-Iinclude
 
@@ -228,26 +192,32 @@ OBJ_DECOMPILER=		$(SRC_DECOMPILER:.c=.o)
 
 OBJ_ASM=		$(SRC_ASM:.c=.o)
 
-$(NAME):		$(OBJ_ASM) $(OBJ_LIB)
-			@$(CC) $(OBJ_ASM) $(OBJ_LIB) -o asm
+all:			asm lib proj
+
+asm:			$(OBJ_ASM) $(OBJ_LIB)
+			@$(CC) $(OBJ_ASM) $(OBJ_LIB) -o asm/asm
 			@echo "[ OK ] ASM Compiled"
 
-%.o:			%.c
-			@echo "[ OK ] Compiling" $<
-			@$(CC) -o $@ -c $< $(CFLAGS)
+proj:			$(OBJ_VM)
+			@ $(CC) $(OBJ_VM) -o $(NAME_VM) $(LIBNAME)
+			@ echo -e "\033[1;33m \t \t \n \t ♩♪♫ $(NAME_VM) \033[1;33m Compiled Sucesfully ♩♪♫\033[0m "
 
-all:			$(NAME)
+lib:			$(OBJLIB)
+			ar rc $(LIBNAME) $(OBJLIB)
+			@ echo -e "\033[1;31m \t \t \n \t ♩♪♫ $(LIBNAME) da-fon_s\033[0;31m®\033[1;31m Created Sucesfully \033[0m "
 
 clean:
 			@echo "[ OK ] Removing OBJ files ..."
 			@$(RM) $(OBJ_DECOMPILER)
 			@$(RM) $(OBJ_ASM)
 			@$(RM) $(OBJ_LIB)
+			@$(RM) $(OBJ_VM)
+			@$(RM) $(OBJLIB)
 
 fclean:			clean
 			@echo "[ OK ] Deleting binaries ..."
 			@$(RM) $(NAME)
-			@$(RM) decompiler
+			@$(RM) vm_corewar
 
 re:			fclean all
 
@@ -255,5 +225,9 @@ decompiler:		$(OBJ_DECOMPILER) $(OBJ_LIB)
 			@$(CC) -o decompiler $(OBJ_DECOMPILER) $(OBJ_LIB)
 			@echo "[ OK ] Decompiler Compiled"
 
+%.o:			%.c
+			@echo "[ OK ] Compiling" $<
+			@$(CC) -o $@ -c $< $(CFLAGS)
+
+
 .PHONY:			all clean fclean re
->>>>>>> 9b6fce1b59e9c6b21f32451b65f4f7399c17547f
