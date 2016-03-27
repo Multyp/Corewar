@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 04:11:57 2016 Arthur ARNAUD
-** Last update Sat Mar 26 23:33:44 2016 Poc
+** Last update Sun Mar 27 20:20:26 2016 Poc
 */
 
 #include "asm.h"
@@ -35,5 +35,5 @@ int	op_aff(t_action *action, char *str, t_pos *pos)
       c += (type << (6 - (i * 2)));
     }
   action->coding_byte = c;
-  return ((i < 1) ? 1 : 0);
+  return (free_tab(tab), free_tab(list_arg), (i < 1) ? 1 : 0);
 }

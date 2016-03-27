@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Wed Mar 16 17:17:26 2016 Clement Peau
-** Last update Sat Mar 26 17:55:21 2016 Poc
+** Last update Sun Mar 27 21:14:09 2016 Poc
 */
 
 #include "asm.h"
@@ -16,7 +16,7 @@ int		get_name(t_header *header, char *str)
   int	k;
 
   k = 0;
-  if (my_strncmp(str, NAME_CMD_STRING, my_strlen(NAME_CMD_STRING)) == 0)
+  if (my_strncmp(str, NAME_CMD_STRING, my_strlen(NAME_CMD_STRING)) == 1)
       return (1);
   i = 0;
   while (str[i++] != '"')
@@ -36,8 +36,8 @@ int		get_comment(t_header *header, char *str)
   int		i;
   int		k;
 
-  if (my_strncmp(str, COMMENT_CMD_STRING, my_strlen(COMMENT_CMD_STRING)) == 0)
-    return (0);
+  if (my_strncmp(str, COMMENT_CMD_STRING, my_strlen(COMMENT_CMD_STRING)) == 1)
+    return (print_error("Warning no comment specified\n", 1, 2));
   i = 0;
   while (str[i++] != '"')
     if (str[i] == 0)
@@ -57,20 +57,24 @@ int		get_comment(t_header *header, char *str)
   return (0);
 }
 
-int		get_header(char *str, t_header *header)
+int		get_header(char *str, t_header *header, int *trick)
 {
+  int		ret;
+
   if (header->full == 1)
     return (0);
-  if ((str = epur_str(str)) == NULL)
+  if (!str && ((str = epur_str(str)) == NULL))
     return (1);
   if (header->prog_name[0] == 0)
     {
       if (get_name(header, str) == 1)
-	  return (1);
+	return (1);
       return (0);
     }
-  if (get_comment(header, str) == 1)
+  if ((ret = get_comment(header, str)) == 1)
     return (1);
+  if (ret == 2)
+    *trick = 1;
   header->full = 1;
   return (0);
 }

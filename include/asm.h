@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:09:32 2016 Arthur ARNAUD
-** Last update Sun Mar 27 00:52:24 2016 Poc
+** Last update Sun Mar 27 19:24:26 2016 Poc
 */
 
 #ifndef ASM_H_
@@ -60,12 +60,6 @@ typedef struct		s_label
   struct s_label	*next;
 }			t_label;
 
-typedef struct		s_file
-{
-  char			*str;
-  struct s_file		*next;
-}			t_file;
-
 typedef struct		s_action
 {
   int			pos;
@@ -85,7 +79,6 @@ typedef int	(*t_ftab)(t_action *, char *, t_pos *);
 */
 t_label		*create_label_list();
 t_action       	*create_action_list();
-t_file		*create_file_list();
 t_ftab		*set_ftab(t_ftab *);
 
 /*
@@ -100,11 +93,10 @@ char		*format_instruction(char *);
 char		**cut_instruction(char *);
 int		add_action(t_action *, t_action *);
 int		add_label(t_label *, t_label *);
-int		add_to_back(t_file *, char *);
 int		check_action(char *, t_action *, t_pos *, t_ftab *);
 int		check_args(char, char *, t_pos *);
 int		fill_arg(char, char *, t_arg *, int);
-int		get_header(char *, t_header *);
+int		get_header(char *, t_header *, int *);
 int		icubed(char *, char);
 int		init_args(t_action *, int);
 int		is_valid_label(char *, int);
@@ -133,7 +125,6 @@ int		my_strcpy(char *, char *);
 int		my_strcmp(char *, char *);
 int		my_strncmp(char *, char *, int);
 void		my_strcat(char *, char *);
-void		*free_first(t_file *);
 void		free_tab(char **);
 void		my_putnbr(int);
 void		showtab(char **);

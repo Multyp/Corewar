@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 17 19:29:35 2016 Clement Peau
-** Last update Fri Mar 18 11:12:28 2016 Clement Peau
+** Last update Sun Mar 27 21:07:27 2016 Poc
 */
 
 #include "asm.h"
@@ -14,9 +14,14 @@ int	my_strncmp(char *str1, char *str2, int nb)
 {
   int	i;
 
-  i = -1;
-  while (++i < nb)
+  i = 0;
+  while (i < nb)
+    {
       if (str1[i] != str2[i])
-      return (0);
-  return (1);
+	{
+	  return (1);
+	}
+      i++;
+    }
+  return (0);
 }

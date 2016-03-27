@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 01:20:39 2016 Arthur ARNAUD
-** Last update Sat Mar 26 23:32:23 2016 Poc
+** Last update Sun Mar 27 20:39:28 2016 Poc
 */
 
 #include "asm.h"
@@ -34,5 +34,5 @@ int	op_lfork(t_action *action, char *str, t_pos *pos)
 	add_prog_size(type, pos))
       return (1);
   action->coding_byte = 0;
-  return ((i < 1) ? 1 : 0);
+  return (free_tab(tab), free_tab(list_arg), (i < 1) ? 1 : 0);
 }

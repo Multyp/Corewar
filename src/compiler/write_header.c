@@ -5,11 +5,22 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 24 13:01:09 2016 Poc
-** Last update Sat Mar 26 19:57:45 2016 Poc
-** Last update Sat Mar 26 19:07:21 2016 Arthur ARNAUD
+** Last update Sun Mar 27 17:16:46 2016 Poc
 */
 
 #include "asm.h"
+
+char	*get_last_slash(char *str)
+{
+  int	i;
+  char	*new_str;
+
+  i = my_strlen(str);
+  while (i > 0 && str[--i] != '/')
+  new_str = my_strdup(str + i);
+  free(str);
+  return (new_str);
+}
 
 char	*get_right_name(char *str)
 {
@@ -27,6 +38,7 @@ char	*get_right_name(char *str)
     return (write(2, "Can't perform malloc\n", 21), NULL);
   my_strcpy(new_str, str);
   my_strcat(new_str, ".cor");
+  new_str = get_last_slash(new_str);
   return (new_str);
 }
 

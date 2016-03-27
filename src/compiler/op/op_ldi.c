@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 04:06:39 2016 Arthur ARNAUD
-** Last update Sat Mar 26 23:29:11 2016 Poc
+** Last update Sun Mar 27 20:34:37 2016 Poc
 */
 
 #include "asm.h"
@@ -36,5 +36,5 @@ int	op_ldi(t_action *action, char *str, t_pos *pos)
       add_prog_size(type, pos);
     }
   action->coding_byte = c;
-  return ((i < 3) ? 1 : 0);
+  return (free_tab(tab), free_tab(list_arg), (i < 3) ? 1 : 0);
 }

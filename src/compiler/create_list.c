@@ -5,21 +5,10 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:59:33 2016 Arthur ARNAUD
-** Last update Sat Mar 26 02:24:55 2016 Arthur ARNAUD
+** Last update Sun Mar 27 19:24:51 2016 Poc
 */
 
 #include "asm.h"
-
-t_file		*create_file_list(char *str)
-{
-  t_file	*file;
-
-  if ((file = malloc(sizeof(t_file))) == NULL)
-    return (write(2, "Can't perform malloc\n", 21), NULL);
-  file->next = NULL;
-  file->str = str;
-  return (file);
-}
 
 t_label		*create_label_list()
 {

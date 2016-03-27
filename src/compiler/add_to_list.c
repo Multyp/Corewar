@@ -5,26 +5,10 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Thu Mar 17 15:30:59 2016 Clement Peau
-** Last update Sat Mar 26 17:33:07 2016 Arthur ARNAUD
+** Last update Sun Mar 27 19:24:39 2016 Poc
 */
 
 #include "asm.h"
-
-int		add_to_back_file(t_file *file, char *str)
-{
-  t_file	*tmp;
-  t_file	*tmp_list;
-
-  tmp_list = file;
-  while (tmp_list->next != NULL)
-    tmp_list = tmp_list->next;
-  if ((tmp = malloc(sizeof(t_file))) == NULL)
-    return (write(2, "Can't perform malloc\n", 21), 1);
-  tmp->next = tmp_list->next;
-  tmp->str = str;
-  tmp_list->next = tmp;
-  return (0);
-}
 
 int		add_action(t_action *action, t_action *new_action)
 {

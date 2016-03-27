@@ -5,7 +5,7 @@
 ## Login   <arnaud_e@epitech.net>
 ##
 ## Started on  Wed Mar  2 02:57:33 2016 Arthur ARNAUD
-## Last update Sun Mar 27 01:29:16 2016 Poc
+## Last update Sun Mar 27 19:25:35 2016 Poc
 ##
 
 .SUFFIXES:
@@ -102,6 +102,7 @@ SRC_FILES_ASM=		add_to_list.c		\
 			check_type.c		\
 			create_list.c		\
 			fill_arg.c		\
+			free_lists.c		\
 			get_header.c		\
 			is_char.c		\
 			lexer.c			\
@@ -138,7 +139,6 @@ SRC_FILES_LIB=		change_endian.c		\
 			check_empty.c		\
 			convert_to_nb.c		\
 			epur.c			\
-			free_first.c		\
 			free_tab.c		\
 			get_next_line.c		\
 			my_getnbr.c		\
@@ -153,7 +153,6 @@ SRC_FILES_LIB=		change_endian.c		\
 			my_strdup.c		\
 			my_strlen.c		\
 			my_strncmp.c		\
-			show_list.c		\
 			str_to_word_tab.c	\
 
 SRC_LIB=		$(addprefix src/lib/,$(SRC_FILES_LIB))
@@ -194,21 +193,19 @@ OBJ_DECOMPILER=		$(SRC_DECOMPILER:.c=.o)
 
 OBJ_ASM=		$(SRC_ASM:.c=.o)
 
+all:			$(NAME)
 
-
-lib:			$(OBJLIB)
-			ar rc $(LIBNAME) $(OBJLIB)
-			@ echo -e "\033[1;31m \t \t \n \t ♩♪♫ $(LIBNAME) Compiled\033[0;31m®\033[1;31m Created Sucesfully \033[0m "
-
-proj:			$(OBJ_VM)
+$(NAME_VM):		$(LIBNAME) $(OBJ_VM)
 			@ $(CC) $(OBJ_VM) -o $(NAME_VM) $(LIBNAME)
 			@ echo -e "\033[1;33m \t \t \n \t ♩♪♫ $(NAME_VM) \033[1;33m Compiled Sucesfully ♩♪♫\033[0m "
 
-asm:			$(OBJ_ASM) $(OBJ_LIB)
+$(NAME):		$(NAME_VM) $(OBJ_ASM) $(OBJ_LIB)
 			@$(CC) $(OBJ_ASM) $(OBJ_LIB) -o asm/asm
 			@echo "[ OK ] ASM Compiled"
 
-all:			asm lib proj
+$(LIBNAME):		$(OBJLIB)
+			ar rc $(LIBNAME) $(OBJLIB)
+			@ echo -e "\033[1;31m \t \t \n \t ♩♪♫ $(LIBNAME) Compiled\033[0;31m®\033[1;31m Created Sucesfully \033[0m "
 
 clean:
 			@echo "[ OK ] Removing OBJ files ..."

@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Mar  6 18:29:49 2016 Arthur ARNAUD
-** Last update Sat Mar 26 20:40:16 2016 Arthur ARNAUD
+** Last update Sun Mar 27 20:56:21 2016 Poc
 */
 
 #include "asm.h"
@@ -17,8 +17,8 @@ int		check_name(char *str, t_action *action, t_pos *pos)
 
   i = 0;
   if ((tab = str_to_word_tab
-	("live ld st add sub and or xor zjmp ldi sti fork lld lldi lfork aff"
-	 , ' ')) == NULL)
+       ("live ld st add sub and or xor zjmp ldi sti fork lld lldi lfork aff"
+	, ' ')) == NULL)
     return (write(2, "Can't perform malloc\n", 21), -1);
   while (tab[i])
     {

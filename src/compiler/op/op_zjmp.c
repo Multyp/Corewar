@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Thu Mar 24 01:16:27 2016 Arthur ARNAUD
-** Last update Sat Mar 26 23:32:33 2016 Poc
+** Last update Sun Mar 27 20:21:06 2016 Poc
 */
 
 #include "asm.h"
@@ -34,5 +34,5 @@ int	op_zjmp(t_action *action, char *str, t_pos *pos)
 	add_prog_size(type, pos))
       return (1);
   action->coding_byte = 0;
-  return ((i < 1) ? 1 : 0);
+  return (free_tab(list_arg), free_tab(tab), (i < 1) ? 1 : 0);
 }

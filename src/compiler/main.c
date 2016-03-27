@@ -5,7 +5,7 @@
 ** Login   <arnaud_e@epitech.net>
 **
 ** Started on  Sun Feb 28 00:29:36 2016 Arthur ARNAUD
-** Last update Sat Mar 26 20:29:41 2016 Poc
+** Last update Sun Mar 27 18:58:41 2016 Poc
 */
 
 #include "asm.h"
@@ -30,5 +30,6 @@ int	main(int ac, char **av)
   close (fd);
   if (parser(label, action, &header, av[1]))
     return (1);
+  free_lists(label, action, header);
   return (0);
 }
