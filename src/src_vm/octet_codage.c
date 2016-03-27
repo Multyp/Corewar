@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 11:07:59 2016 Marwane
-** Last update Sun Mar 27 20:15:11 2016 Marwane
+** Last update Sun Mar 27 22:06:19 2016 Poc
 */
 
 #include "vm_corewar.h"
@@ -55,7 +55,6 @@ int	get_myint(t_vm *vm, int pc, int n_octets)
     }
   return (nb);
 }
-
 
 int		get_size_octet_code(unsigned char codage)
 {

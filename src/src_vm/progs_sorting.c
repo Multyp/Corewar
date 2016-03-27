@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Wed Mar 23 11:36:06 2016 Da Fonseca Samuel
-** Last update Sat Mar 26 07:18:10 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 22:06:28 2016 Poc
 */
 
 #include "vm_corewar.h"
@@ -72,7 +72,6 @@ int		*sortingprogs(t_vm *vm, int n, int *s, int *sorted_progs)
     }
   return (sorted_progs);
 }
-
 
 int		*check_spaces_with_progs(t_vm *vm)
 {

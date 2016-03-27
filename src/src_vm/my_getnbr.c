@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Tue Feb 23 09:32:49 2016 khsime_m
-** Last update Wed Feb 24 02:55:22 2016 khsime_m
+** Last update Sun Mar 27 22:06:04 2016 Poc
 */
 
 #include "vm_corewar.h"
@@ -42,7 +42,7 @@ int	my_getnbr(char *str)
     return (0);
   if (str[0] == '-')
     {
-      nb = my_getneg(str, i ,nb);
+      nb = my_getneg(str, i, nb);
       return (nb);
     }
   while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
