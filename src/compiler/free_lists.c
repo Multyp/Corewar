@@ -5,7 +5,7 @@
 ** Login   <peau_c@epitech.net>
 **
 ** Started on  Sun Mar 27 17:54:07 2016 Poc
-** Last update Sun Mar 27 21:36:27 2016 Marwane
+** Last update Sun Mar 27 22:20:13 2016 Poc
 */
 
 #include "asm.h"
@@ -45,7 +45,8 @@ void	free_action(t_action *action)
     {
       tmp = action;
       free(tmp->instruction);
-      free_args(action->args);
+      if (action->args)
+ 	free_args(action->args);
       action = action->next;
       free(tmp);
     }
