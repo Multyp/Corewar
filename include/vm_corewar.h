@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 04:08:19 2016 Marwane
-** Last update Sun Mar 27 01:14:01 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 03:43:39 2016 Da Fonseca Samuel
 */
 
 #ifndef __VM_COREWAR_H__
@@ -159,7 +159,7 @@ void	file_arena_check(t_vm *);
 void	main_loop(t_vm *);
 int	get_octet_code(int, int, char);
 int	get_size_octet_code(unsigned char);
-int	get_myint(t_vm *, t_champ *, int);
+int	get_myint(t_vm *, int, int);
 
 /*
 ** Functions
