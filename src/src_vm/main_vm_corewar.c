@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:42:32 2016 Da Fonseca Samuel
-** Last update Sun Mar 27 20:43:44 2016 Marwane
+** Last update Sun Mar 27 23:01:30 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -68,7 +68,7 @@ int	main(int ac, char **av)
     return (1);
   if (vm.progs_nb == 1)
     {
-      my_printf("Need one more fighter, it's more funny .\n");
+      my_printf("Need one more fighter please, because it's more funny .\n");
       return (1);
     }
   launch_game(&vm);
