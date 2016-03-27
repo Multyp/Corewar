@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:48:27 2016 Marwane
-** Last update Sat Mar 26 22:04:00 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 04:49:52 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -19,18 +19,48 @@ int	check_stoctet(int octet[])
   return (0);
 }
 
+void	st_function_t_ind(t_vm *vm, t_champ *champ,
+			  int _pc, int first_param)
+{
+  int	second_param;
+
+  second_param = get_myint(vm, (champ->pc = (champ->pc + 1) % MEM_SIZE), 4);
+  vm->arena[(_pc + second_param % IDX_MOD) % MEM_SIZE] = first_param;
+  champ->pc = (champ->pc + 1) % MEM_SIZE;
+}
+
+void	st_function_t_reg(t_vm *vm, t_champ *champ, int first_param)
+{
+  int	second_param;
+
+  second_param = get_myint(vm, (champ->pc = ((champ->pc  + 1) % MEM_SIZE)), 1);
+  champ->registres[second_param % 16] = first_param;
+  (void)first_param;
+}
+
 int	st_function(t_vm *vm, t_champ *champ)
 {
   int	octet[4];
+  int	i;
+  int	_pc;
+  int	first_param;
 
-  octet[0] = get_octet_code(0, 0, vm->arena[champ->pc]);
-  octet[1] = get_octet_code(0, 1, vm->arena[champ->pc]);
-  octet[2] = get_octet_code(0, 2, vm->arena[champ->pc]);
-  octet[3] = get_octet_code(0, 3, vm->arena[champ->pc]);
-  champ->pc =
-    (champ->pc + get_size_octet_code(vm->arena[champ->pc]) + 1) % MEM_SIZE;
+  i = 0;
+  while (i < 4)
+    {
+      octet[i] = get_octet_code(0, i, vm->arena[champ->pc]);
+      i++;
+    }
+  _pc = champ->pc;
+  if (check_stoctet(octet) == 0)
+    {
+      first_param = get_myint(vm,
+			      (champ->pc = ((champ->pc + 1) % MEM_SIZE)), 1);
+      if (octet[1] == T_IND)
+	st_function_t_ind(vm, champ, _pc, first_param);
+      else
+	st_function_t_reg(vm, champ, first_param);
+    }
   champ->cycles_to_wait += 5;
-  if (check_stoctet(octet) == 1)
-    return (1);
-  return (0);
+  return (1);
 }
