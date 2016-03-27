@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:48:27 2016 Marwane
-** Last update Sun Mar 27 13:30:35 2016 Marwane
+** Last update Sun Mar 27 14:59:58 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -24,7 +24,8 @@ void	st_function_t_ind(t_vm *vm, t_champ *champ,
 {
   int	second_param;
 
-  second_param = get_myint(vm, (champ->pc = (champ->pc + 1) % MEM_SIZE), 2);
+  champ->pc = (champ->pc + 1) % MEM_SIZE;
+  second_param = get_myint(vm, champ->pc, 2);
   vm->arena[(_pc + second_param % IDX_MOD) % MEM_SIZE] = first_param;
   champ->pc = (champ->pc + 2) % MEM_SIZE;
 }

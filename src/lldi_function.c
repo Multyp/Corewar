@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 09:51:38 2016 Marwane
-** Last update Sun Mar 27 08:34:45 2016 Marwane
+** Last update Sun Mar 27 14:56:45 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -26,7 +26,8 @@ int	lldi_function_third_param(t_vm *vm, t_champ *champ)
   int	ret;
 
   ret = get_myint(vm, champ->pc, 1);
-  return ((champ->pc += 1), (char)ret);
+  champ->pc = (champ->pc + 1) % MEM_SIZE;
+  return ((char)ret);
 }
 
 int	lldi_function_second_param(t_vm *vm, t_champ *champ, int octet[])
@@ -36,12 +37,14 @@ int	lldi_function_second_param(t_vm *vm, t_champ *champ, int octet[])
   if (octet[0] == T_REG)
     {
       ret = get_myint(vm, champ->pc, 1);
-      return ((champ->pc = (champ->pc + 1) % MEM_SIZE), (char)ret);
+      champ->pc = (champ->pc + 1) % MEM_SIZE;
+      return ((char)ret);
     }
   else
     {
       ret = (short)get_myint(vm, champ->pc, 2);
-      return ((champ->pc = (champ->pc + 2) % MEM_SIZE), (short)ret);
+      champ->pc = (champ->pc + 2) % MEM_SIZE;
+      return ((short)ret);
     }
   return (0);
 }
@@ -53,17 +56,20 @@ int	lldi_function_first_param(t_vm *vm, t_champ *champ, int octet[])
   if (octet[0] == T_REG)
     {
       ret = get_myint(vm, champ->pc, 1);
-      return ((champ->pc = (champ->pc + 1) % MEM_SIZE), (char)ret);
+      champ->pc = (champ->pc + 1) % MEM_SIZE;
+      return ((char)ret);
     }
   else if (octet[0] == T_DIR)
     {
       ret = (short)get_myint(vm, champ->pc, 2);
-      return ((champ->pc = (champ->pc + 2) % MEM_SIZE), (short)ret);
+      champ->pc = (champ->pc + 2) % MEM_SIZE;
+      return ((short)ret);
     }
   else
     {
       ret = get_myint(vm, champ->pc, 4);
-      return ((champ->pc = (champ->pc + 4) % MEM_SIZE), ret);
+      champ->pc = (champ->pc + 4) % MEM_SIZE;
+      return (ret);
     }
   return (0);
 }
