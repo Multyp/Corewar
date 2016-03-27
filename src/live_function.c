@@ -5,7 +5,7 @@
 ** Login   <khsime_m@epitech.net>
 **
 ** Started on  Sat Mar 26 06:15:33 2016 Marwane
-** Last update Sat Mar 26 22:22:11 2016 Da Fonseca Samuel
+** Last update Sun Mar 27 03:23:13 2016 Da Fonseca Samuel
 */
 
 #include "vm_corewar.h"
@@ -23,7 +23,7 @@ int		live_function(t_vm *vm, t_champ *champ)
     }
   tmp_champ = vm->champs;
   tmp_prog = vm->progs;
-  nb = get_myint(vm, champ, 3);
+  nb = get_myint(vm, champ, 4);
   while (tmp_champ != NULL && tmp_prog->prog_number != nb)
     {
       tmp_champ = tmp_champ->next;
