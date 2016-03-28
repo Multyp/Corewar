@@ -5,7 +5,7 @@
 ** Login   <da-fon_s@epitech.net>
 **
 ** Started on  Tue Mar 22 15:57:03 2016 Da Fonseca Samuel
-** Last update Mon Mar 28 16:41:37 2016 Marwane
+** Last update Mon Mar 28 16:42:43 2016 Marwane
 */
 
 #include "vm_corewar.h"
@@ -66,8 +66,10 @@ t_vm		*add_champ_to_list(t_vm *vm, char *file_path,
   while (vm->champs != NULL && vm->champs->next != NULL)
     vm->champs = vm->champs->next;
   if (vm->champs == NULL)
-    if ((vm->champs = create_champ(file_path, address, prog_nb)) == NULL)
-      return (NULL);
+    {
+      if ((vm->champs = create_champ(file_path, address, prog_nb)) == NULL)
+	return (NULL);
+    }
   else
     {
       if ((vm->champs->next = create_champ(file_path,
